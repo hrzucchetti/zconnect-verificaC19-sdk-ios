@@ -21,14 +21,9 @@
 
 ## About
 
-This repository contains the source code of *VerificaC19*, the Italian customization of the EU Digital COVID Certificate Verifier App for the iOS Operating System. The repository is forked from the [official EU Digital COVID Certificate Verifier App - iOS](https://github.com/eu-digital-green-certificates/dgca-verifier-app-ios).
+This repository contains the source code of *ZConnectVerificaC19SDK*, an SDK of VerificaC19 app for the iOS Operating System. The repository is forked from the [official VerificaC19 App - iOS](https://github.com/ministero-salute/it-dgc-verificaC19-ios).
 
-The DGC Verifier Apps are responsible for scanning and verifying DCCs using public keys from national backend servers. Offline verification is supported, if the latest public keys are present in the app's key store. Consequently, once up-to-date keys have been downloaded, the verification works without active internet connection.
-The Italian version adds some medical rules to the validation of the DCCs, defined by rules downloaded from national backend servers.
-
-## Translators 💬
-
-You can help the localization of this project by making contributions to the [*.lproj folders inside /Verifier/Resources/](/Verifier/Resources/).
+The SDK allows verifying DCCs using public keys from Italy backend servers. Offline verification is supported, if the latest public keys are present in the app's key store. Consequently, once up-to-date keys have been downloaded, the verification works without active internet connection.
 
 ## Development
 
@@ -38,30 +33,24 @@ You can help the localization of this project by making contributions to the [*.
 - Xcode 12.5+ is used for our builds. The OS requirement is macOS 11.0+.
 - To install development apps on physical iPhones, you need an Apple Developer account.
 - Service Endpoints:
-  - This App talks to the endpoint: `https://get.dgc.gov.it/v1/dgc/` to retrieve kids, public keys, settings and medical rules for prod configuration,
+  - This Library talks to the endpoint: `https://get.dgc.gov.it/v1/dgc/` to retrieve kids, public keys, settings and medical rules for prod configuration,
   - To get QR Codes for testing, you might want to check out `https://dgc.a-sit.at/ehn/testsuite`.
 
 ### Build
 
 Whether you cloned or downloaded the 'zipped' sources you will either find the sources in the chosen checkout-directory or get a zip file with the source code, which you can expand to a folder of your choice.
 
-#### Xcode based build
+### Swift Package Manager
 
+The [Swift Package Manager](https://swift.org/package-manager/) is a tool for automating the distribution of Swift code and is integrated into the `swift` compiler. It is in early development, but Alamofire does support its use on supported platforms.
 
-Important Info: SPM and the SwiftDGC [core module](https://github.com/eu-digital-green-certificates/dgca-app-core-ios)
-- Depending on the development status, this module might be either linked locally or via github URL.
-- If it's linked locally, you should clone both repos into the same folder:
-- `<project folder>`
-    - `dgca-app-core-ios`
-    - `dgca-verifier-app-ios`
-- Otherwise it will be pulled by Xcode like all other SPM modules.
-    - Make sure the core module is up to date by clicking File > Swift Packages > Update Packages.
+Once you have your Swift package set up, adding Alamofire as a dependency is as easy as adding it to the `dependencies` value of your `Package.swift`.
 
-Build steps
-- Set the development team to any Apple Developer Account
-- Give the project a unique bundle identifier
-- Install swift package manager requirements through Xcode 12.5+
-- Build and run the project through Xcode 12.5+
+```swift
+dependencies: [
+    .package(url: "https://github.com/hrzucchetti/zconnect-verificaC19-sdk-ios.git", .branch("develop"))
+]
+```
 
 ## Documentation
 
@@ -83,7 +72,7 @@ The following channels are available for discussions, feedback, and support requ
 
 | Type               | Channel                                                                                                                                                                          |
 | ------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Issues**         | <a href="/../../issues" title="Open Issues"><img src="https://img.shields.io/github/issues/ministero-salute/dgca-verifier-app-ios?style=flat"></a>                  |
+| **Issues**         | <a href="/../../issues" title="Open Issues"><img src="https://img.shields.io/github/issues/hrzucchetti/zconnect-verificaC19-sdk-i?style=flat"></a>                  |
 
 ## How to contribute
 
