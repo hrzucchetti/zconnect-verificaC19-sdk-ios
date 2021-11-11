@@ -71,6 +71,7 @@ dependencies: [
 
     //use validator to validate a certificate
     let validator = CertificateValidator(payload: qrCodeContent)
+    //or use this initializer let validator = CertificateValidator(certificate: certificate!)
     guard let validator = validator else {
         return
     }
