@@ -19,6 +19,10 @@ public class CertificateValidator {
         certificate = Certificate(from: payload)
     }
     
+    public init(certificate: Certificate) {
+        self.certificate = certificate
+    }
+    
     public func validate(onSuccessHandler: @escaping (Status) -> Void, onFailureHandler: ((Error) -> Void)? = nil)
     {
         guard let certificate = certificate else {
