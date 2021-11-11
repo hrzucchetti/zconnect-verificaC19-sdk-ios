@@ -51,6 +51,41 @@ dependencies: [
     .package(url: "https://github.com/hrzucchetti/zconnect-verificaC19-sdk-ios.git", .branch("develop"))
 ]
 ```
+### Usage
+```swift
+    //use synchronizer to fetch data from backend
+    let synchronizer = DataSynchronizer()
+    synchronizer.sync { result in
+        switch result {
+        case .updated:
+            break
+        case .sdkOutdated:
+            break
+        case .error(let error):
+            break
+        }
+    }
+    
+    //use certificate to get a simplified model of certificate content
+    let certificate: Certificate? = Certificate(from: qrContent)
+
+    //use validator to validate a certificate
+    let validator = CertificateValidator(payload: qrCodeContent)
+    guard let validator = validator else {
+        return
+    }
+    validator.validate(onSuccessHandler: { status in
+        switch status {
+        case .valid,.validPartially:
+            //is valid
+            break
+        case .notValid, .notValidYet, .notGreenPass:
+            //not is valid
+            break
+        }
+    })
+```
+
 
 ## Documentation
 
