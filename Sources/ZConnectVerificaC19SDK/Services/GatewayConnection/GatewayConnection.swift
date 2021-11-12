@@ -64,10 +64,10 @@ class GatewayConnection {
         // Init session
         let evaluators = [certificateEvaluator: PinnedCertificatesTrustEvaluator(certificates: [certificate])]
 //        session = AF
-        session = Session(serverTrustManager: ServerTrustManager(evaluators: evaluators))*/
+         session = Session(serverTrustManager: ServerTrustManager(evaluators: evaluators))*/
         session = Session()
     }
-    
+
     func initialize(completion: (()->())? = nil) {
         timer?.invalidate()
         timer = Timer.scheduledTimer(withTimeInterval: 60.0, repeats: true) { _ in

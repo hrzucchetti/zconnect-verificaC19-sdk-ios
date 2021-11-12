@@ -28,7 +28,11 @@ let package = Package(
         .package(
             name: "SwiftDGC",
             url: "https://github.com/eu-digital-green-certificates/dgca-app-core-ios",
-            .branch("main"))
+            .branch("main")),
+        .package(
+            name: "Realm",
+            url: "https://github.com/realm/realm-cocoa.git",
+            from: "10.12.0")
     ],
     targets: [
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.

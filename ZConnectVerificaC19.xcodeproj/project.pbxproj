@@ -7,6 +7,30 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1E2F6078273DD034004B512E /* GatewayConnection+Revocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2F6077273DD034004B512E /* GatewayConnection+Revocation.swift */; };
+		1E2F607A273DD058004B512E /* CRLDataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2F6079273DD058004B512E /* CRLDataStorage.swift */; };
+		1E2F6086273DD08C004B512E /* CRLProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2F607C273DD08C004B512E /* CRLProgress.swift */; };
+		1E2F6087273DD08C004B512E /* Link.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2F607D273DD08C004B512E /* Link.swift */; };
+		1E2F6088273DD08C004B512E /* Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2F607E273DD08C004B512E /* Status.swift */; };
+		1E2F6089273DD08C004B512E /* RevokedDCC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2F6080273DD08C004B512E /* RevokedDCC.swift */; };
+		1E2F608A273DD08C004B512E /* CRLStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2F6082273DD08C004B512E /* CRLStatus.swift */; };
+		1E2F608B273DD08C004B512E /* Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2F6083273DD08C004B512E /* Setting.swift */; };
+		1E2F608C273DD08C004B512E /* Delta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2F6084273DD08C004B512E /* Delta.swift */; };
+		1E2F608D273DD08C004B512E /* CRL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2F6085273DD08C004B512E /* CRL.swift */; };
+		1E2F609E273DD0C6004B512E /* Data+SHA256.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2F608F273DD0C6004B512E /* Data+SHA256.swift */; };
+		1E2F609F273DD0C6004B512E /* CRL+Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2F6090273DD0C6004B512E /* CRL+Entity.swift */; };
+		1E2F60A0273DD0C6004B512E /* Double+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2F6092273DD0C6004B512E /* Double+String.swift */; };
+		1E2F60A1273DD0C6004B512E /* Int+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2F6093273DD0C6004B512E /* Int+String.swift */; };
+		1E2F60A2273DD0C6004B512E /* Int+Bytes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2F6094273DD0C6004B512E /* Int+Bytes.swift */; };
+		1E2F60A3273DD0C6004B512E /* Array+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2F6095273DD0C6004B512E /* Array+Utils.swift */; };
+		1E2F60A4273DD0C6004B512E /* Double+Bytes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2F6096273DD0C6004B512E /* Double+Bytes.swift */; };
+		1E2F60A5273DD0C6004B512E /* String+SHA256.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2F6097273DD0C6004B512E /* String+SHA256.swift */; };
+		1E2F60A7273DD0C6004B512E /* Connectivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2F609B273DD0C6004B512E /* Connectivity.swift */; };
+		1E2F60A8273DD0C6004B512E /* PerformanceLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2F609C273DD0C6004B512E /* PerformanceLog.swift */; };
+		1E2F60A9273DD0C6004B512E /* String+Bool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2F609D273DD0C6004B512E /* String+Bool.swift */; };
+		1E2F60AC273DD176004B512E /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 1E2F60AB273DD176004B512E /* Realm */; };
+		1E2F60AE273DD176004B512E /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 1E2F60AD273DD176004B512E /* RealmSwift */; };
+		1E2F60B0273DD736004B512E /* CRLSynchronizationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2F60AF273DD736004B512E /* CRLSynchronizationManager.swift */; };
 		1E80D59A273C881400ED28B1 /* SDKConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E80D596273C881400ED28B1 /* SDKConfig.swift */; };
 		1E80D59B273C881400ED28B1 /* sdkConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1E80D598273C881400ED28B1 /* sdkConfig.plist */; };
 		1E80D59C273C881400ED28B1 /* get-dgc-gov-it.der in Resources */ = {isa = PBXBuildFile; fileRef = 1E80D599273C881400ED28B1 /* get-dgc-gov-it.der */; };
@@ -19,7 +43,6 @@
 		1EAF83B5273C53570010939D /* Date+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EAF8383273C53570010939D /* Date+Utils.swift */; };
 		1EAF83B6273C53570010939D /* LocalData+Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EAF8385273C53570010939D /* LocalData+Setting.swift */; };
 		1EAF83B7273C53570010939D /* Link+Values.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EAF8386273C53570010939D /* Link+Values.swift */; };
-		1EAF83B8273C53570010939D /* Array+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EAF8387273C53570010939D /* Array+Utils.swift */; };
 		1EAF83B9273C53570010939D /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EAF8389273C53570010939D /* Cache.swift */; };
 		1EAF83BA273C53570010939D /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EAF838A273C53570010939D /* Observable.swift */; };
 		1EAF83BB273C53570010939D /* String+Int.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EAF838C273C53570010939D /* String+Int.swift */; };
@@ -29,11 +52,8 @@
 		1EAF83BF273C53570010939D /* HCert+PersonalData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EAF8391273C53570010939D /* HCert+PersonalData.swift */; };
 		1EAF83C0273C53570010939D /* HCert+Recovery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EAF8392273C53570010939D /* HCert+Recovery.swift */; };
 		1EAF83C1273C53570010939D /* HCert+Vaccine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EAF8393273C53570010939D /* HCert+Vaccine.swift */; };
-		1EAF83C2273C53570010939D /* Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EAF8395273C53570010939D /* Setting.swift */; };
-		1EAF83C3273C53570010939D /* Link.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EAF8396273C53570010939D /* Link.swift */; };
 		1EAF83C4273C53570010939D /* LocalData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EAF8398273C53570010939D /* LocalData.swift */; };
 		1EAF83C5273C53570010939D /* SettingsDataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EAF8399273C53570010939D /* SettingsDataStorage.swift */; };
-		1EAF83C6273C53570010939D /* Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EAF839A273C53570010939D /* Status.swift */; };
 		1EAF83C7273C53570010939D /* CertLogicValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EAF839C273C53570010939D /* CertLogicValidator.swift */; };
 		1EAF83C8273C53570010939D /* VaccineValidityCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EAF839E273C53570010939D /* VaccineValidityCheck.swift */; };
 		1EAF83C9273C53570010939D /* TestValidityCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EAF839F273C53570010939D /* TestValidityCheck.swift */; };
@@ -53,6 +73,28 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1E2F6077273DD034004B512E /* GatewayConnection+Revocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "GatewayConnection+Revocation.swift"; sourceTree = "<group>"; };
+		1E2F6079273DD058004B512E /* CRLDataStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CRLDataStorage.swift; sourceTree = "<group>"; };
+		1E2F607C273DD08C004B512E /* CRLProgress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CRLProgress.swift; sourceTree = "<group>"; };
+		1E2F607D273DD08C004B512E /* Link.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Link.swift; sourceTree = "<group>"; };
+		1E2F607E273DD08C004B512E /* Status.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Status.swift; sourceTree = "<group>"; };
+		1E2F6080273DD08C004B512E /* RevokedDCC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RevokedDCC.swift; sourceTree = "<group>"; };
+		1E2F6082273DD08C004B512E /* CRLStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CRLStatus.swift; sourceTree = "<group>"; };
+		1E2F6083273DD08C004B512E /* Setting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Setting.swift; sourceTree = "<group>"; };
+		1E2F6084273DD08C004B512E /* Delta.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Delta.swift; sourceTree = "<group>"; };
+		1E2F6085273DD08C004B512E /* CRL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CRL.swift; sourceTree = "<group>"; };
+		1E2F608F273DD0C6004B512E /* Data+SHA256.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Data+SHA256.swift"; sourceTree = "<group>"; };
+		1E2F6090273DD0C6004B512E /* CRL+Entity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "CRL+Entity.swift"; path = "ModelExtensions/CRL+Entity.swift"; sourceTree = "<group>"; };
+		1E2F6092273DD0C6004B512E /* Double+String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Double+String.swift"; sourceTree = "<group>"; };
+		1E2F6093273DD0C6004B512E /* Int+String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Int+String.swift"; sourceTree = "<group>"; };
+		1E2F6094273DD0C6004B512E /* Int+Bytes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Int+Bytes.swift"; sourceTree = "<group>"; };
+		1E2F6095273DD0C6004B512E /* Array+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Utils.swift"; sourceTree = "<group>"; };
+		1E2F6096273DD0C6004B512E /* Double+Bytes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Double+Bytes.swift"; sourceTree = "<group>"; };
+		1E2F6097273DD0C6004B512E /* String+SHA256.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "String+SHA256.swift"; path = "String/String+SHA256.swift"; sourceTree = "<group>"; };
+		1E2F609B273DD0C6004B512E /* Connectivity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Connectivity.swift; sourceTree = "<group>"; };
+		1E2F609C273DD0C6004B512E /* PerformanceLog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PerformanceLog.swift; sourceTree = "<group>"; };
+		1E2F609D273DD0C6004B512E /* String+Bool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "String+Bool.swift"; path = "String/String+Bool.swift"; sourceTree = "<group>"; };
+		1E2F60AF273DD736004B512E /* CRLSynchronizationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CRLSynchronizationManager.swift; sourceTree = "<group>"; };
 		1E80D596273C881400ED28B1 /* SDKConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SDKConfig.swift; sourceTree = "<group>"; };
 		1E80D598273C881400ED28B1 /* sdkConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = sdkConfig.plist; sourceTree = "<group>"; };
 		1E80D599273C881400ED28B1 /* get-dgc-gov-it.der */ = {isa = PBXFileReference; lastKnownFileType = file; path = "get-dgc-gov-it.der"; sourceTree = "<group>"; };
@@ -66,7 +108,6 @@
 		1EAF8383273C53570010939D /* Date+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+Utils.swift"; sourceTree = "<group>"; };
 		1EAF8385273C53570010939D /* LocalData+Setting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "LocalData+Setting.swift"; sourceTree = "<group>"; };
 		1EAF8386273C53570010939D /* Link+Values.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Link+Values.swift"; sourceTree = "<group>"; };
-		1EAF8387273C53570010939D /* Array+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Utils.swift"; sourceTree = "<group>"; };
 		1EAF8389273C53570010939D /* Cache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
 		1EAF838A273C53570010939D /* Observable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		1EAF838C273C53570010939D /* String+Int.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Int.swift"; sourceTree = "<group>"; };
@@ -76,11 +117,8 @@
 		1EAF8391273C53570010939D /* HCert+PersonalData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HCert+PersonalData.swift"; sourceTree = "<group>"; };
 		1EAF8392273C53570010939D /* HCert+Recovery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HCert+Recovery.swift"; sourceTree = "<group>"; };
 		1EAF8393273C53570010939D /* HCert+Vaccine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HCert+Vaccine.swift"; sourceTree = "<group>"; };
-		1EAF8395273C53570010939D /* Setting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Setting.swift; sourceTree = "<group>"; };
-		1EAF8396273C53570010939D /* Link.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Link.swift; sourceTree = "<group>"; };
 		1EAF8398273C53570010939D /* LocalData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalData.swift; sourceTree = "<group>"; };
 		1EAF8399273C53570010939D /* SettingsDataStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsDataStorage.swift; sourceTree = "<group>"; };
-		1EAF839A273C53570010939D /* Status.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Status.swift; sourceTree = "<group>"; };
 		1EAF839C273C53570010939D /* CertLogicValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CertLogicValidator.swift; sourceTree = "<group>"; };
 		1EAF839E273C53570010939D /* VaccineValidityCheck.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VaccineValidityCheck.swift; sourceTree = "<group>"; };
 		1EAF839F273C53570010939D /* TestValidityCheck.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestValidityCheck.swift; sourceTree = "<group>"; };
@@ -103,6 +141,8 @@
 			files = (
 				1EAF83E1273C56900010939D /* SwiftDGC in Frameworks */,
 				1EAF83DE273C56710010939D /* SwiftyJSON in Frameworks */,
+				1E2F60AC273DD176004B512E /* Realm in Frameworks */,
+				1E2F60AE273DD176004B512E /* RealmSwift in Frameworks */,
 				1EAF83D9273C55CA0010939D /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -110,6 +150,63 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1E2F607B273DD08C004B512E /* Internal */ = {
+			isa = PBXGroup;
+			children = (
+				1E2F607C273DD08C004B512E /* CRLProgress.swift */,
+				1E2F607D273DD08C004B512E /* Link.swift */,
+				1E2F607E273DD08C004B512E /* Status.swift */,
+			);
+			path = Internal;
+			sourceTree = "<group>";
+		};
+		1E2F607F273DD08C004B512E /* Realm */ = {
+			isa = PBXGroup;
+			children = (
+				1E2F6080273DD08C004B512E /* RevokedDCC.swift */,
+			);
+			path = Realm;
+			sourceTree = "<group>";
+		};
+		1E2F6081273DD08C004B512E /* Rest */ = {
+			isa = PBXGroup;
+			children = (
+				1E2F6082273DD08C004B512E /* CRLStatus.swift */,
+				1E2F6083273DD08C004B512E /* Setting.swift */,
+				1E2F6084273DD08C004B512E /* Delta.swift */,
+				1E2F6085273DD08C004B512E /* CRL.swift */,
+			);
+			path = Rest;
+			sourceTree = "<group>";
+		};
+		1E2F608E273DD0C6004B512E /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				1E2F608F273DD0C6004B512E /* Data+SHA256.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		1E2F6091273DD0C6004B512E /* DataType */ = {
+			isa = PBXGroup;
+			children = (
+				1E2F6092273DD0C6004B512E /* Double+String.swift */,
+				1E2F6093273DD0C6004B512E /* Int+String.swift */,
+				1E2F6094273DD0C6004B512E /* Int+Bytes.swift */,
+				1E2F6095273DD0C6004B512E /* Array+Utils.swift */,
+				1E2F6096273DD0C6004B512E /* Double+Bytes.swift */,
+			);
+			path = DataType;
+			sourceTree = "<group>";
+		};
+		1E2F609A273DD0C6004B512E /* Connectivity */ = {
+			isa = PBXGroup;
+			children = (
+				1E2F609B273DD0C6004B512E /* Connectivity.swift */,
+			);
+			path = Connectivity;
+			sourceTree = "<group>";
+		};
 		1E80D597273C881400ED28B1 /* Res */ = {
 			isa = PBXGroup;
 			children = (
@@ -123,7 +220,6 @@
 			isa = PBXGroup;
 			children = (
 				1EAF8376273C53570010939D /* Sources */,
-				1EAF8374273C53570010939D /* Tests */,
 				1EAF836B273C52210010939D /* Products */,
 			);
 			sourceTree = "<group>";
@@ -134,21 +230,6 @@
 				1EAF836A273C52210010939D /* ZConnectVerificaC19.framework */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		1EAF8374273C53570010939D /* Tests */ = {
-			isa = PBXGroup;
-			children = (
-				1EAF8375273C53570010939D /* ZConnectVerificaC19SDKTests */,
-			);
-			path = Tests;
-			sourceTree = "<group>";
-		};
-		1EAF8375273C53570010939D /* ZConnectVerificaC19SDKTests */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ZConnectVerificaC19SDKTests;
 			sourceTree = "<group>";
 		};
 		1EAF8376273C53570010939D /* Sources */ = {
@@ -180,9 +261,15 @@
 		1EAF837D273C53570010939D /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				1E2F609A273DD0C6004B512E /* Connectivity */,
+				1E2F6090273DD0C6004B512E /* CRL+Entity.swift */,
+				1E2F608E273DD0C6004B512E /* Data */,
+				1E2F6091273DD0C6004B512E /* DataType */,
+				1E2F609C273DD0C6004B512E /* PerformanceLog.swift */,
+				1E2F609D273DD0C6004B512E /* String+Bool.swift */,
+				1E2F6097273DD0C6004B512E /* String+SHA256.swift */,
 				1EAF837E273C53570010939D /* Date */,
 				1EAF8384273C53570010939D /* ModelExtensions */,
-				1EAF8387273C53570010939D /* Array+Utils.swift */,
 				1EAF8388273C53570010939D /* Observable */,
 				1EAF838B273C53570010939D /* String */,
 				1EAF838F273C53570010939D /* HCert */,
@@ -244,10 +331,10 @@
 		1EAF8394273C53570010939D /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				1EAF8395273C53570010939D /* Setting.swift */,
-				1EAF8396273C53570010939D /* Link.swift */,
+				1E2F607B273DD08C004B512E /* Internal */,
+				1E2F607F273DD08C004B512E /* Realm */,
+				1E2F6081273DD08C004B512E /* Rest */,
 				1EAF8397273C53570010939D /* DataStorage */,
-				1EAF839A273C53570010939D /* Status.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -255,6 +342,7 @@
 		1EAF8397273C53570010939D /* DataStorage */ = {
 			isa = PBXGroup;
 			children = (
+				1E2F6079273DD058004B512E /* CRLDataStorage.swift */,
 				1EAF8398273C53570010939D /* LocalData.swift */,
 				1EAF8399273C53570010939D /* SettingsDataStorage.swift */,
 			);
@@ -294,6 +382,7 @@
 		1EAF83A8273C53570010939D /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				1E2F60AF273DD736004B512E /* CRLSynchronizationManager.swift */,
 				1EAF83A9273C53570010939D /* GatewayConnection */,
 			);
 			path = Services;
@@ -302,6 +391,7 @@
 		1EAF83A9273C53570010939D /* GatewayConnection */ = {
 			isa = PBXGroup;
 			children = (
+				1E2F6077273DD034004B512E /* GatewayConnection+Revocation.swift */,
 				1EAF83AA273C53570010939D /* GatewayConnection+Certificates.swift */,
 				1EAF83AB273C53570010939D /* GatewayConnection+Settings.swift */,
 				1EAF83AC273C53570010939D /* GatewayConnection.swift */,
@@ -341,6 +431,8 @@
 				1EAF83D8273C55CA0010939D /* Alamofire */,
 				1EAF83DD273C56710010939D /* SwiftyJSON */,
 				1EAF83E0273C56900010939D /* SwiftDGC */,
+				1E2F60AB273DD176004B512E /* Realm */,
+				1E2F60AD273DD176004B512E /* RealmSwift */,
 			);
 			productName = ZConnectVerificaC19SDK;
 			productReference = 1EAF836A273C52210010939D /* ZConnectVerificaC19.framework */;
@@ -373,6 +465,7 @@
 				1EAF83D7273C55CA0010939D /* XCRemoteSwiftPackageReference "Alamofire" */,
 				1EAF83DC273C56710010939D /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
 				1EAF83DF273C56900010939D /* XCRemoteSwiftPackageReference "dgca-app-core-ios" */,
+				1E2F60AA273DD176004B512E /* XCRemoteSwiftPackageReference "realm-cocoa" */,
 			);
 			productRefGroup = 1EAF836B273C52210010939D /* Products */;
 			projectDirPath = "";
@@ -400,19 +493,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1E2F6087273DD08C004B512E /* Link.swift in Sources */,
+				1E2F60B0273DD736004B512E /* CRLSynchronizationManager.swift in Sources */,
 				1EAF83BC273C53570010939D /* String+Char.swift in Sources */,
+				1E2F60A7273DD0C6004B512E /* Connectivity.swift in Sources */,
+				1E2F607A273DD058004B512E /* CRLDataStorage.swift in Sources */,
+				1E2F60A2273DD0C6004B512E /* Int+Bytes.swift in Sources */,
 				1EAF83BB273C53570010939D /* String+Int.swift in Sources */,
+				1E2F6089273DD08C004B512E /* RevokedDCC.swift in Sources */,
 				1EAF83CD273C53570010939D /* MedicalRulesValidator.swift in Sources */,
 				1EAF83CE273C53570010939D /* DataSynchronizer.swift in Sources */,
 				1EAF83BF273C53570010939D /* HCert+PersonalData.swift in Sources */,
 				1EAF83BA273C53570010939D /* Observable.swift in Sources */,
 				1EAF83B4273C53570010939D /* String+Date.swift in Sources */,
-				1EAF83B8273C53570010939D /* Array+Utils.swift in Sources */,
 				1EAF83C4273C53570010939D /* LocalData.swift in Sources */,
 				1EAF83BD273C53570010939D /* String+Localization.swift in Sources */,
 				1EAF83B5273C53570010939D /* Date+Utils.swift in Sources */,
+				1E2F608C273DD08C004B512E /* Delta.swift in Sources */,
 				1EAF83D2273C53570010939D /* GatewayConnection+Settings.swift in Sources */,
 				1EAF83BE273C53570010939D /* HCert+Test.swift in Sources */,
+				1E2F60A5273DD0C6004B512E /* String+SHA256.swift in Sources */,
 				1E80D59A273C881400ED28B1 /* SDKConfig.swift in Sources */,
 				1EAF83C5273C53570010939D /* SettingsDataStorage.swift in Sources */,
 				1EAF83CA273C53570010939D /* StatementValidityCheck.swift in Sources */,
@@ -420,23 +520,34 @@
 				1EAF83CC273C53570010939D /* RulesValidator.swift in Sources */,
 				1EAF83D0273C53570010939D /* Validator.swift in Sources */,
 				1EAF83C0273C53570010939D /* HCert+Recovery.swift in Sources */,
+				1E2F60A3273DD0C6004B512E /* Array+Utils.swift in Sources */,
+				1E2F60A9273DD0C6004B512E /* String+Bool.swift in Sources */,
+				1E2F6078273DD034004B512E /* GatewayConnection+Revocation.swift in Sources */,
+				1E2F6088273DD08C004B512E /* Status.swift in Sources */,
+				1E2F609F273DD0C6004B512E /* CRL+Entity.swift in Sources */,
+				1E2F609E273DD0C6004B512E /* Data+SHA256.swift in Sources */,
 				1EAF83C7273C53570010939D /* CertLogicValidator.swift in Sources */,
 				1EAF83B3273C53570010939D /* DateFormatter+Default.swift in Sources */,
 				1EAF83D1273C53570010939D /* GatewayConnection+Certificates.swift in Sources */,
 				1EAF83AE273C53570010939D /* Certificate.swift in Sources */,
+				1E2F6086273DD08C004B512E /* CRLProgress.swift in Sources */,
+				1E2F60A0273DD0C6004B512E /* Double+String.swift in Sources */,
 				1EAF83B9273C53570010939D /* Cache.swift in Sources */,
 				1EAF83B7273C53570010939D /* Link+Values.swift in Sources */,
-				1EAF83C6273C53570010939D /* Status.swift in Sources */,
+				1E2F60A8273DD0C6004B512E /* PerformanceLog.swift in Sources */,
 				1EAF83B1273C53570010939D /* Date.swift in Sources */,
 				1EAF83C9273C53570010939D /* TestValidityCheck.swift in Sources */,
+				1E2F60A1273DD0C6004B512E /* Int+String.swift in Sources */,
+				1E2F608B273DD08C004B512E /* Setting.swift in Sources */,
+				1E2F608A273DD08C004B512E /* CRLStatus.swift in Sources */,
 				1EAF83D3273C53570010939D /* GatewayConnection.swift in Sources */,
-				1EAF83C2273C53570010939D /* Setting.swift in Sources */,
 				1EAF83C1273C53570010939D /* HCert+Vaccine.swift in Sources */,
 				1EAF83B2273C53570010939D /* Date+String.swift in Sources */,
 				1EAF83CB273C53570010939D /* RecoveryValidityCheck.swift in Sources */,
 				1EAF83C8273C53570010939D /* VaccineValidityCheck.swift in Sources */,
 				1EAF83CF273C53570010939D /* CertificateValidator.swift in Sources */,
-				1EAF83C3273C53570010939D /* Link.swift in Sources */,
+				1E2F60A4273DD0C6004B512E /* Double+Bytes.swift in Sources */,
+				1E2F608D273DD08C004B512E /* CRL.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -647,6 +758,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		1E2F60AA273DD176004B512E /* XCRemoteSwiftPackageReference "realm-cocoa" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-cocoa.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.8.0;
+			};
+		};
 		1EAF83D7273C55CA0010939D /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire";
@@ -674,6 +793,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		1E2F60AB273DD176004B512E /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1E2F60AA273DD176004B512E /* XCRemoteSwiftPackageReference "realm-cocoa" */;
+			productName = Realm;
+		};
+		1E2F60AD273DD176004B512E /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1E2F60AA273DD176004B512E /* XCRemoteSwiftPackageReference "realm-cocoa" */;
+			productName = RealmSwift;
+		};
 		1EAF83D8273C55CA0010939D /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 1EAF83D7273C55CA0010939D /* XCRemoteSwiftPackageReference "Alamofire" */;

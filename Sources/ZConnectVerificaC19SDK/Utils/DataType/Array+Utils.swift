@@ -17,16 +17,35 @@
 */
 
 //
-//  Status.swift
-//  Verifier
+//  Array+Utils.swift
+//  VerificaC19
 //
-//  Created by Andrea Prosseda on 26/07/21.
+//  Created by Andrea Prosseda on 27/07/21.
 //
 
-public enum Status {
-    case valid
-    case validPartially
-    case notValid
-    case notValidYet
-    case notGreenPass
+import Foundation
+
+public extension Array {
+    
+    func get(_ index: Int) -> Element? {
+        guard index >= 0 else { return nil }
+        guard self.count > index else { return nil }
+        return self[index]
+    }
+    
+    func chunked(into size: Int) -> [[Element]] {
+        return stride(from: 0, to: count, by: size).map {
+            Array(self[$0 ..< Swift.min($0 + size, count)])
+        }
+    }
+
+}
+
+extension Sequence where Element: Hashable {
+    
+    func distinct() -> [Element] {
+        var set = Set<Element>()
+        return filter { set.insert($0).inserted }
+    }
+    
 }
