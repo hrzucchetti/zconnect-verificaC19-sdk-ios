@@ -19,23 +19,27 @@ The SDK allows verifying DCCs using public keys from Italy backend servers. Offl
 ### Prerequisites
 
 - You need a Mac to run Xcode.
-- Xcode 12.5+ is used for our builds. The OS requirement is macOS 11.0+.
-- To install development apps on physical iPhones, you need an Apple Developer account.
+- Xcode 13+ is used for our builds. The OS requirement is macOS 11.0+.
 - Service Endpoints:
   - This Library talks to the endpoint: `https://get.dgc.gov.it/v1/dgc/` to retrieve kids, public keys, settings and medical rules for prod configuration,
   - To get QR Codes for testing, you might want to check out `https://dgc.a-sit.at/ehn/testsuite`.
 
 ### Swift Package Manager
-
-The [Swift Package Manager](https://swift.org/package-manager/) is a tool for automating the distribution of Swift code and is integrated into the `swift` compiler.
-
-Once you have your Swift package set up, adding ZConnectVerificaC19SDK as a dependency is as easy as adding it to the `dependencies` value of your `Package.swift`.
-
+You can add this SDK as a package dependecy by using [Swift Package Manager](https://swift.org/package-manager/) tool which is already integrated into the `swift` compiler.
 ```swift
 dependencies: [
     .package(url: "https://github.com/hrzucchetti/zconnect-verificaC19-sdk-ios.git", .branch("develop"))
 ]
 ```
+## Dependencies
+
+The following dependencies are used in the project by the verifier SDK and the core app and are imported as Swift Packages:
+- **[SwiftDGC](https://github.com/eu-digital-green-certificates/dgca-app-core-ios).** Eurpean core library that contains business logic to decode data from QR code payload and performs technical validations (i.e. correct signature verification, signature expiration verification, correct payload format etc).
+- **[Alamofire](https://github.com/Alamofire/Alamofire).** Library used for networking.
+- **[JSONSchema](https://github.com/eu-digital-green-certificates/JSONSchema.swift).** Library used by core module to validate DCC payload JSON schema.
+- **[SwiftCBOR](https://github.com/eu-digital-green-certificates/SwiftCBOR).** Library used by core module for CBOR specification implementation.
+- **[SwiftyJSON](https://github.com/SwiftyJSON/SwiftyJSON).** Library used by core module to translate data from JSON format.
+
 ### Usage
 ```swift
     //use synchronizer to fetch data from backend
@@ -70,15 +74,6 @@ dependencies: [
         }
     })
 ```
-## Dependencies
-
-The following dependencies are used in the project  by the verifier app and the core app and are imported as Swift Packages:
-- **[SwiftDGC](https://github.com/eu-digital-green-certificates/dgca-app-core-ios).** Eurpean core library that contains business logic to decode data from QR code payload and performs technical validations (i.e. correct signature verification, signature expiration verification, correct payload format etc).
-- **[Alamofire](https://github.com/Alamofire/Alamofire).** Library used for networking.
-- **[JSONSchema](https://github.com/eu-digital-green-certificates/JSONSchema.swift).** Library used by core module to validate DCC payload JSON schema.
-- **[SwiftCBOR](https://github.com/eu-digital-green-certificates/SwiftCBOR).** Library used by core module for CBOR specification implementation.
-- **[SwiftyJSON](https://github.com/SwiftyJSON/SwiftyJSON).** Library used by core module to translate data from JSON format.
-
 ## Support and feedback
 
 The following channels are available for discussions, feedback, and support requests:
