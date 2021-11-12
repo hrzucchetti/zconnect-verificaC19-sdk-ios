@@ -51,12 +51,11 @@ public class DataSynchronizer {
     }
     
     public func isSdkVersionOutdated() -> Bool {
-        guard let version = currentSdkVersion() else { return false }
         guard let minVersion = minSdkVersion() else { return false }
-        return version.compare(minVersion, options: .numeric) == .orderedAscending
+        return currentSdkVersion().compare(minVersion, options: .numeric) == .orderedAscending
     }
     
-    public func currentSdkVersion() -> String? {
+    public func currentSdkVersion() -> String {
         return SDKConfig.SDKVersion
     }
     
@@ -64,7 +63,7 @@ public class DataSynchronizer {
         return SettingDataStorage
             .sharedInstance
             .settings
-            .first(where: { $0.name == "ios" && $0.type == "APP_MIN_VERSION" })?
+            .first(where: { $0.name == "sdk" })?
             .value
     }
 }
