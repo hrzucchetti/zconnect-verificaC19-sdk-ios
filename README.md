@@ -10,7 +10,7 @@
 
 ## About SDK
 
-This repository contains the source code of *ZConnectVerificaC19SDK*, an SDK of VerificaC19 app for the iOS Operating System. The repository is forked from the [official VerificaC19 App - iOS](https://github.com/ministero-salute/it-dgc-verificaC19-ios).
+This repository contains the source code of *ZConnectVerificaC19SDK*, SDK for iOS written in Swift based on [official it-dgc-verificac19-sdk-android](https://github.com/ministero-salute/it-dgc-verificac19-sdk-android). The repository is forked from the [official VerificaC19 App - iOS](https://github.com/ministero-salute/it-dgc-verificaC19-ios).
 
 The SDK allows verifying DCCs using public keys from Italy backend servers. Offline verification is supported, if the latest public keys are present in the app's key store. Consequently, once up-to-date keys have been downloaded, the verification works without active internet connection.
 
