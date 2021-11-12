@@ -43,7 +43,8 @@ let package = Package(
                 "SwiftyJSON",
                 "Alamofire",
                 "SwiftDGC",
-                "Realm"
+                "Realm",
+                "RealmSwift"
             ],
             resources: [.copy("Res")]
         )
