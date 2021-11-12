@@ -44,7 +44,7 @@ let package = Package(
                 "Alamofire",
                 "SwiftDGC",
                 "Realm",
-                "RealmSwift"
+                .product(name: "RealmSwift", package: "Realm")
             ],
             resources: [.copy("Res")]
         )
