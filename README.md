@@ -1,25 +1,14 @@
-<h1 align="center">
+<h1 align="left">
     ZConnect COVID Certificate Verifier SDK - iOS
 </h1>
 
-<p align="center">
+<p align="left">
     <a href="/../../commits/" title="Last Commit"><img src="https://img.shields.io/github/last-commit/hrzucchetti/zconnect-verificaC19-sdk-ios?style=flat"></a>
     <a href="/../../issues" title="Open Issues"><img src="https://img.shields.io/github/issues/hrzucchetti/zconnect-verificaC19-sdk-ios?style=flat"></a>
     <a href="./LICENSE" title="License"><img src="https://img.shields.io/badge/License-Apache%202.0-green.svg?style=flat"></a>
 </p>
 
-<p align="center">
-  <a href="#about">About</a> •
-  <a href="#development">Development</a> •
-  <a href="#documentation">Documentation</a> •
-  <a href="#dependencies">Dependencies</a> •
-  <a href="#support-and-feedback">Support</a> •
-  <a href="#how-to-contribute">Contribute</a> •
-  <a href="#contributors">Contributors</a> •
-  <a href="#licensing">Licensing</a>
-</p>
-
-## About
+## About SDK
 
 This repository contains the source code of *ZConnectVerificaC19SDK*, an SDK of VerificaC19 app for the iOS Operating System. The repository is forked from the [official VerificaC19 App - iOS](https://github.com/ministero-salute/it-dgc-verificaC19-ios).
 
@@ -35,10 +24,6 @@ The SDK allows verifying DCCs using public keys from Italy backend servers. Offl
 - Service Endpoints:
   - This Library talks to the endpoint: `https://get.dgc.gov.it/v1/dgc/` to retrieve kids, public keys, settings and medical rules for prod configuration,
   - To get QR Codes for testing, you might want to check out `https://dgc.a-sit.at/ehn/testsuite`.
-
-### Build
-
-Whether you cloned or downloaded the 'zipped' sources you will either find the sources in the chosen checkout-directory or get a zip file with the source code, which you can expand to a folder of your choice.
 
 ### Swift Package Manager
 
@@ -71,10 +56,9 @@ dependencies: [
 
     //use validator to validate a certificate
     let validator = CertificateValidator(payload: qrCodeContent)
-    //or use this initializer let validator = CertificateValidator(certificate: certificate!)
-    guard let validator = validator else {
-        return
-    }
+    //or use this initializer 
+    let validator = CertificateValidator(certificate: certificate!)
+    
     validator.validate(onSuccessHandler: { status in
         switch status {
         case .valid,.validPartially:
@@ -86,12 +70,6 @@ dependencies: [
         }
     })
 ```
-
-
-## Documentation
-
-- [High level documentation](https://github.com/ministero-salute/it-dgc-documentation)
-
 ## Dependencies
 
 The following dependencies are used in the project  by the verifier app and the core app and are imported as Swift Packages:
@@ -100,7 +78,6 @@ The following dependencies are used in the project  by the verifier app and the 
 - **[JSONSchema](https://github.com/eu-digital-green-certificates/JSONSchema.swift).** Library used by core module to validate DCC payload JSON schema.
 - **[SwiftCBOR](https://github.com/eu-digital-green-certificates/SwiftCBOR).** Library used by core module for CBOR specification implementation.
 - **[SwiftyJSON](https://github.com/SwiftyJSON/SwiftyJSON).** Library used by core module to translate data from JSON format.
-All listed dependencies are already included in the [official EU Digital COVID Certificate Verifier App for iOS](https://github.com/eu-digital-green-certificates/dgca-verifier-app-ios). No new dependencies have been included in the Italian customization of the app.
 
 ## Support and feedback
 
@@ -108,7 +85,7 @@ The following channels are available for discussions, feedback, and support requ
 
 | Type               | Channel                                                                                                                                                                          |
 | ------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Issues**         | <a href="/../../issues" title="Open Issues"><img src="https://img.shields.io/github/issues/hrzucchetti/zconnect-verificaC19-sdk-i?style=flat"></a>                  |
+| **Issues**         | <a href="/../../issues" title="Open Issues"><img src="https://img.shields.io/github/issues/hrzucchetti/zconnect-verificaC19-sdk-ios?style=flat"></a>                  |
 
 ## How to contribute
 
