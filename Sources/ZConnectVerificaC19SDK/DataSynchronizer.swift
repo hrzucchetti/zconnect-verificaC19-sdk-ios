@@ -19,7 +19,14 @@ public struct SdkOutdatedError : Error {
 }
 
 public class DataSynchronizer {
-    public init(){}
+    public init(){
+    }
+    
+    public init(initLocalData: Bool) {
+        if(initLocalData) {
+            LocalData.initialize { }
+        }
+    }
     
     public func sync(completion: @escaping (SyncResult) -> Void)
     {
