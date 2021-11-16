@@ -19,7 +19,9 @@ public struct SdkOutdatedError : Error {
 }
 
 public class DataSynchronizer {
-    public init(){}
+    public init(){
+        load(completion: { _ in })
+    }
     
     public func sync(completion: @escaping (SyncResult) -> Void)
     {
