@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1E0DC1DD27455BCC002FC981 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E0DC1DC27455BCC002FC981 /* Constants.swift */; };
 		1E2F6078273DD034004B512E /* GatewayConnection+Revocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2F6077273DD034004B512E /* GatewayConnection+Revocation.swift */; };
 		1E2F607A273DD058004B512E /* CRLDataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2F6079273DD058004B512E /* CRLDataStorage.swift */; };
 		1E2F6086273DD08C004B512E /* CRLProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2F607C273DD08C004B512E /* CRLProgress.swift */; };
@@ -73,6 +74,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1E0DC1DC27455BCC002FC981 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		1E2F6077273DD034004B512E /* GatewayConnection+Revocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "GatewayConnection+Revocation.swift"; sourceTree = "<group>"; };
 		1E2F6079273DD058004B512E /* CRLDataStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CRLDataStorage.swift; sourceTree = "<group>"; };
 		1E2F607C273DD08C004B512E /* CRLProgress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CRLProgress.swift; sourceTree = "<group>"; };
@@ -331,6 +333,7 @@
 		1EAF8394273C53570010939D /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				1E0DC1DC27455BCC002FC981 /* Constants.swift */,
 				1E2F607B273DD08C004B512E /* Internal */,
 				1E2F607F273DD08C004B512E /* Realm */,
 				1E2F6081273DD08C004B512E /* Rest */,
@@ -532,6 +535,7 @@
 				1EAF83AE273C53570010939D /* Certificate.swift in Sources */,
 				1E2F6086273DD08C004B512E /* CRLProgress.swift in Sources */,
 				1E2F60A0273DD0C6004B512E /* Double+String.swift in Sources */,
+				1E0DC1DD27455BCC002FC981 /* Constants.swift in Sources */,
 				1EAF83B9273C53570010939D /* Cache.swift in Sources */,
 				1EAF83B7273C53570010939D /* Link+Values.swift in Sources */,
 				1E2F60A8273DD0C6004B512E /* PerformanceLog.swift in Sources */,
