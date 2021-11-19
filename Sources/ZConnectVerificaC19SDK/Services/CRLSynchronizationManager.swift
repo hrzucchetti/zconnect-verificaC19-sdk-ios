@@ -6,7 +6,7 @@
 //
 
 import Foundation
-//import UIKit
+import UIKit
 
 protocol CRLSynchronizationDelegate {
     func statusDidChange(with result: CRLSynchronizationManager.Result)
@@ -27,9 +27,13 @@ class CRLSynchronizationManager {
     
     static let shared = CRLSynchronizationManager()
     var firstRun: Bool = true
-    var failCounter: Int {
-        get {return _failCounter }
-        set {_failCounter = newValue}
+    var crlStatusFailCounter: Int {
+        get {return _crlStatusFailCounter }
+        set {_crlStatusFailCounter = newValue}
+    }
+    var crlFailCounter: Int {
+        get {return _crlFailCounter }
+        set {_crlFailCounter = newValue}
     }
     
     var progress: CRLProgress { _progress }
@@ -46,25 +50,24 @@ class CRLSynchronizationManager {
         get { CRLDataStorage.shared.progress ?? .init() }
         set { CRLDataStorage.shared.saveProgress(newValue) }
     }
-    private var _failCounter: Int = 1
+    private var _crlStatusFailCounter: Int = 1
+    private var _crlFailCounter: Int = 1
     
     func initialize(delegate: CRLSynchronizationDelegate?) {
         guard isSyncEnabled else { return }
         log("initialize")
         self.delegate = delegate
         setTimer() { self.start() }
-        //TODO: Update setting name -> DRL_Fail_Counter
-        failCounter = LocalData.getSetting(from: "DRL_Fail_Counter")?.intValue ?? 1
-        //
+        crlFailCounter = LocalData.getSetting(from: Constants.drlMaxRetries)?.intValue ?? 1
     }
     
     func start() {
         log("check status")
         gateway.revocationStatus(progress) { (serverStatus, error, responseCode) in
             guard error == nil, responseCode == 200 else {
-                self.failCounter -= 1
+                self.crlStatusFailCounter -= 1
                 
-                if self.failCounter < 0 {
+                if self.crlStatusFailCounter < 0 || !Connectivity.isOnline || responseCode == 408 {
                     self.delegate?.statusDidChange(with: .statusNetworkError)
                 }
                 else {
@@ -74,7 +77,7 @@ class CRLSynchronizationManager {
                 return
             }
             
-            self.failCounter = LocalData.getSetting(from: "DRL_Fail_Counter")?.intValue ?? 1
+            self.crlStatusFailCounter = LocalData.getSetting(from: Constants.drlMaxRetries)?.intValue ?? 1
             self._serverStatus = serverStatus
             self.synchronize()
         }
@@ -128,29 +131,42 @@ class CRLSynchronizationManager {
     func downloadCompleted() {
         log("download completed")
         guard sameDatabaseSize else {
-            CRLSynchronizationManager.shared.failCounter -= 1
-            if CRLSynchronizationManager.shared.failCounter < 0 {
-                delegate?.statusDidChange(with: .error)
+            log("inconsistent number of UCVI, clean needed")
+            CRLSynchronizationManager.shared.crlFailCounter -= 1
+            if CRLSynchronizationManager.shared.crlFailCounter < 0 {
+                log("failed too many times")
+                if progress.remainingSize == "0.00" || progress.remainingSize == "" {
+                    delegate?.statusDidChange(with: .statusNetworkError)
+                } else {
+                    delegate?.statusDidChange(with: .error)
+                }
+                clean()
                 return
             }
             else {
+                log("retrying...")
                 return cleanAndRetry()
             }
         }
         completeProgress()
         _serverStatus = nil
-        failCounter = LocalData.getSetting(from: "DRL_Fail_Counter")?.intValue ?? 1
+        crlFailCounter = LocalData.getSetting(from: Constants.drlMaxRetries)?.intValue ?? 1
         CRLDataStorage.shared.lastFetch = Date()
         isDownloadingCRL = false
         delegate?.statusDidChange(with: .completed)
     }
     
-    func cleanAndRetry() {
-        log("clean needed, retry")
+    func clean() {
         _progress = .init()
         _serverStatus = nil
         isDownloadingCRL = false
         CRLDataStorage.clear()
+        log("cleaned")
+    }
+    
+    func cleanAndRetry() {
+        log("clean needed, retry")
+        clean()
         start()
     }
     
@@ -211,8 +227,8 @@ class CRLSynchronizationManager {
     
     public func showCRLUpdateAlert() {
         /*let content: AlertContent = .init(
-            title: "crl.update.title".localizeWith(progress.remainingSize),
-            message: "crl.update.message",
+            title: "crl.update.alert.title".localizeWith(progress.remainingSize),
+            message: "crl.update.message".localizeWith(progress.remainingSize),
             confirmAction: { self.startDownload() },
             confirmActionTitle: "crl.update.download.now",
             cancelAction: { self.readyToDownload() },
@@ -224,7 +240,7 @@ class CRLSynchronizationManager {
     
     public func showNoConnectionAlert() {
         /*let content: AlertContent = .init(
-            title: "alert.no.connection.title".localizeWith(progress.remainingSize),
+            title: "alert.no.connection.title",
             message: "alert.no.connection.message",
             confirmAction: nil,
             confirmActionTitle: "alert.default.action",
@@ -238,8 +254,12 @@ class CRLSynchronizationManager {
 }
 
 extension CRLSynchronizationManager {
+    
+    public var needsServerStatusUpdate: Bool {
+        _serverStatus == nil
+    }
         
-    private var noPendingDownload: Bool {
+    public var noPendingDownload: Bool {
         progress.currentVersion == progress.requestedVersion
     }
     
@@ -310,12 +330,16 @@ extension CRLSynchronizationManager {
     }
     
     func trigger(completion: (()->())? = nil) {
-        guard (isFetchOutdated || firstRun) && !isDownloadingCRL else { return }
+        guard (isFetchOutdatedAndAllowed || firstRun) && !isDownloadingCRL else { return }
         firstRun = false
         completion?()
     }
     
     var isFetchOutdated: Bool {
+        CRLDataStorage.shared.lastFetch.timeIntervalSinceNow < -24 * 60 * 60
+    }
+    
+    var isFetchOutdatedAndAllowed: Bool {
         isSyncEnabled && CRLDataStorage.shared.lastFetch.timeIntervalSinceNow < -24 * 60 * 60
     }
 
