@@ -28,7 +28,10 @@ The SDK allows verifying DCCs using public keys from Italy backend servers. Offl
 You can add this SDK as a package dependecy by using [Swift Package Manager](https://swift.org/package-manager/) tool which is already integrated into the `swift` compiler.
 ```swift
 dependencies: [
-    .package(url: "https://github.com/hrzucchetti/zconnect-verificaC19-sdk-ios.git", .branch("release/1.0.2"))
+    .package(
+        url: "https://github.com/hrzucchetti/zconnect-verificaC19-sdk-ios.git", 
+        .branch("release/latest")
+    )
 ]
 ```
 ## Dependencies
