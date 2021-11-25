@@ -61,6 +61,9 @@ The following dependencies are used in the project by the verifier SDK and the c
     //use certificate to get a simplified model of certificate content
     let certificate: Certificate? = Certificate(from: qrContent)
 
+    //use this function to enable / disable 2G scan mode
+    CertificateValidator.setScanMode2GActive(true)
+
     //use validator to validate a certificate
     let validator = CertificateValidator(payload: qrCodeContent)
     //or use this initializer 
