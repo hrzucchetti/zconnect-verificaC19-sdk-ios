@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1E22D389274F9882007E4F3A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E22D388274F9881007E4F3A /* Constants.swift */; };
+		1E22D38B274F988B007E4F3A /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E22D38A274F988B007E4F3A /* Store.swift */; };
 		1E80D59A273C881400ED28B1 /* SDKConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E80D596273C881400ED28B1 /* SDKConfig.swift */; };
 		1E80D59B273C881400ED28B1 /* sdkConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1E80D598273C881400ED28B1 /* sdkConfig.plist */; };
 		1E80D59C273C881400ED28B1 /* get-dgc-gov-it.der in Resources */ = {isa = PBXBuildFile; fileRef = 1E80D599273C881400ED28B1 /* get-dgc-gov-it.der */; };
@@ -53,6 +55,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1E22D388274F9881007E4F3A /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		1E22D38A274F988B007E4F3A /* Store.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		1E80D596273C881400ED28B1 /* SDKConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SDKConfig.swift; sourceTree = "<group>"; };
 		1E80D598273C881400ED28B1 /* sdkConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = sdkConfig.plist; sourceTree = "<group>"; };
 		1E80D599273C881400ED28B1 /* get-dgc-gov-it.der */ = {isa = PBXFileReference; lastKnownFileType = file; path = "get-dgc-gov-it.der"; sourceTree = "<group>"; };
@@ -244,6 +248,7 @@
 		1EAF8394273C53570010939D /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				1E22D388274F9881007E4F3A /* Constants.swift */,
 				1EAF8395273C53570010939D /* Setting.swift */,
 				1EAF8396273C53570010939D /* Link.swift */,
 				1EAF8397273C53570010939D /* DataStorage */,
@@ -255,6 +260,7 @@
 		1EAF8397273C53570010939D /* DataStorage */ = {
 			isa = PBXGroup;
 			children = (
+				1E22D38A274F988B007E4F3A /* Store.swift */,
 				1EAF8398273C53570010939D /* LocalData.swift */,
 				1EAF8399273C53570010939D /* SettingsDataStorage.swift */,
 			);
@@ -401,6 +407,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1EAF83BC273C53570010939D /* String+Char.swift in Sources */,
+				1E22D389274F9882007E4F3A /* Constants.swift in Sources */,
 				1EAF83BB273C53570010939D /* String+Int.swift in Sources */,
 				1EAF83CD273C53570010939D /* MedicalRulesValidator.swift in Sources */,
 				1EAF83CE273C53570010939D /* DataSynchronizer.swift in Sources */,
@@ -432,6 +439,7 @@
 				1EAF83D3273C53570010939D /* GatewayConnection.swift in Sources */,
 				1EAF83C2273C53570010939D /* Setting.swift in Sources */,
 				1EAF83C1273C53570010939D /* HCert+Vaccine.swift in Sources */,
+				1E22D38B274F988B007E4F3A /* Store.swift in Sources */,
 				1EAF83B2273C53570010939D /* Date+String.swift in Sources */,
 				1EAF83CB273C53570010939D /* RecoveryValidityCheck.swift in Sources */,
 				1EAF83C8273C53570010939D /* VaccineValidityCheck.swift in Sources */,
