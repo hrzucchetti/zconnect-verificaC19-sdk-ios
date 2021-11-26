@@ -58,7 +58,7 @@ Ensure you are calling sync method at least every 24 hours to keep rules setting
             break
         }
     }
-    ```
+```
     
 Use Certificate class to get a simplified model of certificate content
 ```swift
