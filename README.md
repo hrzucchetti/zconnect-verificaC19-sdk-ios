@@ -44,8 +44,9 @@ The following dependencies are used in the project by the verifier SDK and the c
 - **[SwiftyJSON](https://github.com/SwiftyJSON/SwiftyJSON).** Library used by core module to translate data from JSON format.
 
 ### Usage
+Use DataSynchronizer class to fetch data from backend\
+**Ensure you are calling sync method at least every 24 hours to keep rules settings and signature keys up to date**
 ```swift
-    //use synchronizer to fetch data from backend
     let synchronizer = DataSynchronizer()
     synchronizer.sync { result in
         switch result {
@@ -57,24 +58,34 @@ The following dependencies are used in the project by the verifier SDK and the c
             break
         }
     }
+```
     
-    //use certificate to get a simplified model of certificate content
-    let certificate: Certificate? = Certificate(from: qrContent)
+Use Certificate class to get a simplified model of certificate content
+```swift
+    let certificate: Certificate? = Certificate(from: qrCodeContent)
+```
 
-    //use this function to enable / disable 2G scan mode
-    CertificateValidator.setScanMode2GActive(true)
+Use this function to enable / disable 2G scan mode
+```swift
+CertificateValidator.setScanMode2GActive(true)
+```
 
-    //use validator to validate a certificate
+Use CertificateValidator class to get a simplified status of given certificate. CertificateValidator can be instantiated by one of the following initializers
+```swift
     let validator = CertificateValidator(payload: qrCodeContent)
-    //or use this initializer 
-    let validator = CertificateValidator(certificate: certificate!)
     
+
+    let validator = CertificateValidator(certificate: certificate!)
+```    
+
+Call validate method and give a success handler to get the certificate status
+```swift
     validator.validate(onSuccessHandler: { status in
         switch status {
-        case .valid,.validPartially:
+        case .valid:
             //is valid
             break
-        case .notValid, .notValidYet, .notGreenPass:
+        case .notValid, .notGreenPass:
             //not is valid
             break
         }

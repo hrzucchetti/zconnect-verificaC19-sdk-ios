@@ -51,8 +51,17 @@ public class CertificateValidator {
         }
         DispatchQueue.global(qos: .userInteractive).async {
             let status = RulesValidator.getStatus(from: certificate.cert)
+            var resolvedStatus:Status = .notGreenPass
+            switch(status){
+            case .valid, .validPartially:
+                resolvedStatus = .valid
+            case .notValid, .notValidYet:
+                resolvedStatus = .notValid
+            case .notGreenPass:
+                resolvedStatus = .notGreenPass
+            }
             DispatchQueue.main.async {
-                onSuccessHandler(status)
+                onSuccessHandler(resolvedStatus)
             }
         }
     }
