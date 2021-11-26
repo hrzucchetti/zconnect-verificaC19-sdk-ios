@@ -51,7 +51,7 @@ public class CertificateValidator {
             switch(status){
             case .valid, .validPartially:
                 resolvedStatus = .valid
-            case .notValid, .notValidYet:
+            case .notValid, .notValidYet, .revokedGreenPass:
                 resolvedStatus = .notValid
             case .notGreenPass:
                 resolvedStatus = .notGreenPass
