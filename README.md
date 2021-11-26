@@ -44,8 +44,8 @@ The following dependencies are used in the project by the verifier SDK and the c
 - **[SwiftyJSON](https://github.com/SwiftyJSON/SwiftyJSON).** Library used by core module to translate data from JSON format.
 
 ### Usage
-Use DataSynchronizer class to fetch data from backend
-Ensure you are calling sync method at least every 24 hours to keep rules settings and signature keys up to date
+Use DataSynchronizer class to fetch data from backend\
+**Ensure you are calling sync method at least every 24 hours to keep rules settings and signature keys up to date**
 ```swift
     let synchronizer = DataSynchronizer()
     synchronizer.sync { result in
