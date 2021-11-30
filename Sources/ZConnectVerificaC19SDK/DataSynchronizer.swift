@@ -32,20 +32,12 @@ public struct SdkOutdatedError : Error {
 public class DataSynchronizer {
     public init(){
     }
-    
-    public init(initLocalData: Bool) {
-        if(initLocalData) {
-            LocalData.initialize { }
-        }
-    }
-    
     /**
      Synchronizes data from backend
      Ensure you are calling this method at least every 24 hours to keep rules settings and signature keys up to date
      - Parameter completion: Completion method that will be called with a resul when synchronization ends
      */
-    public func sync(completion: @escaping (SyncResult) -> Void)
-    {
+    public func sync(completion: @escaping (SyncResult) -> Void) {
         guard !isSdkVersionOutdated() else {
             completion(.sdkOutdated)
             return
