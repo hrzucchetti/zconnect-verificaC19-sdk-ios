@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1E0DC1DD27455BCC002FC981 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E0DC1DC27455BCC002FC981 /* Constants.swift */; };
+		1E22D38B274F988B007E4F3A /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E22D38A274F988B007E4F3A /* Store.swift */; };
 		1E2F6078273DD034004B512E /* GatewayConnection+Revocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2F6077273DD034004B512E /* GatewayConnection+Revocation.swift */; };
 		1E2F607A273DD058004B512E /* CRLDataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2F6079273DD058004B512E /* CRLDataStorage.swift */; };
 		1E2F6086273DD08C004B512E /* CRLProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2F607C273DD08C004B512E /* CRLProgress.swift */; };
@@ -75,6 +76,7 @@
 
 /* Begin PBXFileReference section */
 		1E0DC1DC27455BCC002FC981 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		1E22D38A274F988B007E4F3A /* Store.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		1E2F6077273DD034004B512E /* GatewayConnection+Revocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "GatewayConnection+Revocation.swift"; sourceTree = "<group>"; };
 		1E2F6079273DD058004B512E /* CRLDataStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CRLDataStorage.swift; sourceTree = "<group>"; };
 		1E2F607C273DD08C004B512E /* CRLProgress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CRLProgress.swift; sourceTree = "<group>"; };
@@ -346,6 +348,7 @@
 			isa = PBXGroup;
 			children = (
 				1E2F6079273DD058004B512E /* CRLDataStorage.swift */,
+				1E22D38A274F988B007E4F3A /* Store.swift */,
 				1EAF8398273C53570010939D /* LocalData.swift */,
 				1EAF8399273C53570010939D /* SettingsDataStorage.swift */,
 			);
@@ -546,6 +549,7 @@
 				1E2F608A273DD08C004B512E /* CRLStatus.swift in Sources */,
 				1EAF83D3273C53570010939D /* GatewayConnection.swift in Sources */,
 				1EAF83C1273C53570010939D /* HCert+Vaccine.swift in Sources */,
+				1E22D38B274F988B007E4F3A /* Store.swift in Sources */,
 				1EAF83B2273C53570010939D /* Date+String.swift in Sources */,
 				1EAF83CB273C53570010939D /* RecoveryValidityCheck.swift in Sources */,
 				1EAF83C8273C53570010939D /* VaccineValidityCheck.swift in Sources */,
@@ -698,7 +702,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.6;
+				MARKETING_VERSION = 1.0.4;
 				PRODUCT_BUNDLE_IDENTIFIER = it.zucchetti.ZConnectVerificaC19SDK;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
@@ -727,7 +731,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.6;
+				MARKETING_VERSION = 1.0.4;
 				PRODUCT_BUNDLE_IDENTIFIER = it.zucchetti.ZConnectVerificaC19SDK;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
@@ -790,8 +794,8 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/eu-digital-green-certificates/dgca-app-core-ios";
 			requirement = {
-				branch = main;
-				kind = branch;
+				kind = revision;
+				revision = 78f9a7fb0e63c0e0bb9d9b0dfed359babcc25960;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */

@@ -26,6 +26,10 @@ public struct InvalidCertificateError : Error {
 public class CertificateValidator {
     private let certificate: Certificate?
     
+    public static func setScanMode2GActive(_ scanMode2GActive: Bool) {
+        Store.set(scanMode2GActive, for: .isScanMode2G)
+    }
+    
     public init?(payload: String) {
         certificate = Certificate(from: payload)
     }
