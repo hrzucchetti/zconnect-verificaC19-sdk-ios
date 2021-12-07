@@ -65,7 +65,9 @@ Use Certificate class to get a simplified model of certificate content
     let certificate: Certificate? = Certificate(from: qrCodeContent)
 ```
 
-Use this function to enable / disable 2G scan mode also known as Super GreenPass
+Use this function to enable 2G/3G scan mode:
+- false = Green Pass "base"
+- true  = Green Pass "rafforzato"
 ```swift
     CertificateValidator.setScanMode2GActive(true)
 ```
