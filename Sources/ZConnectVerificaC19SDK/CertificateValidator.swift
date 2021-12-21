@@ -53,7 +53,7 @@ public class CertificateValidator {
             let status = RulesValidator.getStatus(from: certificate.cert)
             var resolvedStatus:Status = .notGreenPass
             switch(status){
-            case .valid, .validPartially:
+            case .valid:
                 resolvedStatus = .valid
             case .notValid, .notValidYet, .revokedGreenPass:
                 resolvedStatus = .notValid
