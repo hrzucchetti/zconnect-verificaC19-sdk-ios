@@ -120,13 +120,13 @@ class CRLSynchronizationManager {
         
     func checkDownload() {
         _progress = CRLProgress(serverStatus: _serverStatus)
-        guard !requireUserInteraction else { return showCRLUpdateAlert() }
+        //guard !requireUserInteraction else { return showCRLUpdateAlert() }
         startDownload()
     }
     
     func startDownload() {
         guard Connectivity.isOnline else {
-            self.showNoConnectionAlert()
+            self.delegate?.statusDidChange(with: .statusNetworkError)
             return
         }
         
@@ -225,7 +225,7 @@ class CRLSynchronizationManager {
             self.cleanAndRetry()
         case 408:
             // 408 - Timeout: resume downloading from the last persisted chunk.
-            Connectivity.isOnline ? readyToResume() : showNoConnectionAlert()
+            Connectivity.isOnline ? readyToResume() : self.delegate?.statusDidChange(with: .statusNetworkError)
         default:
             self.errorFlow()
             log("there was an unexpected HTTP error, code: \(statusCode)")
@@ -249,33 +249,6 @@ class CRLSynchronizationManager {
         let completedVersion = progress.requestedVersion
         _progress = .init(version: completedVersion)
     }
-    
-    public func showCRLUpdateAlert() {
-        /*let content: AlertContent = .init(
-            title: "crl.update.alert.title".localizeWith(progress.remainingSize),
-            message: "crl.update.message".localizeWith(progress.remainingSize),
-            confirmAction: { self.startDownload() },
-            confirmActionTitle: "crl.update.download.now",
-            cancelAction: { self.readyToDownload() },
-            cancelActionTitle: "crl.update.try.later"
-        )
-
-        UIApplication.showAppAlert(content: content)*/
-    }
-    
-    public func showNoConnectionAlert() {
-        /*let content: AlertContent = .init(
-            title: "alert.no.connection.title",
-            message: "alert.no.connection.message",
-            confirmAction: nil,
-            confirmActionTitle: "alert.default.action",
-            cancelAction: nil,
-            cancelActionTitle: nil
-        )
-        
-        UIApplication.showAppAlert(content: content)*/
-    }
-
 }
 
 extension CRLSynchronizationManager {

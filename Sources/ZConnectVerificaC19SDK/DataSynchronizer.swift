@@ -30,6 +30,7 @@ public struct SdkOutdatedError : Error {
 }
 
 public class DataSynchronizer {
+    private var completion: ((SyncResult) -> Void)?
     public init(){
     }
     /**
@@ -38,6 +39,7 @@ public class DataSynchronizer {
      - Parameter completion: Completion method that will be called with a resul when synchronization ends
      */
     public func sync(completion: @escaping (SyncResult) -> Void) {
+        self.completion = completion
         guard !isSdkVersionOutdated() else {
             completion(.sdkOutdated)
             return
@@ -60,7 +62,9 @@ public class DataSynchronizer {
                     completion(.error(error: error))
                     return
                 }
-                completion(.updated)
+                CRLDataStorage.initialize {
+                    CRLSynchronizationManager.shared.initialize(delegate: self)
+                }
             }
         }
     }
@@ -80,5 +84,18 @@ public class DataSynchronizer {
             .settings
             .first(where: { $0.name == "sdk" })?
             .value
+    }
+}
+
+extension DataSynchronizer : CRLSynchronizationDelegate {
+    func statusDidChange(with result: CRLSynchronizationManager.Result) {
+        switch result {
+        case .downloadReady, .paused, .downloading:
+            break
+        case .completed:
+            self.completion?(.updated)
+        case .error, .statusNetworkError:
+            self.completion?(.error(error: ""))
+        }
     }
 }
