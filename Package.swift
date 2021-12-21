@@ -31,8 +31,8 @@ let package = Package(
             .revision("78f9a7fb0e63c0e0bb9d9b0dfed359babcc25960"))
         .package(
             name: "Realm",
-            url: "https://github.com/realm/realm-cocoa.git",
-            from: "10.12.0")
+            url: "https://github.com/realm/realm-swift.git",
+            from: "10.19.0")
     ],
     targets: [
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.
@@ -43,8 +43,7 @@ let package = Package(
                 "SwiftyJSON",
                 "Alamofire",
                 "SwiftDGC",
-                "Realm",
-                .product(name: "RealmSwift", package: "Realm")
+                "RealmSwift",
             ],
             resources: [.copy("Res")]
         )

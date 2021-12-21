@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1E0A4F2227720E2D000CD2EF /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 1E0A4F2127720E2D000CD2EF /* Realm */; };
+		1E0A4F2427720E2D000CD2EF /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 1E0A4F2327720E2D000CD2EF /* RealmSwift */; };
 		1E0DC1DD27455BCC002FC981 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E0DC1DC27455BCC002FC981 /* Constants.swift */; };
 		1E22D38B274F988B007E4F3A /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E22D38A274F988B007E4F3A /* Store.swift */; };
 		1E2F6078273DD034004B512E /* GatewayConnection+Revocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2F6077273DD034004B512E /* GatewayConnection+Revocation.swift */; };
@@ -30,8 +32,6 @@
 		1E2F60A7273DD0C6004B512E /* Connectivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2F609B273DD0C6004B512E /* Connectivity.swift */; };
 		1E2F60A8273DD0C6004B512E /* PerformanceLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2F609C273DD0C6004B512E /* PerformanceLog.swift */; };
 		1E2F60A9273DD0C6004B512E /* String+Bool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2F609D273DD0C6004B512E /* String+Bool.swift */; };
-		1E2F60AC273DD176004B512E /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 1E2F60AB273DD176004B512E /* Realm */; };
-		1E2F60AE273DD176004B512E /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 1E2F60AD273DD176004B512E /* RealmSwift */; };
 		1E2F60B0273DD736004B512E /* CRLSynchronizationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2F60AF273DD736004B512E /* CRLSynchronizationManager.swift */; };
 		1E80D59A273C881400ED28B1 /* SDKConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E80D596273C881400ED28B1 /* SDKConfig.swift */; };
 		1E80D59B273C881400ED28B1 /* sdkConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1E80D598273C881400ED28B1 /* sdkConfig.plist */; };
@@ -145,8 +145,8 @@
 			files = (
 				1EAF83E1273C56900010939D /* SwiftDGC in Frameworks */,
 				1EAF83DE273C56710010939D /* SwiftyJSON in Frameworks */,
-				1E2F60AC273DD176004B512E /* Realm in Frameworks */,
-				1E2F60AE273DD176004B512E /* RealmSwift in Frameworks */,
+				1E0A4F2227720E2D000CD2EF /* Realm in Frameworks */,
+				1E0A4F2427720E2D000CD2EF /* RealmSwift in Frameworks */,
 				1EAF83D9273C55CA0010939D /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -437,8 +437,8 @@
 				1EAF83D8273C55CA0010939D /* Alamofire */,
 				1EAF83DD273C56710010939D /* SwiftyJSON */,
 				1EAF83E0273C56900010939D /* SwiftDGC */,
-				1E2F60AB273DD176004B512E /* Realm */,
-				1E2F60AD273DD176004B512E /* RealmSwift */,
+				1E0A4F2127720E2D000CD2EF /* Realm */,
+				1E0A4F2327720E2D000CD2EF /* RealmSwift */,
 			);
 			productName = ZConnectVerificaC19SDK;
 			productReference = 1EAF836A273C52210010939D /* ZConnectVerificaC19.framework */;
@@ -471,7 +471,7 @@
 				1EAF83D7273C55CA0010939D /* XCRemoteSwiftPackageReference "Alamofire" */,
 				1EAF83DC273C56710010939D /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
 				1EAF83DF273C56900010939D /* XCRemoteSwiftPackageReference "dgca-app-core-ios" */,
-				1E2F60AA273DD176004B512E /* XCRemoteSwiftPackageReference "realm-cocoa" */,
+				1E0A4F2027720E2D000CD2EF /* XCRemoteSwiftPackageReference "realm-swift" */,
 			);
 			productRefGroup = 1EAF836B273C52210010939D /* Products */;
 			projectDirPath = "";
@@ -766,12 +766,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		1E2F60AA273DD176004B512E /* XCRemoteSwiftPackageReference "realm-cocoa" */ = {
+		1E0A4F2027720E2D000CD2EF /* XCRemoteSwiftPackageReference "realm-swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/realm/realm-cocoa.git";
+			repositoryURL = "https://github.com/realm/realm-swift.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 10.8.0;
+				minimumVersion = 10.19.0;
 			};
 		};
 		1EAF83D7273C55CA0010939D /* XCRemoteSwiftPackageReference "Alamofire" */ = {
@@ -801,14 +801,14 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		1E2F60AB273DD176004B512E /* Realm */ = {
+		1E0A4F2127720E2D000CD2EF /* Realm */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 1E2F60AA273DD176004B512E /* XCRemoteSwiftPackageReference "realm-cocoa" */;
+			package = 1E0A4F2027720E2D000CD2EF /* XCRemoteSwiftPackageReference "realm-swift" */;
 			productName = Realm;
 		};
-		1E2F60AD273DD176004B512E /* RealmSwift */ = {
+		1E0A4F2327720E2D000CD2EF /* RealmSwift */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 1E2F60AA273DD176004B512E /* XCRemoteSwiftPackageReference "realm-cocoa" */;
+			package = 1E0A4F2027720E2D000CD2EF /* XCRemoteSwiftPackageReference "realm-swift" */;
 			productName = RealmSwift;
 		};
 		1EAF83D8273C55CA0010939D /* Alamofire */ = {
