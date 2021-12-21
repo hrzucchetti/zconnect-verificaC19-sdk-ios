@@ -28,7 +28,7 @@ let package = Package(
         .package(
             name: "SwiftDGC",
             url: "https://github.com/eu-digital-green-certificates/dgca-app-core-ios",
-            .revision("78f9a7fb0e63c0e0bb9d9b0dfed359babcc25960"))
+            .revision("78f9a7fb0e63c0e0bb9d9b0dfed359babcc25960")),
         .package(
             name: "RealmSwift",
             url: "https://github.com/realm/realm-swift.git", 
@@ -42,7 +42,8 @@ let package = Package(
             dependencies: [
                 "SwiftyJSON",
                 "Alamofire",
-                "SwiftDGC"
+                "SwiftDGC",
+                "RealmSwift"
             ],
             resources: [.copy("Res")]
         )
