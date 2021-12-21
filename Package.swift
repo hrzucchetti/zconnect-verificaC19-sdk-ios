@@ -42,8 +42,7 @@ let package = Package(
             dependencies: [
                 "SwiftyJSON",
                 "Alamofire",
-                "SwiftDGC",
-                "RealmSwift"
+                "SwiftDGC"
             ],
             resources: [.copy("Res")]
         )
