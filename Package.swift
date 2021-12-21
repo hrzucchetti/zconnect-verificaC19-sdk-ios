@@ -42,7 +42,7 @@ let package = Package(
                 "SwiftyJSON",
                 "Alamofire",
                 "SwiftDGC",
-                "realm-swift"
+                "RealmSwift"
             ],
             resources: [.copy("Res")]
         )
