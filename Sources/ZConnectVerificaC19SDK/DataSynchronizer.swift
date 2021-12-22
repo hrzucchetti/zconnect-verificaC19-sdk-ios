@@ -93,6 +93,8 @@ extension DataSynchronizer : CRLSynchronizationDelegate {
         case .downloadReady, .paused, .downloading:
             break
         case .completed:
+            LocalData.sharedInstance.lastFetch = Date()
+            LocalData.sharedInstance.save()
             self.completion?(.updated)
         case .error, .statusNetworkError:
             self.completion?(.error(error: ""))

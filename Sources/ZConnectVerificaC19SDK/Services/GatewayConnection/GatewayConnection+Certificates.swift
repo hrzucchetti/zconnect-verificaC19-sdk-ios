@@ -114,7 +114,6 @@ extension GatewayConnection {
             for key in invalid {
                 LocalData.sharedInstance.encodedPublicKeys.removeValue(forKey: key)
             }
-            
             LocalData.sharedInstance.save()
             completion?(nil)
         }
