@@ -90,9 +90,9 @@ public class DataSynchronizer {
 extension DataSynchronizer : CRLSynchronizationDelegate {
     func statusDidChange(with result: CRLSynchronizationManager.Result) {
         switch result {
-        case .downloadReady, .downloading:
+        case .downloading:
             break
-        case .paused:
+        case .downloadReady, .paused:
             CRLSynchronizationManager.shared.download()
         case .completed:
             LocalData.sharedInstance.lastFetch = Date()
