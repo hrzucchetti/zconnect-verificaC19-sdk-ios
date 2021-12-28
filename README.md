@@ -65,11 +65,12 @@ Use Certificate class to get a simplified model of certificate content
     let certificate: Certificate? = Certificate(from: qrCodeContent)
 ```
 
-Use this function to enable 2G/3G scan mode:
-- false = Green Pass "base"
-- true  = Green Pass "rafforzato"
+Use this function to choose what scan mode is enabled:
+- scanMode3G = Green Pass "base"
+- scanMode2G = Green Pass "rafforzato"
+- scanModeBooster = Green Pass "rafforzato" + test o dose booster
 ```swift
-    CertificateValidator.setScanMode2GActive(true)
+    CertificateValidator.setScanMode(.scanMode2G)
 ```
 
 Use CertificateValidator class to get a simplified status of given certificate. CertificateValidator can be instantiated by one of the following initializers
