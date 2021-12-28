@@ -23,11 +23,29 @@ public struct InvalidCertificateError : Error {
     
 }
 
+public enum ScanMode {
+    case scanMode3G
+    case scanMode2G
+    case scanModeBooster
+}
+
 public class CertificateValidator {
     private let certificate: Certificate?
+
+    public static func setScanMode(_ scanMode: ScanMode) {
+        switch scanMode {
+        case .scanMode3G:
+            Store.set(Constants.scanMode3G, for: .scanMode)
+        case .scanMode2G:
+            Store.set(Constants.scanMode2G, for: .scanMode)
+        case .scanModeBooster:
+            Store.set(Constants.scanModeBooster, for: .scanMode)
+        }
+    }
     
+    @available(*, deprecated, message: "Use setScanMode function instead")
     public static func setScanMode2GActive(_ scanMode2GActive: Bool) {
-        Store.set(scanMode2GActive, for: .isScanMode2G)
+        setScanMode(.scanMode2G)
     }
     
     public init?(payload: String) {
@@ -52,13 +70,15 @@ public class CertificateValidator {
         DispatchQueue.global(qos: .userInteractive).async {
             let status = RulesValidator.getStatus(from: certificate.cert)
             var resolvedStatus:Status = .notGreenPass
-            switch(status){
+            switch status {
             case .valid:
                 resolvedStatus = .valid
             case .notValid, .notValidYet, .revokedGreenPass:
                 resolvedStatus = .notValid
             case .notGreenPass:
                 resolvedStatus = .notGreenPass
+            case .verificationIsNeeded:
+                resolvedStatus = .verificationIsNeeded
             }
             DispatchQueue.main.async {
                 onSuccessHandler(resolvedStatus)
