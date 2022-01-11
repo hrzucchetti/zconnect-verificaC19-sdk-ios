@@ -35,6 +35,10 @@ public class Store {
         case isScanModeSet
     }
     
+    public static func valueExist(forKey key: Key) -> Bool {
+        return userDefaults.object(forKey: key.rawValue) != nil
+    }
+    
     public static func getBool(key: Key) -> Bool {
         return userDefaults.bool(forKey: key.rawValue)
     }
