@@ -36,6 +36,7 @@
 		1E80D59A273C881400ED28B1 /* SDKConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E80D596273C881400ED28B1 /* SDKConfig.swift */; };
 		1E80D59B273C881400ED28B1 /* sdkConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1E80D598273C881400ED28B1 /* sdkConfig.plist */; };
 		1E80D59C273C881400ED28B1 /* get-dgc-gov-it.der in Resources */ = {isa = PBXBuildFile; fileRef = 1E80D599273C881400ED28B1 /* get-dgc-gov-it.der */; };
+		1EAF7921278D80CC00941674 /* HCert+Certificate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EAF7920278D80CC00941674 /* HCert+Certificate.swift */; };
 		1EAF83AD273C53570010939D /* ZConnectVerificaC19.h in Headers */ = {isa = PBXBuildFile; fileRef = 1EAF8377273C53570010939D /* ZConnectVerificaC19.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1EAF83AE273C53570010939D /* Certificate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EAF8379273C53570010939D /* Certificate.swift */; };
 		1EAF83B1273C53570010939D /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EAF837F273C53570010939D /* Date.swift */; };
@@ -102,6 +103,7 @@
 		1E80D596273C881400ED28B1 /* SDKConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SDKConfig.swift; sourceTree = "<group>"; };
 		1E80D598273C881400ED28B1 /* sdkConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = sdkConfig.plist; sourceTree = "<group>"; };
 		1E80D599273C881400ED28B1 /* get-dgc-gov-it.der */ = {isa = PBXFileReference; lastKnownFileType = file; path = "get-dgc-gov-it.der"; sourceTree = "<group>"; };
+		1EAF7920278D80CC00941674 /* HCert+Certificate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HCert+Certificate.swift"; sourceTree = "<group>"; };
 		1EAF836A273C52210010939D /* ZConnectVerificaC19.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ZConnectVerificaC19.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1EAF8377273C53570010939D /* ZConnectVerificaC19.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZConnectVerificaC19.h; sourceTree = "<group>"; };
 		1EAF8379273C53570010939D /* Certificate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Certificate.swift; sourceTree = "<group>"; };
@@ -324,6 +326,7 @@
 		1EAF838F273C53570010939D /* HCert */ = {
 			isa = PBXGroup;
 			children = (
+				1EAF7920278D80CC00941674 /* HCert+Certificate.swift */,
 				1EAF8390273C53570010939D /* HCert+Test.swift */,
 				1EAF8391273C53570010939D /* HCert+PersonalData.swift */,
 				1EAF8392273C53570010939D /* HCert+Recovery.swift */,
@@ -521,6 +524,7 @@
 				1E2F60A5273DD0C6004B512E /* String+SHA256.swift in Sources */,
 				1E80D59A273C881400ED28B1 /* SDKConfig.swift in Sources */,
 				1EAF83C5273C53570010939D /* SettingsDataStorage.swift in Sources */,
+				1EAF7921278D80CC00941674 /* HCert+Certificate.swift in Sources */,
 				1EAF83CA273C53570010939D /* StatementValidityCheck.swift in Sources */,
 				1EAF83B6273C53570010939D /* LocalData+Setting.swift in Sources */,
 				1EAF83CC273C53570010939D /* RulesValidator.swift in Sources */,
