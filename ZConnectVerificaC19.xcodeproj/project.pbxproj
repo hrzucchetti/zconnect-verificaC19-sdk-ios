@@ -33,6 +33,7 @@
 		1E2F60A8273DD0C6004B512E /* PerformanceLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2F609C273DD0C6004B512E /* PerformanceLog.swift */; };
 		1E2F60A9273DD0C6004B512E /* String+Bool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2F609D273DD0C6004B512E /* String+Bool.swift */; };
 		1E2F60B0273DD736004B512E /* CRLSynchronizationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2F60AF273DD736004B512E /* CRLSynchronizationManager.swift */; };
+		1E42D59127900A5100CD9B81 /* VaccineExemptionValidityCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E42D59027900A5100CD9B81 /* VaccineExemptionValidityCheck.swift */; };
 		1E80D59A273C881400ED28B1 /* SDKConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E80D596273C881400ED28B1 /* SDKConfig.swift */; };
 		1E80D59B273C881400ED28B1 /* sdkConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1E80D598273C881400ED28B1 /* sdkConfig.plist */; };
 		1E80D59C273C881400ED28B1 /* get-dgc-gov-it.der in Resources */ = {isa = PBXBuildFile; fileRef = 1E80D599273C881400ED28B1 /* get-dgc-gov-it.der */; };
@@ -104,6 +105,7 @@
 		1E2F609C273DD0C6004B512E /* PerformanceLog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PerformanceLog.swift; sourceTree = "<group>"; };
 		1E2F609D273DD0C6004B512E /* String+Bool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "String+Bool.swift"; path = "String/String+Bool.swift"; sourceTree = "<group>"; };
 		1E2F60AF273DD736004B512E /* CRLSynchronizationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CRLSynchronizationManager.swift; sourceTree = "<group>"; };
+		1E42D59027900A5100CD9B81 /* VaccineExemptionValidityCheck.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VaccineExemptionValidityCheck.swift; sourceTree = "<group>"; };
 		1E80D596273C881400ED28B1 /* SDKConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SDKConfig.swift; sourceTree = "<group>"; };
 		1E80D598273C881400ED28B1 /* sdkConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = sdkConfig.plist; sourceTree = "<group>"; };
 		1E80D599273C881400ED28B1 /* get-dgc-gov-it.der */ = {isa = PBXFileReference; lastKnownFileType = file; path = "get-dgc-gov-it.der"; sourceTree = "<group>"; };
@@ -384,6 +386,7 @@
 		1EAF839D273C53570010939D /* Internal */ = {
 			isa = PBXGroup;
 			children = (
+				1E42D59027900A5100CD9B81 /* VaccineExemptionValidityCheck.swift */,
 				1EAF839E273C53570010939D /* VaccineValidityCheck.swift */,
 				1EAF839F273C53570010939D /* TestValidityCheck.swift */,
 				1EAF83A0273C53570010939D /* StatementValidityCheck.swift */,
@@ -573,6 +576,7 @@
 				1EAF792C278D836E00941674 /* VaccineExemptionEntry.swift in Sources */,
 				1EAF83CB273C53570010939D /* RecoveryValidityCheck.swift in Sources */,
 				1EAF83C8273C53570010939D /* VaccineValidityCheck.swift in Sources */,
+				1E42D59127900A5100CD9B81 /* VaccineExemptionValidityCheck.swift in Sources */,
 				1EAF83CF273C53570010939D /* CertificateValidator.swift in Sources */,
 				1E2F60A4273DD0C6004B512E /* Double+Bytes.swift in Sources */,
 				1E2F608D273DD08C004B512E /* CRL.swift in Sources */,
