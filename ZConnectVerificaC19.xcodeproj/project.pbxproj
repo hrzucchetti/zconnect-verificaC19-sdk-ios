@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1018892B279B02760028AD64 /* DRLSynchronizationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1018892A279B02760028AD64 /* DRLSynchronizationManager.swift */; };
 		1E0A4F2227720E2D000CD2EF /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 1E0A4F2127720E2D000CD2EF /* Realm */; };
 		1E0A4F2427720E2D000CD2EF /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 1E0A4F2327720E2D000CD2EF /* RealmSwift */; };
 		1E0DC1DD27455BCC002FC981 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E0DC1DC27455BCC002FC981 /* Constants.swift */; };
@@ -32,7 +33,6 @@
 		1E2F60A7273DD0C6004B512E /* Connectivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2F609B273DD0C6004B512E /* Connectivity.swift */; };
 		1E2F60A8273DD0C6004B512E /* PerformanceLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2F609C273DD0C6004B512E /* PerformanceLog.swift */; };
 		1E2F60A9273DD0C6004B512E /* String+Bool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2F609D273DD0C6004B512E /* String+Bool.swift */; };
-		1E2F60B0273DD736004B512E /* CRLSynchronizationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2F60AF273DD736004B512E /* CRLSynchronizationManager.swift */; };
 		1E42D59127900A5100CD9B81 /* VaccineExemptionValidityCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E42D59027900A5100CD9B81 /* VaccineExemptionValidityCheck.swift */; };
 		1E80D59A273C881400ED28B1 /* SDKConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E80D596273C881400ED28B1 /* SDKConfig.swift */; };
 		1E80D59B273C881400ED28B1 /* sdkConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1E80D598273C881400ED28B1 /* sdkConfig.plist */; };
@@ -81,6 +81,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1018892A279B02760028AD64 /* DRLSynchronizationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DRLSynchronizationManager.swift; sourceTree = "<group>"; };
 		1E0DC1DC27455BCC002FC981 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		1E22D38A274F988B007E4F3A /* Store.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		1E2F6077273DD034004B512E /* GatewayConnection+Revocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "GatewayConnection+Revocation.swift"; sourceTree = "<group>"; };
@@ -104,7 +105,6 @@
 		1E2F609B273DD0C6004B512E /* Connectivity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Connectivity.swift; sourceTree = "<group>"; };
 		1E2F609C273DD0C6004B512E /* PerformanceLog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PerformanceLog.swift; sourceTree = "<group>"; };
 		1E2F609D273DD0C6004B512E /* String+Bool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "String+Bool.swift"; path = "String/String+Bool.swift"; sourceTree = "<group>"; };
-		1E2F60AF273DD736004B512E /* CRLSynchronizationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CRLSynchronizationManager.swift; sourceTree = "<group>"; };
 		1E42D59027900A5100CD9B81 /* VaccineExemptionValidityCheck.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VaccineExemptionValidityCheck.swift; sourceTree = "<group>"; };
 		1E80D596273C881400ED28B1 /* SDKConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SDKConfig.swift; sourceTree = "<group>"; };
 		1E80D598273C881400ED28B1 /* sdkConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = sdkConfig.plist; sourceTree = "<group>"; };
@@ -406,7 +406,7 @@
 		1EAF83A8273C53570010939D /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				1E2F60AF273DD736004B512E /* CRLSynchronizationManager.swift */,
+				1018892A279B02760028AD64 /* DRLSynchronizationManager.swift */,
 				1EAF83A9273C53570010939D /* GatewayConnection */,
 			);
 			path = Services;
@@ -518,7 +518,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				1E2F6087273DD08C004B512E /* Link.swift in Sources */,
-				1E2F60B0273DD736004B512E /* CRLSynchronizationManager.swift in Sources */,
 				1EAF83BC273C53570010939D /* String+Char.swift in Sources */,
 				1E2F60A7273DD0C6004B512E /* Connectivity.swift in Sources */,
 				1E2F607A273DD058004B512E /* CRLDataStorage.swift in Sources */,
@@ -572,6 +571,7 @@
 				1EAF83C1273C53570010939D /* HCert+Vaccine.swift in Sources */,
 				1EAF792F278D85EF00941674 /* HCert+UVCI.swift in Sources */,
 				1E22D38B274F988B007E4F3A /* Store.swift in Sources */,
+				1018892B279B02760028AD64 /* DRLSynchronizationManager.swift in Sources */,
 				1EAF83B2273C53570010939D /* Date+String.swift in Sources */,
 				1EAF792C278D836E00941674 /* VaccineExemptionEntry.swift in Sources */,
 				1EAF83CB273C53570010939D /* RecoveryValidityCheck.swift in Sources */,

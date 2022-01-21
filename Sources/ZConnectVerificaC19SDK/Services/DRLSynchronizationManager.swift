@@ -17,7 +17,7 @@
 */
 
 //
-//  CRLSynchronizationManager.swift
+//  DRLSynchronizationManager.swift
 //  Verifier
 //
 //  Created by Andrea Prosseda on 07/09/21.
@@ -26,11 +26,11 @@
 import Foundation
 import UIKit
 
-protocol CRLSynchronizationDelegate {
-    func statusDidChange(with result: CRLSynchronizationManager.Result)
+protocol DRLSynchronizationDelegate {
+    func statusDidChange(with result: DRLSynchronizationManager.Result)
 }
 
-class CRLSynchronizationManager {
+class DRLSynchronizationManager {
     
     let AUTOMATIC_MAX_SIZE: Double = 5.0.fromMegaBytesToBytes
     
@@ -41,42 +41,46 @@ class CRLSynchronizationManager {
         case paused
         case error
         case statusNetworkError
+        case noConnection
+        
+        /// DRL snapshot size grater than `AUTOMATIC_MAX_SIZE`
+        case userInteractionRequired
     }
     
-    static let shared = CRLSynchronizationManager()
+    static let shared = DRLSynchronizationManager()
     var firstRun: Bool = true
-    var crlStatusFailCounter: Int {
-        get {return _crlStatusFailCounter }
-        set {_crlStatusFailCounter = newValue}
+    var drlStatusFailCounter: Int {
+        get {return _drlStatusFailCounter }
+        set {_drlStatusFailCounter = newValue}
     }
-    var crlFailCounter: Int {
-        get {return _crlFailCounter }
-        set {_crlFailCounter = newValue}
+    var drlFailCounter: Int {
+        get {return _drlFailCounter }
+        set {_drlFailCounter = newValue}
     }
     
-    var progress: CRLProgress { _progress }
+    var progress: DRLProgress { _progress }
     var gateway: GatewayConnection { GatewayConnection.shared }
     
-    private var delegate: CRLSynchronizationDelegate?
+    private var delegate: DRLSynchronizationDelegate?
     private var timer: Timer?
     
-    private var isDownloadingCRL: Bool = false
+    private var isDownloadingDRL: Bool = false
     
-    private var _serverStatus: CRLStatus?
-    private var _progress: CRLProgress
+    private var _serverStatus: DRLStatus?
+    private var _progress: DRLProgress
     {
-        get { CRLDataStorage.shared.progress ?? .init() }
-        set { CRLDataStorage.shared.saveProgress(newValue) }
+        get { DRLDataStorage.shared.progress ?? .init() }
+        set { DRLDataStorage.shared.saveProgress(newValue) }
     }
-    private var _crlStatusFailCounter: Int = 1
-    private var _crlFailCounter: Int = 1
+    private var _drlStatusFailCounter: Int = 1
+    private var _drlFailCounter: Int = 1
     
-    func initialize(delegate: CRLSynchronizationDelegate?) {
+    func initialize(delegate: DRLSynchronizationDelegate?) {
         guard isSyncEnabled else { return }
         log("initialize")
         self.delegate = delegate
         setTimer() { self.start() }
-        crlFailCounter = LocalData.getSetting(from: Constants.drlMaxRetries)?.intValue ?? 1
+        drlFailCounter = LocalData.getSetting(from: Constants.drlMaxRetries)?.intValue ?? 1
     }
     
     func start() {
@@ -89,9 +93,9 @@ class CRLSynchronizationManager {
                     self.log("fetch outdated, scans not allowed")
                 }
                 
-                self.crlStatusFailCounter -= 1
+                self.drlStatusFailCounter -= 1
                 
-                if self.crlStatusFailCounter < 0 || !Connectivity.isOnline || responseCode == 408 {
+                if self.drlStatusFailCounter < 0 || !Connectivity.isOnline || responseCode == 408 {
                     self.delegate?.statusDidChange(with: .statusNetworkError)
                 }
                 else {
@@ -101,7 +105,7 @@ class CRLSynchronizationManager {
                 return
             }
             
-            self.crlStatusFailCounter = LocalData.getSetting(from: Constants.drlMaxRetries)?.intValue ?? 1
+            self.drlStatusFailCounter = LocalData.getSetting(from: Constants.drlMaxRetries)?.intValue ?? 1
             self._serverStatus = serverStatus
             self.synchronize()
         }
@@ -119,18 +123,23 @@ class CRLSynchronizationManager {
     }
         
     func checkDownload() {
-        _progress = CRLProgress(serverStatus: _serverStatus)
-        //guard !requireUserInteraction else { return showCRLUpdateAlert() }
+        _progress = DRLProgress(serverStatus: _serverStatus)
+        
+        guard !requireUserInteraction else {
+            self.delegate?.statusDidChange(with: .userInteractionRequired)
+            return
+        }
+        
         startDownload()
     }
     
     func startDownload() {
         guard Connectivity.isOnline else {
-            self.delegate?.statusDidChange(with: .statusNetworkError)
+            self.delegate?.statusDidChange(with: .noConnection)
             return
         }
         
-        isDownloadingCRL = true
+        isDownloadingDRL = true
         download()
     }
     
@@ -156,8 +165,8 @@ class CRLSynchronizationManager {
         log("download completed")
         guard sameDatabaseSize else {
             log("inconsistent number of UCVI, clean needed")
-            CRLSynchronizationManager.shared.crlFailCounter -= 1
-            if CRLSynchronizationManager.shared.crlFailCounter < 0 {
+            DRLSynchronizationManager.shared.drlFailCounter -= 1
+            if DRLSynchronizationManager.shared.drlFailCounter < 0 {
                 log("failed too many times")
                 if progress.remainingSize == "0.00" || progress.remainingSize == "" {
                     delegate?.statusDidChange(with: .statusNetworkError)
@@ -174,18 +183,18 @@ class CRLSynchronizationManager {
         }
         completeProgress()
         _serverStatus = nil
-        crlFailCounter = LocalData.getSetting(from: Constants.drlMaxRetries)?.intValue ?? 1
-        CRLDataStorage.shared.lastFetch = Date()
-        CRLDataStorage.shared.save()
-        isDownloadingCRL = false
+        drlFailCounter = LocalData.getSetting(from: Constants.drlMaxRetries)?.intValue ?? 1
+        DRLDataStorage.shared.lastFetch = Date()
+        DRLDataStorage.shared.save()
+        isDownloadingDRL = false
         delegate?.statusDidChange(with: .completed)
     }
     
     func clean() {
         _progress = .init()
         _serverStatus = nil
-        isDownloadingCRL = false
-        CRLDataStorage.clear()
+        isDownloadingDRL = false
+        DRLDataStorage.clear()
         log("cleaned")
     }
     
@@ -199,19 +208,19 @@ class CRLSynchronizationManager {
         guard chunksNotYetCompleted else { return downloadCompleted() }
         log(progress)
         delegate?.statusDidChange(with: .downloading)
-        gateway.updateRevocationList(progress) { crl, error, statusCode in
+        gateway.updateRevocationList(progress) { drl, error, statusCode in
             guard statusCode == 200 else { return self.handleDRLHTTPError(statusCode: statusCode) }
             guard error == nil else { return self.errorFlow() }
-            guard let crl = crl else { return self.errorFlow() }
-            self.manageResponse(with: crl)
+            guard let drl = drl else { return self.errorFlow() }
+            self.manageResponse(with: drl)
         }
     }
     
-    private func manageResponse(with crl: CRL) {
-        guard isConsistent(crl) else { return cleanAndRetry() }
+    private func manageResponse(with drl: DRL) {
+        guard isConsistent(drl) else { return cleanAndRetry() }
         log("managing response")
-        CRLDataStorage.store(crl: crl)
-        updateProgress(with: crl.sizeSingleChunkInByte)
+        DRLDataStorage.store(drl: drl)
+        updateProgress(with: drl.sizeSingleChunkInByte)
         startDownload()
     }
     
@@ -225,7 +234,11 @@ class CRLSynchronizationManager {
             self.cleanAndRetry()
         case 408:
             // 408 - Timeout: resume downloading from the last persisted chunk.
-            Connectivity.isOnline ? readyToResume() : self.delegate?.statusDidChange(with: .statusNetworkError)
+            if Connectivity.isOnline {
+                readyToResume()
+            } else {
+                self.delegate?.statusDidChange(with: .noConnection)
+            }
         default:
             self.errorFlow()
             log("there was an unexpected HTTP error, code: \(statusCode)")
@@ -234,12 +247,12 @@ class CRLSynchronizationManager {
     
     private func errorFlow() {
         _serverStatus = nil
-        self.isDownloadingCRL = false
+        self.isDownloadingDRL = false
         delegate?.statusDidChange(with: .error)
     }
         
     private func updateProgress(with size: Int?) {
-        let current = progress.currentChunk ?? CRLProgress.FIRST_CHUNK
+        let current = progress.currentChunk ?? DRLProgress.FIRST_CHUNK
         let downloadedSize = progress.downloadedSize ?? 0
         _progress.currentChunk = current + 1
         _progress.downloadedSize = downloadedSize + (size?.doubleValue ?? 0)
@@ -251,7 +264,7 @@ class CRLSynchronizationManager {
     }
 }
 
-extension CRLSynchronizationManager {
+extension DRLSynchronizationManager {
     
     public var needsServerStatusUpdate: Bool {
         _serverStatus == nil
@@ -279,7 +292,7 @@ extension CRLSynchronizationManager {
     
     private var oneChunkAlreadyDownloaded: Bool {
         guard let currentChunk = _progress.currentChunk else { return true }
-        return currentChunk > CRLProgress.FIRST_CHUNK
+        return currentChunk > DRLProgress.FIRST_CHUNK
     }
 
     private var sameChunkSize: Bool {
@@ -288,35 +301,36 @@ extension CRLSynchronizationManager {
         return localChunkSize == serverChunkSize
     }
     
+    /// Returns `true` if the download size is greater than `AUTOMATIC_MAX_SIZE`.
     private var requireUserInteraction: Bool {
         guard let size = _serverStatus?.totalSizeInByte else { return false }
         return size.doubleValue > AUTOMATIC_MAX_SIZE
     }
 
-    private func isConsistent(_ crl: CRL) -> Bool {
-        guard let crlVersion = crl.version else { return false }
-        return crlVersion == progress.requestedVersion
+    private func isConsistent(_ drl: DRL) -> Bool {
+        guard let drlVersion = drl.version else { return false }
+        return drlVersion == progress.requestedVersion
     }
     
     var sameDatabaseSize: Bool {
         guard let serverStatus = _serverStatus, let serverTotalNumberUCVI = serverStatus.totalNumberUCVI else {return false}
-        return serverTotalNumberUCVI == CRLDataStorage.crlTotalNumber()
+        return serverTotalNumberUCVI == DRLDataStorage.drlTotalNumber()
     }
     
     private func log(_ message: String) {
-        print("log.crl.sync - " + message)
+        print("log.drl.sync - " + message)
     }
     
-    private func log(_ progress: CRLProgress) {
+    private func log(_ progress: DRLProgress) {
         let from = progress.currentVersion
         let to = progress.requestedVersion
-        let chunk = progress.currentChunk ?? CRLProgress.FIRST_CHUNK
-        let chunks = progress.totalChunk ?? CRLProgress.FIRST_CHUNK
+        let chunk = progress.currentChunk ?? DRLProgress.FIRST_CHUNK
+        let chunks = progress.totalChunk ?? DRLProgress.FIRST_CHUNK
         log("downloading [\(from)->\(to)] \(chunk)/\(chunks)")
     }
 }
 
-extension CRLSynchronizationManager {
+extension DRLSynchronizationManager {
     
     func setTimer(completion: (()->())? = nil) {
         timer?.invalidate()
@@ -328,17 +342,17 @@ extension CRLSynchronizationManager {
     }
     
     func trigger(completion: (()->())? = nil) {
-        guard (isFetchOutdatedAndAllowed || firstRun) && !isDownloadingCRL else { return }
+        guard (isFetchOutdatedAndAllowed || firstRun) && !isDownloadingDRL else { return }
         firstRun = false
         completion?()
     }
     
     var isFetchOutdated: Bool {
-        CRLDataStorage.shared.lastFetch.timeIntervalSinceNow < -24 * 60 * 60
+        DRLDataStorage.shared.lastFetch.timeIntervalSinceNow < -24 * 60 * 60
     }
     
     var isFetchOutdatedAndAllowed: Bool {
-        isSyncEnabled && CRLDataStorage.shared.lastFetch.timeIntervalSinceNow < -24 * 60 * 60
+        isSyncEnabled && DRLDataStorage.shared.lastFetch.timeIntervalSinceNow < -24 * 60 * 60
     }
 
 }

@@ -14,7 +14,7 @@
  *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
-*/
+ */
 
 import Foundation
 
@@ -62,8 +62,8 @@ public class DataSynchronizer {
                     completion(.error(error: error))
                     return
                 }
-                CRLDataStorage.initialize {
-                    CRLSynchronizationManager.shared.initialize(delegate: self)
+                DRLDataStorage.initialize {
+                    DRLSynchronizationManager.shared.initialize(delegate: self)
                 }
             }
         }
@@ -87,19 +87,22 @@ public class DataSynchronizer {
     }
 }
 
-extension DataSynchronizer : CRLSynchronizationDelegate {
-    func statusDidChange(with result: CRLSynchronizationManager.Result) {
+extension DataSynchronizer : DRLSynchronizationDelegate {
+    func statusDidChange(with result: DRLSynchronizationManager.Result) {
         switch result {
-        case .downloading:
-            break
-        case .downloadReady, .paused:
-            CRLSynchronizationManager.shared.download()
-        case .completed:
-            LocalData.sharedInstance.lastFetch = Date()
-            LocalData.sharedInstance.save()
-            self.completion?(.updated)
-        case .error, .statusNetworkError:
-            self.completion?(.error(error: ""))
+            case .downloading:
+                break
+            case .downloadReady, .paused:
+                DRLSynchronizationManager.shared.download()
+            case .completed:
+                LocalData.sharedInstance.lastFetch = Date()
+                LocalData.sharedInstance.save()
+                self.completion?(.updated)
+            case .error,
+                    .statusNetworkError,
+                    .noConnection,
+                    .userInteractionRequired:
+                self.completion?(.error(error: ""))
         }
     }
 }
