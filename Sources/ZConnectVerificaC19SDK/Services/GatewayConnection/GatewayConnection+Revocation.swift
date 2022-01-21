@@ -24,6 +24,8 @@
 //
 import Foundation
 import SwiftDGC
+import PromiseKit
+import Alamofire
 
 extension GatewayConnection {
     
@@ -35,14 +37,20 @@ extension GatewayConnection {
         let version = progress?.currentVersion
         let chunk = progress?.currentChunk
         status(version: version, chunk: chunk) { drlStatus, statusCode in
-            
+
             guard let drlStatus = drlStatus else {
                 completion?(nil, "server.error.generic.error".localized, statusCode)
                 return
             }
-            
+
             completion?(drlStatus, nil, statusCode)
         }
+    }
+    
+    func revocationStatus(_ progress: DRLProgress?) -> Promise<DRLStatus> {
+        let version = progress?.currentVersion
+        let chunk = progress?.currentChunk
+        return status(version: version, chunk: chunk)
     }
     
     func updateRevocationList(_ progress: DRLProgress?, completion: ((DRL?, String?, Int?) -> Void)? = nil) {
@@ -95,15 +103,40 @@ extension GatewayConnection {
         }
     }
     
-    private func status(version: Int?, chunk: Int?, completion: ((DRLStatus?, Int?) -> Void)?) {
+    private func status(version: Int?, chunk: Int?) -> Promise<DRLStatus> {
         let restStartTime = Log.start(key: "[DRL STATUS] [REST]")
         let versionString: Int = version ?? 0
         let chunkString: Int = chunk ?? 1
         
+        return Promise { seal in
+            session.request("\(statusUrl)?version=\(versionString)&chunk=\(chunkString)").responseDecodable(of: DRLStatus.self) { response in
+                switch response.result {
+                case .success:
+                    guard let drlStatus = response.value else {
+                        return seal.reject(AFError.responseValidationFailed(reason: .dataFileNil))
+                    }
+                    seal.fulfill(drlStatus)
+                case let .failure(error):
+                    Log.end(key: "[DRL] [REST]", startTime: restStartTime)
+                    let jsonStartTime = Log.start(key: "[DRL STATUS] [ERROR]")
+                    guard let httpResponse = response.response else { return seal.reject(error) }
+                    Log.end(key: "[DRL] [ERROR \(httpResponse.statusCode.stringValue)]", startTime: jsonStartTime)
+                    print(error)
+                    seal.reject(error)
+                }
+            }
+        }
+    }
+    
+    private func status(version: Int?, chunk: Int?, completion: ((DRLStatus?, Int?) -> Void)?) {
+        let restStartTime = Log.start(key: "[DRL STATUS] [REST]")
+        let versionString: Int = version ?? 0
+        let chunkString: Int = chunk ?? 1
+
         session.request("\(statusUrl)?version=\(versionString)&chunk=\(chunkString)").response {
             // Were the response to be `nil`, it'd okay for it to be handled just like a statusCode 400.
             let responseStatusCode = $0.response?.statusCode ?? 408
-            
+
             guard responseStatusCode == 200 else {
                 Log.end(key: "[DRL] [REST]", startTime: restStartTime)
                 let jsonStartTime = Log.start(key: "[DRL STATUS] [ERROR]")
@@ -111,20 +144,25 @@ extension GatewayConnection {
                 completion?(nil, responseStatusCode)
                 return
             }
-            
+
             Log.end(key: "[DRL STATUS] [REST]", startTime: restStartTime)
-            
+
             let jsonStartTime = Log.start(key: "[DRL STATUS] [JSON]")
             let decoder = JSONDecoder()
             let data = try? decoder.decode(DRLStatus.self, from: $0.data ?? .init())
             Log.end(key: "[DRL STATUS] [JSON]", startTime: jsonStartTime)
-            
+
             guard let status = data else {
                 completion?(nil, responseStatusCode)
                 return
             }
-            
+
             completion?(status, responseStatusCode)
         }
+    }
+    
+    struct DRLStatusResponse {
+        var DRLStatus: DRLStatus?
+        var statusCode: Int?
     }
 }

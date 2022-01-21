@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		1018892B279B02760028AD64 /* DRLSynchronizationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1018892A279B02760028AD64 /* DRLSynchronizationManager.swift */; };
+		10188931279B0A640028AD64 /* PromiseKit in Frameworks */ = {isa = PBXBuildFile; productRef = 10188930279B0A640028AD64 /* PromiseKit */; };
+		10188934279B0ABC0028AD64 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10188933279B0ABC0028AD64 /* Errors.swift */; };
 		1E0A4F2227720E2D000CD2EF /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 1E0A4F2127720E2D000CD2EF /* Realm */; };
 		1E0A4F2427720E2D000CD2EF /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 1E0A4F2327720E2D000CD2EF /* RealmSwift */; };
 		1E0DC1DD27455BCC002FC981 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E0DC1DC27455BCC002FC981 /* Constants.swift */; };
@@ -82,6 +84,7 @@
 
 /* Begin PBXFileReference section */
 		1018892A279B02760028AD64 /* DRLSynchronizationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DRLSynchronizationManager.swift; sourceTree = "<group>"; };
+		10188933279B0ABC0028AD64 /* Errors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
 		1E0DC1DC27455BCC002FC981 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		1E22D38A274F988B007E4F3A /* Store.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		1E2F6077273DD034004B512E /* GatewayConnection+Revocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "GatewayConnection+Revocation.swift"; sourceTree = "<group>"; };
@@ -156,6 +159,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1EAF83E1273C56900010939D /* SwiftDGC in Frameworks */,
+				10188931279B0A640028AD64 /* PromiseKit in Frameworks */,
 				1EAF83DE273C56710010939D /* SwiftyJSON in Frameworks */,
 				1E0A4F2227720E2D000CD2EF /* Realm in Frameworks */,
 				1E0A4F2427720E2D000CD2EF /* RealmSwift in Frameworks */,
@@ -166,6 +170,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		10188932279B0ABC0028AD64 /* Errors */ = {
+			isa = PBXGroup;
+			children = (
+				10188933279B0ABC0028AD64 /* Errors.swift */,
+			);
+			path = Errors;
+			sourceTree = "<group>";
+		};
 		1E2F607B273DD08C004B512E /* Internal */ = {
 			isa = PBXGroup;
 			children = (
@@ -353,6 +365,7 @@
 			isa = PBXGroup;
 			children = (
 				1E0DC1DC27455BCC002FC981 /* Constants.swift */,
+				10188932279B0ABC0028AD64 /* Errors */,
 				1E2F607B273DD08C004B512E /* Internal */,
 				1E2F607F273DD08C004B512E /* Realm */,
 				1E2F6081273DD08C004B512E /* Rest */,
@@ -457,6 +470,7 @@
 				1EAF83E0273C56900010939D /* SwiftDGC */,
 				1E0A4F2127720E2D000CD2EF /* Realm */,
 				1E0A4F2327720E2D000CD2EF /* RealmSwift */,
+				10188930279B0A640028AD64 /* PromiseKit */,
 			);
 			productName = ZConnectVerificaC19SDK;
 			productReference = 1EAF836A273C52210010939D /* ZConnectVerificaC19.framework */;
@@ -490,6 +504,7 @@
 				1EAF83DC273C56710010939D /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
 				1EAF83DF273C56900010939D /* XCRemoteSwiftPackageReference "dgca-app-core-ios" */,
 				1E0A4F2027720E2D000CD2EF /* XCRemoteSwiftPackageReference "realm-swift" */,
+				1018892F279B0A640028AD64 /* XCRemoteSwiftPackageReference "PromiseKit" */,
 			);
 			productRefGroup = 1EAF836B273C52210010939D /* Products */;
 			projectDirPath = "";
@@ -553,6 +568,7 @@
 				1E2F609F273DD0C6004B512E /* CRL+Entity.swift in Sources */,
 				1E2F609E273DD0C6004B512E /* Data+SHA256.swift in Sources */,
 				1EAF83C7273C53570010939D /* CertLogicValidator.swift in Sources */,
+				10188934279B0ABC0028AD64 /* Errors.swift in Sources */,
 				1EAF83B3273C53570010939D /* DateFormatter+Default.swift in Sources */,
 				1EAF83D1273C53570010939D /* GatewayConnection+Certificates.swift in Sources */,
 				1EAF83AE273C53570010939D /* Certificate.swift in Sources */,
@@ -790,6 +806,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		1018892F279B0A640028AD64 /* XCRemoteSwiftPackageReference "PromiseKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/mxcl/PromiseKit";
+			requirement = {
+				branch = v6;
+				kind = branch;
+			};
+		};
 		1E0A4F2027720E2D000CD2EF /* XCRemoteSwiftPackageReference "realm-swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/realm/realm-swift.git";
@@ -825,6 +849,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		10188930279B0A640028AD64 /* PromiseKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1018892F279B0A640028AD64 /* XCRemoteSwiftPackageReference "PromiseKit" */;
+			productName = PromiseKit;
+		};
 		1E0A4F2127720E2D000CD2EF /* Realm */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 1E0A4F2027720E2D000CD2EF /* XCRemoteSwiftPackageReference "realm-swift" */;
