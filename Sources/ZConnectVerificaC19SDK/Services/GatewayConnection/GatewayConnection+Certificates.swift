@@ -63,7 +63,7 @@ extension GatewayConnection {
                         headers: .init(headers),
                         interceptor: nil,
                         requestModifier: nil)
-            .response {
+            .response(queue: serialQueue) {
                 guard let status = $0.response?.statusCode else {
                     completion?(nil, nil, nil, "server.error.generic.error".localized)
                     return
@@ -120,7 +120,7 @@ extension GatewayConnection {
     }
     
     private func certStatus(resume resumeToken: String? = nil, completion: (([String]?, String?) -> Void)?) {
-        session.request(certStatusUrl).response {
+        session.request(certStatusUrl).response(queue: serialQueue) {
             guard let status = $0.response?.statusCode else {
                 completion?(nil, "server.error.generic.error".localized)
                 return

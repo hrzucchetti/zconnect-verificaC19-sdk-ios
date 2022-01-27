@@ -47,7 +47,7 @@ extension GatewayConnection {
     }
     
     private func getSettings(completion: (([Setting]?) -> Void)?) {
-        session.request(settingsUrl).response {
+        session.request(settingsUrl).response(queue: serialQueue) {
             let decoder = JSONDecoder()
             let data = try? decoder.decode([Setting].self, from: $0.data ?? .init())
             guard let settings = data else {

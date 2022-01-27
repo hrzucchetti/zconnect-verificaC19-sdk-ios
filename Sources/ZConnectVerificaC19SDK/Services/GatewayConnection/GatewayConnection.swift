@@ -45,7 +45,7 @@ class GatewayConnection {
     let baseUrl: String
     let session: Session
     var timer: Timer?
-    
+    let serialQueue = DispatchQueue(label: "serialQueue", qos: .background)
     //private let certificateFilename: String
     //private let certificateEvaluator: String
     
