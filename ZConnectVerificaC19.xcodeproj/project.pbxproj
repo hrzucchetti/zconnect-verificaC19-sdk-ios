@@ -33,6 +33,11 @@
 		1E2F60A8273DD0C6004B512E /* PerformanceLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2F609C273DD0C6004B512E /* PerformanceLog.swift */; };
 		1E2F60A9273DD0C6004B512E /* String+Bool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2F609D273DD0C6004B512E /* String+Bool.swift */; };
 		1E2F60B0273DD736004B512E /* CRLSynchronizationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2F60AF273DD736004B512E /* CRLSynchronizationManager.swift */; };
+		1E5A722527A92DBE00CB8155 /* VaccineExemptionValidityCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E5A722427A92DBE00CB8155 /* VaccineExemptionValidityCheck.swift */; };
+		1E5A722A27A92DD600CB8155 /* HCert+VaccineExemptionStatement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E5A722627A92DD600CB8155 /* HCert+VaccineExemptionStatement.swift */; };
+		1E5A722B27A92DD600CB8155 /* HCert+UVCI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E5A722727A92DD600CB8155 /* HCert+UVCI.swift */; };
+		1E5A722C27A92DD600CB8155 /* VaccineExemptionEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E5A722827A92DD600CB8155 /* VaccineExemptionEntry.swift */; };
+		1E5A722D27A92DD600CB8155 /* HCert+Type.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E5A722927A92DD600CB8155 /* HCert+Type.swift */; };
 		1E80D59A273C881400ED28B1 /* SDKConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E80D596273C881400ED28B1 /* SDKConfig.swift */; };
 		1E80D59B273C881400ED28B1 /* sdkConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1E80D598273C881400ED28B1 /* sdkConfig.plist */; };
 		1E80D59C273C881400ED28B1 /* get-dgc-gov-it.der in Resources */ = {isa = PBXBuildFile; fileRef = 1E80D599273C881400ED28B1 /* get-dgc-gov-it.der */; };
@@ -100,6 +105,11 @@
 		1E2F609C273DD0C6004B512E /* PerformanceLog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PerformanceLog.swift; sourceTree = "<group>"; };
 		1E2F609D273DD0C6004B512E /* String+Bool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "String+Bool.swift"; path = "String/String+Bool.swift"; sourceTree = "<group>"; };
 		1E2F60AF273DD736004B512E /* CRLSynchronizationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CRLSynchronizationManager.swift; sourceTree = "<group>"; };
+		1E5A722427A92DBE00CB8155 /* VaccineExemptionValidityCheck.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VaccineExemptionValidityCheck.swift; sourceTree = "<group>"; };
+		1E5A722627A92DD600CB8155 /* HCert+VaccineExemptionStatement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HCert+VaccineExemptionStatement.swift"; sourceTree = "<group>"; };
+		1E5A722727A92DD600CB8155 /* HCert+UVCI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HCert+UVCI.swift"; sourceTree = "<group>"; };
+		1E5A722827A92DD600CB8155 /* VaccineExemptionEntry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VaccineExemptionEntry.swift; sourceTree = "<group>"; };
+		1E5A722927A92DD600CB8155 /* HCert+Type.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HCert+Type.swift"; sourceTree = "<group>"; };
 		1E80D596273C881400ED28B1 /* SDKConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SDKConfig.swift; sourceTree = "<group>"; };
 		1E80D598273C881400ED28B1 /* sdkConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = sdkConfig.plist; sourceTree = "<group>"; };
 		1E80D599273C881400ED28B1 /* get-dgc-gov-it.der */ = {isa = PBXFileReference; lastKnownFileType = file; path = "get-dgc-gov-it.der"; sourceTree = "<group>"; };
@@ -326,6 +336,10 @@
 		1EAF838F273C53570010939D /* HCert */ = {
 			isa = PBXGroup;
 			children = (
+				1E5A722927A92DD600CB8155 /* HCert+Type.swift */,
+				1E5A722727A92DD600CB8155 /* HCert+UVCI.swift */,
+				1E5A722627A92DD600CB8155 /* HCert+VaccineExemptionStatement.swift */,
+				1E5A722827A92DD600CB8155 /* VaccineExemptionEntry.swift */,
 				1EAF7920278D80CC00941674 /* HCert+Certificate.swift */,
 				1EAF8390273C53570010939D /* HCert+Test.swift */,
 				1EAF8391273C53570010939D /* HCert+PersonalData.swift */,
@@ -372,6 +386,7 @@
 		1EAF839D273C53570010939D /* Internal */ = {
 			isa = PBXGroup;
 			children = (
+				1E5A722427A92DBE00CB8155 /* VaccineExemptionValidityCheck.swift */,
 				1EAF839E273C53570010939D /* VaccineValidityCheck.swift */,
 				1EAF839F273C53570010939D /* TestValidityCheck.swift */,
 				1EAF83A0273C53570010939D /* StatementValidityCheck.swift */,
@@ -504,9 +519,11 @@
 			files = (
 				1E2F6087273DD08C004B512E /* Link.swift in Sources */,
 				1E2F60B0273DD736004B512E /* CRLSynchronizationManager.swift in Sources */,
+				1E5A722527A92DBE00CB8155 /* VaccineExemptionValidityCheck.swift in Sources */,
 				1EAF83BC273C53570010939D /* String+Char.swift in Sources */,
 				1E2F60A7273DD0C6004B512E /* Connectivity.swift in Sources */,
 				1E2F607A273DD058004B512E /* CRLDataStorage.swift in Sources */,
+				1E5A722C27A92DD600CB8155 /* VaccineExemptionEntry.swift in Sources */,
 				1E2F60A2273DD0C6004B512E /* Int+Bytes.swift in Sources */,
 				1EAF83BB273C53570010939D /* String+Int.swift in Sources */,
 				1E2F6089273DD08C004B512E /* RevokedDCC.swift in Sources */,
@@ -514,9 +531,12 @@
 				1EAF83CE273C53570010939D /* DataSynchronizer.swift in Sources */,
 				1EAF83BF273C53570010939D /* HCert+PersonalData.swift in Sources */,
 				1EAF83BA273C53570010939D /* Observable.swift in Sources */,
+				1E5A722D27A92DD600CB8155 /* HCert+Type.swift in Sources */,
+				1E5A722B27A92DD600CB8155 /* HCert+UVCI.swift in Sources */,
 				1EAF83B4273C53570010939D /* String+Date.swift in Sources */,
 				1EAF83C4273C53570010939D /* LocalData.swift in Sources */,
 				1EAF83BD273C53570010939D /* String+Localization.swift in Sources */,
+				1E5A722A27A92DD600CB8155 /* HCert+VaccineExemptionStatement.swift in Sources */,
 				1EAF83B5273C53570010939D /* Date+Utils.swift in Sources */,
 				1E2F608C273DD08C004B512E /* Delta.swift in Sources */,
 				1EAF83D2273C53570010939D /* GatewayConnection+Settings.swift in Sources */,
