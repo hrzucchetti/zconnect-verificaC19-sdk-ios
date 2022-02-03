@@ -1,14 +1,14 @@
 /*
  *  license-start
- *  
+ *
  *  Copyright (C) 2021 Ministero della Salute and all other contributors
- *  
+ *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
  *  You may obtain a copy of the License at
- *  
+ *
  *      http://www.apache.org/licenses/LICENSE-2.0
- *  
+ *
  *  Unless required by applicable law or agreed to in writing, software
  *  distributed under the License is distributed on an "AS IS" BASIS,
  *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -30,15 +30,11 @@ struct TestValidityCheck {
     
     typealias Validator = MedicalRulesValidator
     
-<<<<<<< HEAD
     func isTestDateValid(_ hcert: HCert) -> Status {
         let scanMode: String = Store.get(key: .scanMode) ?? ""
         if scanMode == Constants.scanMode50 {
             guard !isOver50(hcert) else { return .notValid }
-        }   
-=======
-    private func isTestDateValid(_ hcert: HCert) -> Status {
->>>>>>> school-scan-mode
+        }
         guard hcert.isKnownTestType else { return .notValid }
         
         let startHours = getStartHours(for: hcert)
@@ -55,16 +51,12 @@ struct TestValidityCheck {
         return Validator.validate(Date(), from: validityStart, to: validityEnd)
     }
     
-<<<<<<< HEAD
     func isOver50 (_ hcert: HCert) -> Bool{
         guard let age = hcert.age else { return false }
         return age >= 50
     }
     
     func isTestNegative(_ hcert: HCert) -> Status {
-=======
-    private func isTestNegative(_ hcert: HCert) -> Status {
->>>>>>> school-scan-mode
         guard let isNegative = hcert.testNegative else { return .notValid }
         return isNegative ? .valid : .notValid
     }
@@ -78,8 +70,6 @@ struct TestValidityCheck {
     }
     
     func isTestValid(_ hcert: HCert) -> Status {
-        let scanMode: String = Store.get(key: .scanMode) ?? ""
-        guard scanMode != Constants.scanMode2G, scanMode != Constants.scanModeBooster else { return .notValid }
         guard testStatusForScanMode(hcert) == .valid else { return .notValid }
         let testValidityResults = [isTestNegative(hcert), isTestDateValid(hcert)]
         return testValidityResults.first(where: {$0 != .valid}) ?? .valid
