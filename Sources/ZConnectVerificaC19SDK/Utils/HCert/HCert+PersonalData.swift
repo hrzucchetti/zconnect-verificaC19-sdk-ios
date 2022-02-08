@@ -64,13 +64,13 @@ extension HCert {
     }
     
     var age: Int? {
-		let formatter = DateFormatter()
-		let formats: [String] = ["yyyy", "MM/yyyy", "dd/MM/yyyy"]
-		let dates: [Int] = formats.compactMap { format in
-			formatter.dateFormat = format
-			guard let date = formatter.date(from: birthDate) else { return nil }
-			return Calendar.current.dateComponents([.year, .month, .day], from: date, to: Date()).year
-		}
-		return dates.first
+        let dateFormatter = DateFormatter.getDefault(utc: true)
+        let formats = ["yyyy", "MM/yyyy", "dd/MM/yyyy"]
+        let dates: [Date] = formats.compactMap {
+            dateFormatter.dateFormat = $0
+            return dateFormatter.date(from: birthDate)
+        }
+        guard let birthdayDate = dates.first else { return nil }
+        return Calendar.current.dateComponents([.year, .month, .day], from: birthdayDate, to: Date()).year
     }
 }
