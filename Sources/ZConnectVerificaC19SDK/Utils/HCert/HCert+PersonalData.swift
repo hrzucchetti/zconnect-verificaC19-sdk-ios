@@ -37,7 +37,8 @@ extension HCert {
     var standardizedLastName: String { body["nam"]["fnt"].string ?? "" }
     
     var standardizedFirstName: String { body["nam"]["gnt"].string ?? "" }
-    
+	
+	/// Maps `HCert`'s `dob` field (yyyy-MM-dd format) to a dd/MM/yyyy format.
     var birthDate: String {
         //  TODO: use date formats to be placed inside Constants
         let dob: String = body["dob"].string ?? ""
@@ -55,5 +56,21 @@ extension HCert {
             let split = dob.split(separator: "-")
             return "\(split[2])/\(split[1])/\(split[0])"
         }
+    }
+    
+    var birthYear: Int? {
+        guard let birthYear = Int(birthDate[4]) else { return nil }
+        return birthYear
+    }
+    
+    var age: Int? {
+		let formatter = DateFormatter()
+		let formats: [String] = ["yyyy", "MM/yyyy", "dd/MM/yyyy"]
+		let dates: [Int] = formats.compactMap { format in
+			formatter.dateFormat = format
+			guard let date = formatter.date(from: birthDate) else { return nil }
+			return Calendar.current.dateComponents([.year, .month, .day], from: date, to: Date()).year
+		}
+		return dates.first
     }
 }

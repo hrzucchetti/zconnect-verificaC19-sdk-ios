@@ -1,14 +1,14 @@
 /*
  *  license-start
- *  
+ *
  *  Copyright (C) 2021 Ministero della Salute and all other contributors
- *  
+ *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
  *  You may obtain a copy of the License at
- *  
+ *
  *      http://www.apache.org/licenses/LICENSE-2.0
- *  
+ *
  *  Unless required by applicable law or agreed to in writing, software
  *  distributed under the License is distributed on an "AS IS" BASIS,
  *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -30,7 +30,11 @@ struct TestValidityCheck {
     
     typealias Validator = MedicalRulesValidator
     
-    private func isTestDateValid(_ hcert: HCert) -> Status {
+    func isTestDateValid(_ hcert: HCert) -> Status {
+        let scanMode: String = Store.get(key: .scanMode) ?? ""
+        if scanMode == Constants.scanMode50 {
+            guard !isOver50(hcert) else { return .notValid }
+        }
         guard hcert.isKnownTestType else { return .notValid }
         
         let startHours = getStartHours(for: hcert)
@@ -47,7 +51,12 @@ struct TestValidityCheck {
         return Validator.validate(Date(), from: validityStart, to: validityEnd)
     }
     
-    private func isTestNegative(_ hcert: HCert) -> Status {
+    func isOver50 (_ hcert: HCert) -> Bool{
+        guard let age = hcert.age else { return false }
+        return age >= 50
+    }
+    
+    func isTestNegative(_ hcert: HCert) -> Status {
         guard let isNegative = hcert.testNegative else { return .notValid }
         return isNegative ? .valid : .notValid
     }

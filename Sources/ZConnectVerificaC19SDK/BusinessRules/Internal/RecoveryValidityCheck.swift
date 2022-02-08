@@ -43,7 +43,6 @@ struct RecoveryValidityCheck {
     }
     
     func isRecoveryValid(_ hcert: HCert) -> Status {
-       
         guard let validityFrom = hcert.recoveryDateFrom?.toRecoveryDate else { return .notValid }
         guard let validityUntil = hcert.recoveryDateUntil?.toRecoveryDate else { return .notValid }
 
@@ -54,7 +53,6 @@ struct RecoveryValidityCheck {
         guard let validityEnd = validityEnd(hcert, dateFrom: validityFrom, dateUntil: validityUntil, additionalDays: recoveryEndDays) else { return .notValid }
         
         guard let currentDate = Date.startOfDay else { return .notValid }
-        
         let recoveryStatus = Validator.validate(currentDate, from: validityStart, to: validityEnd)
         
         guard !isBoosterScanMode() else { return recoveryStatus == .valid ? .verificationIsNeeded : recoveryStatus }

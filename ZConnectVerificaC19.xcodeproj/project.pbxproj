@@ -33,15 +33,27 @@
 		1E2F60A8273DD0C6004B512E /* PerformanceLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2F609C273DD0C6004B512E /* PerformanceLog.swift */; };
 		1E2F60A9273DD0C6004B512E /* String+Bool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2F609D273DD0C6004B512E /* String+Bool.swift */; };
 		1E2F60B0273DD736004B512E /* CRLSynchronizationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2F60AF273DD736004B512E /* CRLSynchronizationManager.swift */; };
-		1E42D59127900A5100CD9B81 /* VaccineExemptionValidityCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E42D59027900A5100CD9B81 /* VaccineExemptionValidityCheck.swift */; };
+		1E3DB5ED27AD6F7A00422FF3 /* RecoveryValidators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E3DB5E927AD6F7A00422FF3 /* RecoveryValidators.swift */; };
+		1E3DB5EE27AD6F7A00422FF3 /* VaccineValidators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E3DB5EA27AD6F7A00422FF3 /* VaccineValidators.swift */; };
+		1E3DB5EF27AD6F7A00422FF3 /* VaccineExemptionValidators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E3DB5EB27AD6F7A00422FF3 /* VaccineExemptionValidators.swift */; };
+		1E3DB5F027AD6F7A00422FF3 /* TestValidators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E3DB5EC27AD6F7A00422FF3 /* TestValidators.swift */; };
+		1E5A722527A92DBE00CB8155 /* VaccineExemptionValidityCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E5A722427A92DBE00CB8155 /* VaccineExemptionValidityCheck.swift */; };
+		1E5A722A27A92DD600CB8155 /* HCert+VaccineExemptionStatement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E5A722627A92DD600CB8155 /* HCert+VaccineExemptionStatement.swift */; };
+		1E5A722B27A92DD600CB8155 /* HCert+UVCI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E5A722727A92DD600CB8155 /* HCert+UVCI.swift */; };
+		1E5A722C27A92DD600CB8155 /* VaccineExemptionEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E5A722827A92DD600CB8155 /* VaccineExemptionEntry.swift */; };
+		1E5A722D27A92DD600CB8155 /* HCert+Type.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E5A722927A92DD600CB8155 /* HCert+Type.swift */; };
+		1E73F73227AB28190053AC0D /* ChainValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E73F71C27AB28190053AC0D /* ChainValidator.swift */; };
+		1E73F73327AB28190053AC0D /* HCertValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E73F71D27AB28190053AC0D /* HCertValidator.swift */; };
+		1E73F73427AB28190053AC0D /* RevocationValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E73F71E27AB28190053AC0D /* RevocationValidator.swift */; };
+		1E73F73627AB28190053AC0D /* DGCValidatorBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E73F72027AB28190053AC0D /* DGCValidatorBuilder.swift */; };
+		1E73F73727AB28190053AC0D /* BlackListValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E73F72127AB28190053AC0D /* BlackListValidator.swift */; };
+		1E73F73927AB28190053AC0D /* UnknownValidators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E73F72327AB28190053AC0D /* UnknownValidators.swift */; };
+		1E73F73A27AB28190053AC0D /* DGCValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E73F72427AB28190053AC0D /* DGCValidator.swift */; };
+		1E73F73D27AB28770053AC0D /* ScanMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E73F73C27AB28770053AC0D /* ScanMode.swift */; };
 		1E80D59A273C881400ED28B1 /* SDKConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E80D596273C881400ED28B1 /* SDKConfig.swift */; };
 		1E80D59B273C881400ED28B1 /* sdkConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1E80D598273C881400ED28B1 /* sdkConfig.plist */; };
 		1E80D59C273C881400ED28B1 /* get-dgc-gov-it.der in Resources */ = {isa = PBXBuildFile; fileRef = 1E80D599273C881400ED28B1 /* get-dgc-gov-it.der */; };
 		1EAF7921278D80CC00941674 /* HCert+Certificate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EAF7920278D80CC00941674 /* HCert+Certificate.swift */; };
-		1EAF792B278D836E00941674 /* HCert+Type.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EAF7928278D836E00941674 /* HCert+Type.swift */; };
-		1EAF792C278D836E00941674 /* VaccineExemptionEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EAF7929278D836E00941674 /* VaccineExemptionEntry.swift */; };
-		1EAF792D278D836E00941674 /* HCert+VaccineExemptionStatement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EAF792A278D836E00941674 /* HCert+VaccineExemptionStatement.swift */; };
-		1EAF792F278D85EF00941674 /* HCert+UVCI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EAF792E278D85EF00941674 /* HCert+UVCI.swift */; };
 		1EAF83AD273C53570010939D /* ZConnectVerificaC19.h in Headers */ = {isa = PBXBuildFile; fileRef = 1EAF8377273C53570010939D /* ZConnectVerificaC19.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1EAF83AE273C53570010939D /* Certificate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EAF8379273C53570010939D /* Certificate.swift */; };
 		1EAF83B1273C53570010939D /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EAF837F273C53570010939D /* Date.swift */; };
@@ -105,15 +117,27 @@
 		1E2F609C273DD0C6004B512E /* PerformanceLog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PerformanceLog.swift; sourceTree = "<group>"; };
 		1E2F609D273DD0C6004B512E /* String+Bool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "String+Bool.swift"; path = "String/String+Bool.swift"; sourceTree = "<group>"; };
 		1E2F60AF273DD736004B512E /* CRLSynchronizationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CRLSynchronizationManager.swift; sourceTree = "<group>"; };
-		1E42D59027900A5100CD9B81 /* VaccineExemptionValidityCheck.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VaccineExemptionValidityCheck.swift; sourceTree = "<group>"; };
+		1E3DB5E927AD6F7A00422FF3 /* RecoveryValidators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecoveryValidators.swift; sourceTree = "<group>"; };
+		1E3DB5EA27AD6F7A00422FF3 /* VaccineValidators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VaccineValidators.swift; sourceTree = "<group>"; };
+		1E3DB5EB27AD6F7A00422FF3 /* VaccineExemptionValidators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VaccineExemptionValidators.swift; sourceTree = "<group>"; };
+		1E3DB5EC27AD6F7A00422FF3 /* TestValidators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestValidators.swift; sourceTree = "<group>"; };
+		1E5A722427A92DBE00CB8155 /* VaccineExemptionValidityCheck.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VaccineExemptionValidityCheck.swift; sourceTree = "<group>"; };
+		1E5A722627A92DD600CB8155 /* HCert+VaccineExemptionStatement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HCert+VaccineExemptionStatement.swift"; sourceTree = "<group>"; };
+		1E5A722727A92DD600CB8155 /* HCert+UVCI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HCert+UVCI.swift"; sourceTree = "<group>"; };
+		1E5A722827A92DD600CB8155 /* VaccineExemptionEntry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VaccineExemptionEntry.swift; sourceTree = "<group>"; };
+		1E5A722927A92DD600CB8155 /* HCert+Type.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HCert+Type.swift"; sourceTree = "<group>"; };
+		1E73F71C27AB28190053AC0D /* ChainValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChainValidator.swift; sourceTree = "<group>"; };
+		1E73F71D27AB28190053AC0D /* HCertValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HCertValidator.swift; sourceTree = "<group>"; };
+		1E73F71E27AB28190053AC0D /* RevocationValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RevocationValidator.swift; sourceTree = "<group>"; };
+		1E73F72027AB28190053AC0D /* DGCValidatorBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DGCValidatorBuilder.swift; sourceTree = "<group>"; };
+		1E73F72127AB28190053AC0D /* BlackListValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlackListValidator.swift; sourceTree = "<group>"; };
+		1E73F72327AB28190053AC0D /* UnknownValidators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnknownValidators.swift; sourceTree = "<group>"; };
+		1E73F72427AB28190053AC0D /* DGCValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DGCValidator.swift; sourceTree = "<group>"; };
+		1E73F73C27AB28770053AC0D /* ScanMode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanMode.swift; sourceTree = "<group>"; };
 		1E80D596273C881400ED28B1 /* SDKConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SDKConfig.swift; sourceTree = "<group>"; };
 		1E80D598273C881400ED28B1 /* sdkConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = sdkConfig.plist; sourceTree = "<group>"; };
 		1E80D599273C881400ED28B1 /* get-dgc-gov-it.der */ = {isa = PBXFileReference; lastKnownFileType = file; path = "get-dgc-gov-it.der"; sourceTree = "<group>"; };
 		1EAF7920278D80CC00941674 /* HCert+Certificate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HCert+Certificate.swift"; sourceTree = "<group>"; };
-		1EAF7928278D836E00941674 /* HCert+Type.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HCert+Type.swift"; sourceTree = "<group>"; };
-		1EAF7929278D836E00941674 /* VaccineExemptionEntry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VaccineExemptionEntry.swift; sourceTree = "<group>"; };
-		1EAF792A278D836E00941674 /* HCert+VaccineExemptionStatement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HCert+VaccineExemptionStatement.swift"; sourceTree = "<group>"; };
-		1EAF792E278D85EF00941674 /* HCert+UVCI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HCert+UVCI.swift"; sourceTree = "<group>"; };
 		1EAF836A273C52210010939D /* ZConnectVerificaC19.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ZConnectVerificaC19.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1EAF8377273C53570010939D /* ZConnectVerificaC19.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZConnectVerificaC19.h; sourceTree = "<group>"; };
 		1EAF8379273C53570010939D /* Certificate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Certificate.swift; sourceTree = "<group>"; };
@@ -169,6 +193,7 @@
 		1E2F607B273DD08C004B512E /* Internal */ = {
 			isa = PBXGroup;
 			children = (
+				1E73F73C27AB28770053AC0D /* ScanMode.swift */,
 				1E2F607C273DD08C004B512E /* CRLProgress.swift */,
 				1E2F607D273DD08C004B512E /* Link.swift */,
 				1E2F607E273DD08C004B512E /* Status.swift */,
@@ -221,6 +246,32 @@
 				1E2F609B273DD0C6004B512E /* Connectivity.swift */,
 			);
 			path = Connectivity;
+			sourceTree = "<group>";
+		};
+		1E3DB5E827AD6F7A00422FF3 /* Medical */ = {
+			isa = PBXGroup;
+			children = (
+				1E3DB5E927AD6F7A00422FF3 /* RecoveryValidators.swift */,
+				1E3DB5EA27AD6F7A00422FF3 /* VaccineValidators.swift */,
+				1E3DB5EB27AD6F7A00422FF3 /* VaccineExemptionValidators.swift */,
+				1E3DB5EC27AD6F7A00422FF3 /* TestValidators.swift */,
+			);
+			path = Medical;
+			sourceTree = "<group>";
+		};
+		1E73F71927AB28190053AC0D /* Validators */ = {
+			isa = PBXGroup;
+			children = (
+				1E3DB5E827AD6F7A00422FF3 /* Medical */,
+				1E73F71C27AB28190053AC0D /* ChainValidator.swift */,
+				1E73F71D27AB28190053AC0D /* HCertValidator.swift */,
+				1E73F71E27AB28190053AC0D /* RevocationValidator.swift */,
+				1E73F72027AB28190053AC0D /* DGCValidatorBuilder.swift */,
+				1E73F72127AB28190053AC0D /* BlackListValidator.swift */,
+				1E73F72327AB28190053AC0D /* UnknownValidators.swift */,
+				1E73F72427AB28190053AC0D /* DGCValidator.swift */,
+			);
+			path = Validators;
 			sourceTree = "<group>";
 		};
 		1E80D597273C881400ED28B1 /* Res */ = {
@@ -336,15 +387,15 @@
 		1EAF838F273C53570010939D /* HCert */ = {
 			isa = PBXGroup;
 			children = (
-				1EAF7928278D836E00941674 /* HCert+Type.swift */,
-				1EAF792A278D836E00941674 /* HCert+VaccineExemptionStatement.swift */,
-				1EAF7929278D836E00941674 /* VaccineExemptionEntry.swift */,
+				1E5A722927A92DD600CB8155 /* HCert+Type.swift */,
+				1E5A722727A92DD600CB8155 /* HCert+UVCI.swift */,
+				1E5A722627A92DD600CB8155 /* HCert+VaccineExemptionStatement.swift */,
+				1E5A722827A92DD600CB8155 /* VaccineExemptionEntry.swift */,
 				1EAF7920278D80CC00941674 /* HCert+Certificate.swift */,
 				1EAF8390273C53570010939D /* HCert+Test.swift */,
 				1EAF8391273C53570010939D /* HCert+PersonalData.swift */,
 				1EAF8392273C53570010939D /* HCert+Recovery.swift */,
 				1EAF8393273C53570010939D /* HCert+Vaccine.swift */,
-				1EAF792E278D85EF00941674 /* HCert+UVCI.swift */,
 			);
 			path = HCert;
 			sourceTree = "<group>";
@@ -386,7 +437,8 @@
 		1EAF839D273C53570010939D /* Internal */ = {
 			isa = PBXGroup;
 			children = (
-				1E42D59027900A5100CD9B81 /* VaccineExemptionValidityCheck.swift */,
+				1E73F71927AB28190053AC0D /* Validators */,
+				1E5A722427A92DBE00CB8155 /* VaccineExemptionValidityCheck.swift */,
 				1EAF839E273C53570010939D /* VaccineValidityCheck.swift */,
 				1EAF839F273C53570010939D /* TestValidityCheck.swift */,
 				1EAF83A0273C53570010939D /* StatementValidityCheck.swift */,
@@ -517,11 +569,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1E73F73327AB28190053AC0D /* HCertValidator.swift in Sources */,
 				1E2F6087273DD08C004B512E /* Link.swift in Sources */,
 				1E2F60B0273DD736004B512E /* CRLSynchronizationManager.swift in Sources */,
 				1E5A722527A92DBE00CB8155 /* VaccineExemptionValidityCheck.swift in Sources */,
 				1EAF83BC273C53570010939D /* String+Char.swift in Sources */,
 				1E2F60A7273DD0C6004B512E /* Connectivity.swift in Sources */,
+				1E3DB5EE27AD6F7A00422FF3 /* VaccineValidators.swift in Sources */,
+				1E3DB5F027AD6F7A00422FF3 /* TestValidators.swift in Sources */,
 				1E2F607A273DD058004B512E /* CRLDataStorage.swift in Sources */,
 				1E5A722C27A92DD600CB8155 /* VaccineExemptionEntry.swift in Sources */,
 				1E2F60A2273DD0C6004B512E /* Int+Bytes.swift in Sources */,
@@ -529,18 +584,21 @@
 				1E2F6089273DD08C004B512E /* RevokedDCC.swift in Sources */,
 				1EAF83CD273C53570010939D /* MedicalRulesValidator.swift in Sources */,
 				1EAF83CE273C53570010939D /* DataSynchronizer.swift in Sources */,
+				1E73F73627AB28190053AC0D /* DGCValidatorBuilder.swift in Sources */,
 				1EAF83BF273C53570010939D /* HCert+PersonalData.swift in Sources */,
 				1EAF83BA273C53570010939D /* Observable.swift in Sources */,
 				1E5A722D27A92DD600CB8155 /* HCert+Type.swift in Sources */,
+				1E73F73427AB28190053AC0D /* RevocationValidator.swift in Sources */,
 				1E5A722B27A92DD600CB8155 /* HCert+UVCI.swift in Sources */,
 				1EAF83B4273C53570010939D /* String+Date.swift in Sources */,
 				1EAF83C4273C53570010939D /* LocalData.swift in Sources */,
 				1EAF83BD273C53570010939D /* String+Localization.swift in Sources */,
+				1E3DB5ED27AD6F7A00422FF3 /* RecoveryValidators.swift in Sources */,
 				1E5A722A27A92DD600CB8155 /* HCert+VaccineExemptionStatement.swift in Sources */,
 				1EAF83B5273C53570010939D /* Date+Utils.swift in Sources */,
 				1E2F608C273DD08C004B512E /* Delta.swift in Sources */,
 				1EAF83D2273C53570010939D /* GatewayConnection+Settings.swift in Sources */,
-				1EAF792B278D836E00941674 /* HCert+Type.swift in Sources */,
+				1E73F73927AB28190053AC0D /* UnknownValidators.swift in Sources */,
 				1EAF83BE273C53570010939D /* HCert+Test.swift in Sources */,
 				1E2F60A5273DD0C6004B512E /* String+SHA256.swift in Sources */,
 				1E80D59A273C881400ED28B1 /* SDKConfig.swift in Sources */,
@@ -555,11 +613,11 @@
 				1E2F60A9273DD0C6004B512E /* String+Bool.swift in Sources */,
 				1E2F6078273DD034004B512E /* GatewayConnection+Revocation.swift in Sources */,
 				1E2F6088273DD08C004B512E /* Status.swift in Sources */,
-				1EAF792D278D836E00941674 /* HCert+VaccineExemptionStatement.swift in Sources */,
 				1E2F609F273DD0C6004B512E /* CRL+Entity.swift in Sources */,
 				1E2F609E273DD0C6004B512E /* Data+SHA256.swift in Sources */,
 				1EAF83C7273C53570010939D /* CertLogicValidator.swift in Sources */,
 				1EAF83B3273C53570010939D /* DateFormatter+Default.swift in Sources */,
+				1E73F73D27AB28770053AC0D /* ScanMode.swift in Sources */,
 				1EAF83D1273C53570010939D /* GatewayConnection+Certificates.swift in Sources */,
 				1EAF83AE273C53570010939D /* Certificate.swift in Sources */,
 				1E2F6086273DD08C004B512E /* CRLProgress.swift in Sources */,
@@ -575,14 +633,15 @@
 				1E2F608A273DD08C004B512E /* CRLStatus.swift in Sources */,
 				1EAF83D3273C53570010939D /* GatewayConnection.swift in Sources */,
 				1EAF83C1273C53570010939D /* HCert+Vaccine.swift in Sources */,
-				1EAF792F278D85EF00941674 /* HCert+UVCI.swift in Sources */,
+				1E3DB5EF27AD6F7A00422FF3 /* VaccineExemptionValidators.swift in Sources */,
 				1E22D38B274F988B007E4F3A /* Store.swift in Sources */,
 				1EAF83B2273C53570010939D /* Date+String.swift in Sources */,
-				1EAF792C278D836E00941674 /* VaccineExemptionEntry.swift in Sources */,
 				1EAF83CB273C53570010939D /* RecoveryValidityCheck.swift in Sources */,
 				1EAF83C8273C53570010939D /* VaccineValidityCheck.swift in Sources */,
-				1E42D59127900A5100CD9B81 /* VaccineExemptionValidityCheck.swift in Sources */,
+				1E73F73727AB28190053AC0D /* BlackListValidator.swift in Sources */,
 				1EAF83CF273C53570010939D /* CertificateValidator.swift in Sources */,
+				1E73F73227AB28190053AC0D /* ChainValidator.swift in Sources */,
+				1E73F73A27AB28190053AC0D /* DGCValidator.swift in Sources */,
 				1E2F60A4273DD0C6004B512E /* Double+Bytes.swift in Sources */,
 				1E2F608D273DD08C004B512E /* CRL.swift in Sources */,
 			);
