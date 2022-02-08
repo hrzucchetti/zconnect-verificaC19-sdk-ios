@@ -1,14 +1,14 @@
 /*
  *  license-start
- *
+ *  
  *  Copyright (C) 2021 Ministero della Salute and all other contributors
- *
+ *  
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
  *  You may obtain a copy of the License at
- *
+ *  
  *      http://www.apache.org/licenses/LICENSE-2.0
- *
+ *  
  *  Unless required by applicable law or agreed to in writing, software
  *  distributed under the License is distributed on an "AS IS" BASIS,
  *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -48,23 +48,11 @@ struct VaccinationInfo {
     var isCurrentDoseIncomplete: Bool { self.currentDoses < self.totalDoses }
     var isCurrentDoseComplete: Bool { self.currentDoses == self.totalDoses && !self.isJJBooster && !self.isNonJJBooster }
     var isCurrentDoseBooster: Bool { (self.currentDoses > self.totalDoses) || (isJJBooster || self.isNonJJBooster) }
-    
-    var isEMAProduct: Bool {
-        let emaAllProducts = ["EU/1/20/1525", "EU/1/20/1507", "EU/1/20/1528", "EU/1/21/1529", "Covishield", "R-COVI", "Covid-19-recombinant"]
-        if emaAllProducts.contains(medicalProduct) // (Sputnik-V solo se emesso da San marino ovvero co="SM")
-            || (countryCode == Constants.sanMarinoCode && medicalProduct == Constants.SputnikVacineCode) {
-            return true
-        }
-        else {
-            return false
-        }
-    }
-    
 }
 
 
 class VaccineBaseValidator: DGCValidator {
-            
+    
     typealias Validator = VaccineBaseValidator
     
     private var allowedVaccinationInCountry: [String: [String]] {
@@ -92,20 +80,16 @@ class VaccineBaseValidator: DGCValidator {
        
         guard let start = getStartDays(vaccinationInfo: vaccinationInfo) else { return .notValid }
         guard let end = getEndDays(vaccinationInfo: vaccinationInfo) else { return .notValid }
-        guard let ext = getExtensionDays(vaccinationInfo: vaccinationInfo) else { return .notValid }
-        
         
         guard let validityStart = vaccinationInfo.vaccineDate.add(start, ofType: .day) else { return .notValid }
         guard let validityEnd = vaccinationInfo.vaccineDate.add(end, ofType: .day)?.startOfDay else { return .notValid }
-        guard let validityExt = vaccinationInfo.vaccineDate.add(ext, ofType: .day)?.startOfDay else { return .notValid }
-        
         
         guard let currentDate = Date.startOfDay else { return .notValid }
         
         // J&J booster is immediately valid
         let fromDate = vaccinationInfo.isJJBooster ? vaccinationInfo.vaccineDate : validityStart
         
-        return Validator.validate(currentDate, from: fromDate, to: validityEnd, extendedTo: validityExt)
+        return Validator.validate(currentDate, from: fromDate, to: validityEnd)
     }
     
     private func isAllowedVaccination(for medicalProduct: String, fromCountryWithCode countryCode: String) -> Bool {
@@ -121,96 +105,62 @@ class VaccineBaseValidator: DGCValidator {
         return getValue(for: name, type: medicalProduct) != nil
     }
         
-    public func startDaysForBoosterDose(_ vaccinationInfo: VaccinationInfo) -> Int? {
-        let setting = vaccinationInfo.isIT ? Constants.vaccineBoosterStartDays_IT : Constants.vaccineBoosterStartDays_NOT_IT
-        return self.getValue(for: setting)?.intValue
+    public func startDaysSettingNameForBoosterDose(vaccinationInfo: VaccinationInfo) -> String {
+        return vaccinationInfo.isIT ? Constants.vaccineBoosterStartDays_IT : Constants.vaccineBoosterStartDays_NOT_IT
     }
     
-    public func startDaysForIncompleteDose(_ vaccinationInfo: VaccinationInfo) -> Int? {
-        let setting = Constants.vaccineIncompleteStartDays
-        return self.getValue(for: setting)?.intValue
+    public func startDaysSettingNameForIncompleteDose(vaccinationInfo: VaccinationInfo) -> String {
+        return Constants.vaccineIncompleteStartDays
     }
     
-    public func startDaysForJJ(_ vaccinationInfo: VaccinationInfo) -> Int? {
-        let setting = Constants.vaccineCompleteStartDays
-        return self.getValue(for: setting, type: vaccinationInfo.medicalProduct)?.intValue
+    public func startDaysSettingNameForJJ(vaccinationInfo: VaccinationInfo) -> String {
+        return Constants.vaccineCompleteStartDays
     }
     
-    public func startDaysForCompleteDose(_ vaccinationInfo: VaccinationInfo) -> Int? {
-        let setting = vaccinationInfo.isIT ? Constants.vaccineCompleteStartDays_IT : Constants.vaccineCompleteStartDays_NOT_IT
-        return self.getValue(for: setting)?.intValue
+    public func startDaysSettingNameForCompleteDose(vaccinationInfo: VaccinationInfo) -> String {
+        return vaccinationInfo.isIT ? Constants.vaccineCompleteStartDays_IT : Constants.vaccineCompleteStartDays_NOT_IT
     }
     
     public func getStartDays(vaccinationInfo: VaccinationInfo) -> Int? {
         if vaccinationInfo.isCurrentDoseBooster {
-            return startDaysForBoosterDose(vaccinationInfo)
+            return self.getValue(for: startDaysSettingNameForBoosterDose(vaccinationInfo: vaccinationInfo))?.intValue
         }
         
         if vaccinationInfo.isCurrentDoseIncomplete {
-            return startDaysForIncompleteDose(vaccinationInfo)
+            return self.getValue(for: startDaysSettingNameForIncompleteDose(vaccinationInfo: vaccinationInfo), type: vaccinationInfo.medicalProduct)?.intValue
         }
     
         if vaccinationInfo.isJJ {
-            return startDaysForJJ(vaccinationInfo)
+            return self.getValue(for: startDaysSettingNameForJJ(vaccinationInfo: vaccinationInfo), type: vaccinationInfo.medicalProduct)?.intValue
         }
         
-        return startDaysForCompleteDose(vaccinationInfo)
+        return self.getValue(for: startDaysSettingNameForCompleteDose(vaccinationInfo: vaccinationInfo))?.intValue
     }
     
-    public func endDaysForBoosterDose(_ vaccinationInfo: VaccinationInfo) -> Int? {
-        let setting = vaccinationInfo.isIT ? Constants.vaccineBoosterEndDays_IT : Constants.vaccineBoosterEndDays_NOT_IT
-        return self.getValue(for: setting)?.intValue
+
+    public func endDaysSettingNameForBoosterDose(_ vaccinationInfo: VaccinationInfo) -> String {
+        return vaccinationInfo.isIT ? Constants.vaccineBoosterEndDays_IT : Constants.vaccineBoosterEndDays_NOT_IT
     }
     
-    public func endDaysForIncompleteDose(_ vaccinationInfo: VaccinationInfo) -> Int? {
-        return self.getValue(for: Constants.vaccineIncompleteEndDays, type: vaccinationInfo.medicalProduct)?.intValue
+    public func endDaysSettingNameForIncompleteDose(_ vaccinationInfo: VaccinationInfo) -> String {
+        return Constants.vaccineIncompleteEndDays
     }
     
-    public func endDaysForCompleteDose(_ vaccinationInfo: VaccinationInfo) -> Int? {
-        let setting = vaccinationInfo.isIT ? Constants.vaccineCompleteEndDays_IT : Constants.vaccineCompleteEndDays_NOT_IT
-        return self.getValue(for: setting)?.intValue
+    public func endDaysSettingNameForCompleteDose(_ vaccinationInfo: VaccinationInfo) -> String {
+        return vaccinationInfo.isIT ? Constants.vaccineCompleteEndDays_IT : Constants.vaccineCompleteEndDays_NOT_IT
     }
     
     public func getEndDays(vaccinationInfo: VaccinationInfo) -> Int? {
         if vaccinationInfo.isCurrentDoseBooster {
-            return endDaysForBoosterDose(vaccinationInfo)
+            return self.getValue(for: endDaysSettingNameForBoosterDose(vaccinationInfo))?.intValue
         }
         
         if vaccinationInfo.isCurrentDoseIncomplete {
-            return endDaysForIncompleteDose(vaccinationInfo)
+            return self.getValue(for: endDaysSettingNameForIncompleteDose(vaccinationInfo), type: vaccinationInfo.medicalProduct)?.intValue
         }
     
-        return endDaysForCompleteDose(vaccinationInfo)
+        return self.getValue(for: endDaysSettingNameForCompleteDose(vaccinationInfo))?.intValue
     }
-    
-    
-    public func extDaysForBoosterDose(_ vaccinationInfo: VaccinationInfo) -> Int? {
-        return endDaysForBoosterDose(vaccinationInfo)
-    }
-    
-    public func extDaysForIncompleteDose(_ vaccinationInfo: VaccinationInfo) -> Int? {
-        return endDaysForIncompleteDose(vaccinationInfo)
-    }
-    
-    public func extDaysForCompleteDose(_ vaccinationInfo: VaccinationInfo) -> Int? {
-        return endDaysForCompleteDose(vaccinationInfo)
-    }
-    
-
-    public func getExtensionDays(vaccinationInfo: VaccinationInfo) -> Int? {
-        
-        if vaccinationInfo.isCurrentDoseBooster {
-            return extDaysForBoosterDose(vaccinationInfo)
-        }
-        
-        if vaccinationInfo.isCurrentDoseIncomplete {
-            return extDaysForIncompleteDose(vaccinationInfo)
-        }
-    
-        return extDaysForCompleteDose(vaccinationInfo)
-        
-    }
-    
     
     public func getValue(for name: String, type: String) -> String? {
         return LocalData.getSetting(from: name, type: type)
@@ -225,44 +175,20 @@ class VaccineBaseValidator: DGCValidator {
 
 class VaccineReinforcedValidator: VaccineBaseValidator {
     
-    public override func startDaysForBoosterDose(_ vaccinationInfo: VaccinationInfo) -> Int? {
-        return self.getValue(for: Constants.vaccineBoosterStartDays_IT)?.intValue
+    public override func startDaysSettingNameForBoosterDose(vaccinationInfo: VaccinationInfo) -> String {
+        return Constants.vaccineBoosterStartDays_IT
     }
     
-    public override func startDaysForCompleteDose(_ vaccinationInfo: VaccinationInfo) -> Int? {
-        return getValue(for: Constants.vaccineCompleteStartDays_IT)?.intValue
+    public override func startDaysSettingNameForCompleteDose(vaccinationInfo: VaccinationInfo) -> String {
+        return Constants.vaccineCompleteStartDays_IT
     }
     
-    public override func endDaysForBoosterDose(_ vaccinationInfo: VaccinationInfo) -> Int? {
-        if vaccinationInfo.isIT {
-            return getValue(for: Constants.vaccineBoosterEndDays_IT)?.intValue
-        } else {
-            return vaccinationInfo.isEMAProduct ? getValue(for: Constants.vaccineBoosterEndDays_NOT_IT)?.intValue : 0
-        }
+    public override func endDaysSettingNameForBoosterDose(_ vaccinationInfo: VaccinationInfo) -> String {
+        return Constants.vaccineBoosterEndDays_IT
     }
     
-    public override func endDaysForCompleteDose(_ vaccinationInfo: VaccinationInfo) -> Int? {
-        if vaccinationInfo.isIT {
-            return getValue(for: Constants.vaccineCompleteEndDays_IT)?.intValue
-        } else {
-            return vaccinationInfo.isEMAProduct ? getValue(for: Constants.vaccineCompleteEndDays_EMA)?.intValue : 0
-        }
-    }
- 
-    public override func extDaysForCompleteDose(_ vaccinationInfo: VaccinationInfo) -> Int? {
-        if vaccinationInfo.isIT {
-            return endDaysForCompleteDose(vaccinationInfo)
-        } else {
-            return getValue(for: Constants.vaccineCompleteExtendedDays_EMA)?.intValue
-        }
-    }
-    
-    public override func extDaysForBoosterDose(_ vaccinationInfo: VaccinationInfo) -> Int? {
-        if vaccinationInfo.isIT {
-            return endDaysForBoosterDose(vaccinationInfo)
-        } else {
-            return getValue(for: Constants.vaccineBoosterEndDays_NOT_IT)?.intValue
-        }
+    public override func endDaysSettingNameForCompleteDose(_ vaccinationInfo: VaccinationInfo) -> String {
+        return Constants.vaccineCompleteEndDays_IT
     }
     
 }
@@ -283,25 +209,9 @@ class VaccineBoosterValidator: VaccineReinforcedValidator {
         return vaccinationInfo.isCurrentDoseComplete ? .verificationIsNeeded : .notValid
     }
     
-    public override func endDaysForCompleteDose(_ vaccinationInfo: VaccinationInfo) -> Int? {
-        if vaccinationInfo.isIT {
-            return getValue(for: Constants.vaccineCompleteEndDays_IT)?.intValue
-        } else {
-            return startDaysForCompleteDose(vaccinationInfo)
-        }
-    }
- 
-    public override func extDaysForCompleteDose(_ vaccinationInfo: VaccinationInfo) -> Int? {
-        if vaccinationInfo.isIT {
-            return endDaysForCompleteDose(vaccinationInfo)
-        } else {
-            return getValue(for: Constants.vaccineCompleteEndDays_EMA)?.intValue
-        }
-    }
-    
 }
 
-class VaccineSchoolValidator: VaccineBaseValidator {
+class VaccineSchoolValidator: VaccineReinforcedValidator {
 	
 	override func validate(hcert: HCert) -> Status {
         guard let vaccinationInfo = getVaccinationData(hcert) else { return .notValid }
@@ -312,43 +222,45 @@ class VaccineSchoolValidator: VaccineBaseValidator {
 	}
     
     
-    public override func endDaysForCompleteDose(_ vaccinationInfo: VaccinationInfo) -> Int? {
-        return getValue(for: Constants.vaccineSchoolEndDays)?.intValue
+    public override func endDaysSettingNameForCompleteDose(_ vaccinationInfo: VaccinationInfo) -> String {
+        return Constants.vaccineSchoolEndDays
     }
     
 }
 
 
-class VaccineWorkValidator: VaccineReinforcedValidator {
+class VaccineWorkValidator: VaccineBaseValidator {
     
-    public override func endDaysForCompleteDose(_ vaccinationInfo: VaccinationInfo) -> Int? {
+    public override func startDaysSettingNameForBoosterDose(vaccinationInfo: VaccinationInfo) -> String {
         if (vaccinationInfo.isIT) {
-            return super.endDaysForCompleteDose(vaccinationInfo)
+            return Constants.vaccineBoosterStartDays_IT //180 days
         } else {
-            guard !vaccinationInfo.patientOver50 else { return super.endDaysForCompleteDose(vaccinationInfo) }
-            return getValue(for: Constants.vaccineCompleteEndDays_NOT_IT)?.intValue
+            return vaccinationInfo.patientOver50 ? Constants.vaccineBoosterStartDays_IT : Constants.vaccineBoosterStartDays_NOT_IT // 270 days
         }
     }
     
-}
-
-
-class VaccineItalyEntryValidator: VaccineBaseValidator {
-    
-    override func validate(hcert: HCert) -> Status {
-        guard let vaccinationInfo = getVaccinationData(hcert) else { return .notValid }
-        let result = super.checkVaccinationInterval(vaccinationInfo)
-        guard result == .valid else { return result }
-        return .notValid
+    public override func startDaysSettingNameForCompleteDose(vaccinationInfo: VaccinationInfo) -> String {
+        if (vaccinationInfo.isIT) {
+            return Constants.vaccineCompleteStartDays_IT
+        } else {
+            return vaccinationInfo.patientOver50 ? Constants.vaccineCompleteStartDays_IT : Constants.vaccineCompleteStartDays_NOT_IT
+        }
     }
     
-    public override func endDaysForCompleteDose(_ vaccinationInfo: VaccinationInfo) -> Int? {
-        let setting = Constants.vaccineCompleteEndDays_IT
-        return self.getValue(for: setting)?.intValue
+    public override func endDaysSettingNameForBoosterDose(_ vaccinationInfo: VaccinationInfo) -> String {
+        if (vaccinationInfo.isIT) {
+            return Constants.vaccineBoosterEndDays_IT
+        } else {
+            return vaccinationInfo.patientOver50 ? Constants.vaccineBoosterEndDays_IT : Constants.vaccineBoosterEndDays_NOT_IT
+        }
     }
     
-    public override func endDaysForBoosterDose(_ vaccinationInfo: VaccinationInfo) -> Int? {
-        let setting = Constants.vaccineBoosterEndDays_IT
-        return self.getValue(for: setting)?.intValue
+    public override func endDaysSettingNameForCompleteDose(_ vaccinationInfo: VaccinationInfo) -> String {
+        if (vaccinationInfo.isIT) {
+            return Constants.vaccineCompleteEndDays_IT
+        } else {
+            return vaccinationInfo.patientOver50 ? Constants.vaccineCompleteEndDays_IT : Constants.vaccineBoosterEndDays_NOT_IT
+        }
     }
+    
 }

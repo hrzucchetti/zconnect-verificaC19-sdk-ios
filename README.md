@@ -69,6 +69,7 @@ Use this function to choose what scan mode is enabled:
 - scanMode3G = Green Pass "base"
 - scanMode2G = Green Pass "rafforzato"
 - scanModeBooster = Green Pass "rafforzato" + test o dose booster
+- scanModeSchool = Green Pass with school rules
 ```swift
     CertificateValidator.setScanMode(.scanMode2G)
 ```

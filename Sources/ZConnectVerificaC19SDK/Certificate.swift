@@ -33,6 +33,12 @@ public class Certificate {
     
     public var lastName: String? { cert?.lastName }
     
+    public var standardizedLastName: String? { cert?.standardizedLastName }
+
+    public var standardizedFirstName: String? { cert?.standardizedFirstName }
+
+    public var fullName: String? { cert?.fullName }
+    
     public var dateOfBirth: Date? {
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale.current

@@ -1,14 +1,14 @@
 /*
  *  license-start
- *
+ *  
  *  Copyright (C) 2021 Ministero della Salute and all other contributors
- *
+ *  
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
  *  You may obtain a copy of the License at
- *
+ *  
  *      http://www.apache.org/licenses/LICENSE-2.0
- *
+ *  
  *  Unless required by applicable law or agreed to in writing, software
  *  distributed under the License is distributed on an "AS IS" BASIS,
  *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -112,28 +112,17 @@ class RecoverySchoolValidator: RecoveryBaseValidator {
     }
     
     override func getEndDays(from hcert: HCert) -> Int? {
-        var endDaysConfig = Constants.recoverySchoolEndDays
-        if isSpecialRecovery(hcert: hcert) {
-            endDaysConfig = Constants.recoverySpecialEndDays
-        }
+        let endDaysConfig = Constants.recoverySchoolEndDays
         return getValue(for: endDaysConfig)?.intValue
     }
     
     override func validityEnd(_ hcert: HCert, dateFrom: Date, dateUntil: Date, additionalDays: Int) -> Date? {
-        if isSpecialRecovery(hcert: hcert) {
-            guard let validityExtension = dateFrom.add(additionalDays, ofType: .day) else { return nil }
-            return validityExtension
-        }
-        else {
-            guard let recoveryDateFirstPositive = hcert.recoveryDateFirstPositive?.toRecoveryDate else { return nil }
-            guard let validityExtension = recoveryDateFirstPositive.add(additionalDays, ofType: .day) else { return nil }
-            return validityExtension
-        }
+        guard let recoveryDateFirstPositive = hcert.recoveryDateFirstPositive?.toRecoveryDate else { return nil }
+        guard let validityExtension = recoveryDateFirstPositive.add(additionalDays, ofType: .day) else { return nil }
+        return dateUntil < validityExtension ? dateUntil : validityExtension
     }
     
 }
 
 class RecoveryWorkValidator: RecoveryReinforcedValidator {}
 
-
-class RecoveryItalyEntryValidator: RecoveryBaseValidator {}

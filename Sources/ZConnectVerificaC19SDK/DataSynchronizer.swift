@@ -30,18 +30,23 @@ public struct SdkOutdatedError : Error {
 }
 
 public class DataSynchronizer {
+    private var completionQueue: DispatchQueue = .main
     private var completion: ((SyncResult) -> Void)?
     public init(){
     }
     /**
      Synchronizes data from backend
      Ensure you are calling this method at least every 24 hours to keep rules settings and signature keys up to date
-     - Parameter completion: Completion method that will be called with a resul when synchronization ends
+     - Parameter completionQueue: The DispatchQueue where the completion will be executed
+     - Parameter completion: Completion method that will be called with a result when synchronization ends
      */
-    public func sync(completion: @escaping (SyncResult) -> Void) {
+    public func sync(completionQueue: DispatchQueue = .main, completion: @escaping (SyncResult) -> Void) {
+        self.completionQueue = completionQueue
         self.completion = completion
         guard !isSdkVersionOutdated() else {
-            completion(.sdkOutdated)
+            completionQueue.async {
+                completion(.sdkOutdated)
+            }
             return
         }
         GatewayConnection.shared.initialize { [weak self] in self?.load(completion: completion) }
@@ -57,9 +62,11 @@ public class DataSynchronizer {
             GatewayConnection.shared.settings { _ in }
         }
         LocalData.initialize {
-            GatewayConnection.shared.update { errorString in
+            GatewayConnection.shared.update { [weak self] errorString in
                 if let error = errorString {
-                    completion(.error(error: error))
+                    self?.completionQueue.async {
+                        completion(.error(error: error))
+                    }
                     return
                 }
                 CRLDataStorage.initialize {
@@ -90,16 +97,22 @@ public class DataSynchronizer {
 extension DataSynchronizer : CRLSynchronizationDelegate {
     func statusDidChange(with result: CRLSynchronizationManager.Result) {
         switch result {
-        case .downloading:
-            break
-        case .downloadReady, .paused:
-            CRLSynchronizationManager.shared.download()
-        case .completed:
-            LocalData.sharedInstance.lastFetch = Date()
-            LocalData.sharedInstance.save()
-            self.completion?(.updated)
-        case .error, .statusNetworkError:
-            self.completion?(.error(error: ""))
+            case .downloading:
+                break
+            case .downloadReady, .paused:
+                CRLSynchronizationManager.shared.download()
+            case .completed:
+                LocalData.sharedInstance.lastFetch = Date()
+                LocalData.sharedInstance.save()
+                completionQueue.async {
+                    [weak self] in
+                    self?.completion?(.updated)
+                }
+            case .error, .statusNetworkError:
+                completionQueue.async {
+                    [weak self] in
+                    self?.completion?(.error(error: ""))
+                }
         }
     }
 }

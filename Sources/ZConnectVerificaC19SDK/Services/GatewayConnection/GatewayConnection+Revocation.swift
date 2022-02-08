@@ -65,7 +65,7 @@ extension GatewayConnection {
         let versionString: Int = version ?? 0
         let chunkString: Int = chunk ?? 1
         
-        session.request("\(revocationUrl)?version=\(versionString)&chunk=\(chunkString)").response {
+        session.request("\(revocationUrl)?version=\(versionString)&chunk=\(chunkString)").response(queue: serialQueue) {
             //  Were the response to be `nil` (AFRequest failed, see $0.result),
             //  it'd be okay for it to be handled just like a statusCode 408.
             let responseStatusCode = $0.response?.statusCode ?? 408
@@ -100,7 +100,7 @@ extension GatewayConnection {
         let versionString: Int = version ?? 0
         let chunkString: Int = chunk ?? 1
         
-        session.request("\(statusUrl)?version=\(versionString)&chunk=\(chunkString)").response {
+        session.request("\(statusUrl)?version=\(versionString)&chunk=\(chunkString)").response(queue: serialQueue) {
             // Were the response to be `nil`, it'd okay for it to be handled just like a statusCode 400.
             let responseStatusCode = $0.response?.statusCode ?? 408
             

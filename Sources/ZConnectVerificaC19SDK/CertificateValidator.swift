@@ -27,6 +27,7 @@ public enum ScanMode {
     case scanMode3G
     case scanMode2G
     case scanModeBooster
+    case scanModeSchool
 }
 
 public class CertificateValidator {
@@ -40,6 +41,8 @@ public class CertificateValidator {
             Store.set(Constants.scanMode2G, for: .scanMode)
         case .scanModeBooster:
             Store.set(Constants.scanModeBooster, for: .scanMode)
+        case .scanModeSchool:
+            Store.set(Constants.scanModeSchool, for: .scanMode)
         }
     }
     

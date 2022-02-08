@@ -29,9 +29,6 @@ import SwiftyJSON
 
 
 struct VaccineExemptionEntry : HCertEntry {
-    var walletInfo: [InfoSection] {
-        return []
-    }
     
     var info: [InfoSection] {
         return []
@@ -42,6 +39,10 @@ struct VaccineExemptionEntry : HCertEntry {
     }
     
     var validityFailures: [String] {
+        return []
+    }
+    
+    var walletInfo: [InfoSection] {
         return []
     }
     
