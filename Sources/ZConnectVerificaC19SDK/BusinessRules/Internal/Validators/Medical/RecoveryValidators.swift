@@ -112,17 +112,28 @@ class RecoverySchoolValidator: RecoveryBaseValidator {
     }
     
     override func getEndDays(from hcert: HCert) -> Int? {
-        let endDaysConfig = Constants.recoverySchoolEndDays
+        var endDaysConfig = Constants.recoverySchoolEndDays
+        if isSpecialRecovery(hcert: hcert) {
+            endDaysConfig = Constants.recoverySpecialEndDays
+        }
         return getValue(for: endDaysConfig)?.intValue
     }
     
     override func validityEnd(_ hcert: HCert, dateFrom: Date, dateUntil: Date, additionalDays: Int) -> Date? {
-        guard let recoveryDateFirstPositive = hcert.recoveryDateFirstPositive?.toRecoveryDate else { return nil }
-        guard let validityExtension = recoveryDateFirstPositive.add(additionalDays, ofType: .day) else { return nil }
-        return dateUntil < validityExtension ? dateUntil : validityExtension
+        if isSpecialRecovery(hcert: hcert) {
+            guard let validityExtension = dateFrom.add(additionalDays, ofType: .day) else { return nil }
+            return validityExtension
+        }
+        else {
+            guard let recoveryDateFirstPositive = hcert.recoveryDateFirstPositive?.toRecoveryDate else { return nil }
+            guard let validityExtension = recoveryDateFirstPositive.add(additionalDays, ofType: .day) else { return nil }
+            return validityExtension
+        }
     }
     
 }
 
 class RecoveryWorkValidator: RecoveryReinforcedValidator {}
 
+
+class RecoveryItalyEntryValidator: RecoveryBaseValidator {}

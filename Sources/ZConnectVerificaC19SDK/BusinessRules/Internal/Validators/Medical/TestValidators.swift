@@ -99,3 +99,5 @@ class TestWorkValidator: TestBaseValidator {
     }
     
 }
+
+class TestItalyEntryValidator: TestBaseValidator {}
