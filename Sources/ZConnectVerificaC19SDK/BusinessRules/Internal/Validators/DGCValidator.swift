@@ -59,7 +59,7 @@ extension DGCValidator {
         case validityStart...validityEnd:
             return .valid
         default:
-            return .notValid
+            return .expired
         }
     }
     
@@ -72,7 +72,7 @@ extension DGCValidator {
         case validityEnd...validityEndExtension:
             return .verificationIsNeeded
         default:
-            return .notValid
+            return .expired
         }
     }
         
