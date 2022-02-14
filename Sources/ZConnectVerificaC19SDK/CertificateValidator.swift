@@ -29,24 +29,25 @@ public enum ScanMode {
     case scanModeBooster
     case scanModeSchool
     case scanModeWork
+    case scanModeItalyEntry
 }
 
 public class CertificateValidator {
     private let certificate: Certificate?
+    private static let scanModeMapping: [ScanMode: String] = [
+        .scanMode2G : Constants.scanMode2G,
+        .scanMode3G : Constants.scanMode3G,
+        .scanModeBooster : Constants.scanModeBooster,
+        .scanModeSchool : Constants.scanModeSchool,
+        .scanModeWork : Constants.scanMode50,
+        .scanModeItalyEntry : Constants.scanModeItalyEntry
+    ]
 
     public static func setScanMode(_ scanMode: ScanMode) {
-        switch scanMode {
-        case .scanMode3G:
-            Store.set(Constants.scanMode3G, for: .scanMode)
-        case .scanMode2G:
-            Store.set(Constants.scanMode2G, for: .scanMode)
-        case .scanModeBooster:
-            Store.set(Constants.scanModeBooster, for: .scanMode)
-        case .scanModeSchool:
-            Store.set(Constants.scanModeSchool, for: .scanMode)
-        case .scanModeWork:
-            Store.set(Constants.scanMode50, for: .scanMode)
+        guard let mapScanMode = scanModeMapping[scanMode] else {
+            return
         }
+        Store.set(mapScanMode, for: .scanMode)
     }
     
     @available(*, deprecated, message: "Use setScanMode function instead")
