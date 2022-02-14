@@ -33,9 +33,9 @@ class VaccineExemptionBaseValidator: DGCValidator {
         guard let dateFrom = exemption.dateFrom else { return .notValid }
         guard let currentDate = Date.startOfDay else { return .notValid }
         guard let dateUntil = exemption.dateUntil else {
-            return VaccineExemptionBaseValidator.validate(currentDate, from: dateFrom)
+            return self.validate(currentDate, from: dateFrom)
         }
-        return VaccineExemptionBaseValidator.validate(currentDate, from: dateFrom, to: dateUntil)
+        return self.validate(currentDate, from: dateFrom, to: dateUntil)
     }
  
 }
@@ -56,4 +56,17 @@ class VaccineExemptionSchoolValidator: VaccineExemptionBaseValidator {}
 
 class VaccineExemptionWorkValidator: VaccineExemptionBaseValidator {}
 
-
+class VaccineExemptionItalyEntryValidator: VaccineExemptionBaseValidator {
+    
+    override func validate(hcert: HCert) -> Status {
+        let result = super.validate(hcert: hcert)
+        switch result {
+        case .expired:
+            return .expired
+        case .notValidYet:
+            return .notValidYet
+        default:
+            return .notValid
+        }
+    }
+}

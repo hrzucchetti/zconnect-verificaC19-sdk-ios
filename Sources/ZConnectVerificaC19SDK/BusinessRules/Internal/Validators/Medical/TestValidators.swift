@@ -28,7 +28,7 @@ import SwiftDGC
 
 class TestBaseValidator: DGCValidator {
     
-    private func isTestDateValid(_ hcert: HCert) -> Status {
+    fileprivate func isTestDateValid(_ hcert: HCert) -> Status {
         guard hcert.isKnownTestType else { return .notValid }
         
         let startHours = getStartHours(for: hcert)
@@ -42,7 +42,7 @@ class TestBaseValidator: DGCValidator {
         guard let validityStart = dateTime.add(start, ofType: .hour) else { return .notValid }
         guard let validityEnd = dateTime.add(end, ofType: .hour) else { return .notValid }
     
-        return TestBaseValidator.validate(Date(), from: validityStart, to: validityEnd)
+        return self.validate(Date(), from: validityStart, to: validityEnd)
     }
     
     private func isTestNegative(_ hcert: HCert) -> Status {
@@ -79,19 +79,34 @@ class TestBaseValidator: DGCValidator {
     
 }
 
-class TestReinforcedValidator: AlwaysNotValid {}
+class TestReinforcedValidator: TestBaseValidator {
+    
+    override func validate(hcert: HCert) -> Status {
+        let result = isTestDateValid(hcert)
+        switch result {
+        case .expired:
+            return .expired
+        case .notValidYet:
+            return .notValidYet
+        default:
+            return .notValid
+        }
+    }
+}
 
-class TestBoosterValidator: AlwaysNotValid {}
+class TestBoosterValidator: TestReinforcedValidator {}
 
-class TestSchoolValidator: AlwaysNotValid {}
+class TestSchoolValidator: TestReinforcedValidator {}
 
 class TestWorkValidator: TestBaseValidator {
     
     override func validate(hcert: HCert) -> Status {
+        let result = super.validate(hcert: hcert)
+        guard result != .expired else { return .expired }
+        guard result != .notValidYet else { return .notValidYet }
         guard !isOver50(hcert) else { return .notValid }
-        return super.validate(hcert: hcert)
+        return result
     }
-    
     
     private func isOver50 (_ hcert: HCert) -> Bool {
         guard let age = hcert.age else { return false }
@@ -99,3 +114,5 @@ class TestWorkValidator: TestBaseValidator {
     }
     
 }
+
+class TestItalyEntryValidator: TestBaseValidator {}

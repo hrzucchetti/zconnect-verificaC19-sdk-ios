@@ -26,6 +26,7 @@
 public enum Status {
     case valid
     case notValid
+	case expired
     case notValidYet
     case notGreenPass
     case revokedGreenPass
