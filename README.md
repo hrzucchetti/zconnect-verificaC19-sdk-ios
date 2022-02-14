@@ -64,18 +64,6 @@ Use Certificate class to get a simplified model of certificate content
 ```swift
     let certificate: Certificate? = Certificate(from: qrCodeContent)
 ```
-
-Use this function to choose what scan mode is enabled:
-- scanMode3G = Green Pass "base"
-- scanMode2G = Green Pass "rafforzato"
-- scanModeBooster = Green Pass "rafforzato" + test o dose booster
-- scanModeSchool = Green Pass with school rules
-- scanModeWork = Green Pass with work rules (Tests not valid for over 50)
-- scanModeItalyEntry = Green Pass with European rules for movement between EU members states
-```swift
-    CertificateValidator.setScanMode(.scanMode2G)
-```
-
 Use CertificateValidator class to get a simplified status of given certificate. CertificateValidator can be instantiated by one of the following initializers
 ```swift
     let validator = CertificateValidator(payload: qrCodeContent)
@@ -83,15 +71,21 @@ Use CertificateValidator class to get a simplified status of given certificate. 
     let validator = CertificateValidator(certificate: certificate!)
 ```    
 
-Call validate method and give a success handler to get the certificate status
+Call validate method and give one of the following scan mode and success handler to get the certificate status
+
+- scanMode3G = Green Pass "base"
+- scanMode2G = Green Pass "rafforzato"
+- scanModeBooster = Green Pass "rafforzato" + test o dose booster
+- scanModeWork = Green Pass with work rules (Tests not valid for over 50)
+- scanModeItalyEntry = Green Pass with European rules for movement between EU members states
 ```swift
-    validator.validate(onSuccessHandler: { status in
+    validator.validate(scanMode: .scanModeWork, onSuccessHandler: { status in
         switch status {
         case .valid:
-            //is valid
+            //certificate is valid
             break
         case .notValid, .notGreenPass:
-            //not is valid
+            //certificate is not valid
             break
         }
     })

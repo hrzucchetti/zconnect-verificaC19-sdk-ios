@@ -23,37 +23,28 @@ public struct InvalidCertificateError : Error {
     
 }
 
+public struct InvalidScanModeError : Error {
+    
+}
+
 public enum ScanMode {
     case scanMode3G
     case scanMode2G
     case scanModeBooster
-    case scanModeSchool
     case scanModeWork
     case scanModeItalyEntry
 }
 
 public class CertificateValidator {
-    private let certificate: Certificate?
-    private static let scanModeMapping: [ScanMode: String] = [
-        .scanMode2G : Constants.scanMode2G,
-        .scanMode3G : Constants.scanMode3G,
-        .scanModeBooster : Constants.scanModeBooster,
-        .scanModeSchool : Constants.scanModeSchool,
-        .scanModeWork : Constants.scanMode50,
-        .scanModeItalyEntry : Constants.scanModeItalyEntry
+    private let scanModeMapping: [ScanMode: ScanModeInternal] = [
+        .scanMode2G : .reinforced,
+        .scanMode3G : .base,
+        .scanModeBooster : .booster,
+        .scanModeWork : .work,
+        .scanModeItalyEntry : .italyEntry
     ]
-
-    public static func setScanMode(_ scanMode: ScanMode) {
-        guard let mapScanMode = scanModeMapping[scanMode] else {
-            return
-        }
-        Store.set(mapScanMode, for: .scanMode)
-    }
     
-    @available(*, deprecated, message: "Use setScanMode function instead")
-    public static func setScanMode2GActive(_ scanMode2GActive: Bool) {
-        setScanMode(.scanMode2G)
-    }
+    private let certificate: Certificate?
     
     public init?(payload: String) {
         certificate = Certificate(from: payload)
@@ -63,23 +54,25 @@ public class CertificateValidator {
         self.certificate = certificate
     }
     
-    public func validate(onSuccessHandler: @escaping (Status) -> Void, onFailureHandler: ((Error) -> Void)? = nil)
-    {
+    public func validate(scanMode: ScanMode, onSuccessHandler: @escaping (Status) -> Void, onFailureHandler: ((Error) -> Void)? = nil) {
         guard let certificate = certificate else {
             onFailureHandler?(InvalidCertificateError())
             return
         }
-
         guard !DataSynchronizer().isSdkVersionOutdated() else {
             onFailureHandler?(SdkOutdatedError())
             return
         }
+        guard let mode = self.scanModeMapping[scanMode] else {
+            onFailureHandler?(InvalidScanModeError())
+            return
+        }
+        guard let hCert = certificate.cert else {
+            onSuccessHandler(.notGreenPass)
+            return
+        }
         DispatchQueue.global(qos: .userInteractive).async {
-            let savedScanMode: String = Store.get(key: .scanMode) ?? ""
-            if let mode = ScanModeInternal.init(rawValue: savedScanMode),
-               let hCert = certificate.cert,
-               let validator = DGCValidatorBuilder().scanMode(mode).build(hCert: hCert) {
-                
+            if let validator = DGCValidatorBuilder().scanMode(mode).build(hCert: hCert) {
                 let status = validator.validate(hcert: hCert)
             
                 var resolvedStatus: Status = .notGreenPass
@@ -97,11 +90,30 @@ public class CertificateValidator {
                     onSuccessHandler(resolvedStatus)
                 }
             }
-            else {
-                DispatchQueue.main.async {
-                    onSuccessHandler(.notGreenPass)
-                }
-            }
         }
+    }
+    
+    @available(*, deprecated, message: "Use validate with scanMode function instead")
+    public func validate(onSuccessHandler: @escaping (Status) -> Void, onFailureHandler: ((Error) -> Void)? = nil)
+    {
+        guard let scanMode = CertificateValidator.defaultScanMode else {
+            onFailureHandler?(InvalidScanModeError())
+            return
+        }
+        validate(scanMode: scanMode, onSuccessHandler: onSuccessHandler, onFailureHandler: onFailureHandler)
+    }
+}
+
+extension CertificateValidator {
+    private static var defaultScanMode: ScanMode?
+    
+    @available(*, deprecated, message: "Use validate with scanMode function instead")
+    public static func setScanMode(_ scanMode: ScanMode) {
+        defaultScanMode = scanMode
+    }
+    
+    @available(*, deprecated, message: "Use setScanMode function instead")
+    public static func setScanMode2GActive(_ scanMode2GActive: Bool) {
+        setScanMode(.scanMode2G)
     }
 }
