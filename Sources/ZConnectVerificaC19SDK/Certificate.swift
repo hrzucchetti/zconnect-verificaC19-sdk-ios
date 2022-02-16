@@ -32,12 +32,14 @@ public class Certificate {
     public var firstName: String? { cert?.firstName }
     
     public var lastName: String? { cert?.lastName }
+
+    public var standardizedFirstName: String? { cert?.standardizedFirstName }
     
     public var standardizedLastName: String? { cert?.standardizedLastName }
 
-    public var standardizedFirstName: String? { cert?.standardizedFirstName }
-
     public var fullName: String? { cert?.fullName }
+    
+    public var fullName2: String? { cert?.name }
     
     public var dateOfBirth: Date? {
         let dateFormatter = DateFormatter()

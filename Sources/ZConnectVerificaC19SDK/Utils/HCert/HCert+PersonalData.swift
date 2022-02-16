@@ -28,15 +28,20 @@ import SwiftDGC
 
 extension HCert {
     
-    var name: String { lastName + " " + firstName }
+    var name: String {
+        guard !lastName.isEmpty else {
+            return "\(standardizedLastName) \(standardizedFirstName) \(firstName)"
+        }
+        return "\(lastName) \(firstName)"
+    }
     
     var firstName: String { body["nam"]["gn"].string ?? "" }
     
     var lastName: String { body["nam"]["fn"].string ?? "" }
     
-    var standardizedLastName: String { body["nam"]["fnt"].string ?? "" }
-    
     var standardizedFirstName: String { body["nam"]["gnt"].string ?? "" }
+    
+    var standardizedLastName: String { body["nam"]["fnt"].string ?? "" }
 	
 	/// Maps `HCert`'s `dob` field (yyyy-MM-dd format) to a dd/MM/yyyy format.
     var birthDate: String {
