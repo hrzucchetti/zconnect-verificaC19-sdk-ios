@@ -14,7 +14,6 @@
 		1E2F6078273DD034004B512E /* GatewayConnection+Revocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2F6077273DD034004B512E /* GatewayConnection+Revocation.swift */; };
 		1E2F607A273DD058004B512E /* CRLDataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2F6079273DD058004B512E /* CRLDataStorage.swift */; };
 		1E2F6086273DD08C004B512E /* CRLProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2F607C273DD08C004B512E /* CRLProgress.swift */; };
-		1E2F6087273DD08C004B512E /* Link.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2F607D273DD08C004B512E /* Link.swift */; };
 		1E2F6088273DD08C004B512E /* Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2F607E273DD08C004B512E /* Status.swift */; };
 		1E2F6089273DD08C004B512E /* RevokedDCC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2F6080273DD08C004B512E /* RevokedDCC.swift */; };
 		1E2F608A273DD08C004B512E /* CRLStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2F6082273DD08C004B512E /* CRLStatus.swift */; };
@@ -62,7 +61,6 @@
 		1EAF83B4273C53570010939D /* String+Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EAF8382273C53570010939D /* String+Date.swift */; };
 		1EAF83B5273C53570010939D /* Date+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EAF8383273C53570010939D /* Date+Utils.swift */; };
 		1EAF83B6273C53570010939D /* LocalData+Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EAF8385273C53570010939D /* LocalData+Setting.swift */; };
-		1EAF83B7273C53570010939D /* Link+Values.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EAF8386273C53570010939D /* Link+Values.swift */; };
 		1EAF83B9273C53570010939D /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EAF8389273C53570010939D /* Cache.swift */; };
 		1EAF83BA273C53570010939D /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EAF838A273C53570010939D /* Observable.swift */; };
 		1EAF83BB273C53570010939D /* String+Int.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EAF838C273C53570010939D /* String+Int.swift */; };
@@ -98,7 +96,6 @@
 		1E2F6077273DD034004B512E /* GatewayConnection+Revocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "GatewayConnection+Revocation.swift"; sourceTree = "<group>"; };
 		1E2F6079273DD058004B512E /* CRLDataStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CRLDataStorage.swift; sourceTree = "<group>"; };
 		1E2F607C273DD08C004B512E /* CRLProgress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CRLProgress.swift; sourceTree = "<group>"; };
-		1E2F607D273DD08C004B512E /* Link.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Link.swift; sourceTree = "<group>"; };
 		1E2F607E273DD08C004B512E /* Status.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Status.swift; sourceTree = "<group>"; };
 		1E2F6080273DD08C004B512E /* RevokedDCC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RevokedDCC.swift; sourceTree = "<group>"; };
 		1E2F6082273DD08C004B512E /* CRLStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CRLStatus.swift; sourceTree = "<group>"; };
@@ -147,7 +144,6 @@
 		1EAF8382273C53570010939D /* String+Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Date.swift"; sourceTree = "<group>"; };
 		1EAF8383273C53570010939D /* Date+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+Utils.swift"; sourceTree = "<group>"; };
 		1EAF8385273C53570010939D /* LocalData+Setting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "LocalData+Setting.swift"; sourceTree = "<group>"; };
-		1EAF8386273C53570010939D /* Link+Values.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Link+Values.swift"; sourceTree = "<group>"; };
 		1EAF8389273C53570010939D /* Cache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
 		1EAF838A273C53570010939D /* Observable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		1EAF838C273C53570010939D /* String+Int.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Int.swift"; sourceTree = "<group>"; };
@@ -195,7 +191,6 @@
 			children = (
 				1E73F73C27AB28770053AC0D /* ScanMode.swift */,
 				1E2F607C273DD08C004B512E /* CRLProgress.swift */,
-				1E2F607D273DD08C004B512E /* Link.swift */,
 				1E2F607E273DD08C004B512E /* Status.swift */,
 			);
 			path = Internal;
@@ -360,7 +355,6 @@
 			isa = PBXGroup;
 			children = (
 				1EAF8385273C53570010939D /* LocalData+Setting.swift */,
-				1EAF8386273C53570010939D /* Link+Values.swift */,
 			);
 			path = ModelExtensions;
 			sourceTree = "<group>";
@@ -570,7 +564,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				1E73F73327AB28190053AC0D /* HCertValidator.swift in Sources */,
-				1E2F6087273DD08C004B512E /* Link.swift in Sources */,
 				1E2F60B0273DD736004B512E /* CRLSynchronizationManager.swift in Sources */,
 				1E5A722527A92DBE00CB8155 /* VaccineExemptionValidityCheck.swift in Sources */,
 				1EAF83BC273C53570010939D /* String+Char.swift in Sources */,
@@ -624,7 +617,6 @@
 				1E2F60A0273DD0C6004B512E /* Double+String.swift in Sources */,
 				1E0DC1DD27455BCC002FC981 /* Constants.swift in Sources */,
 				1EAF83B9273C53570010939D /* Cache.swift in Sources */,
-				1EAF83B7273C53570010939D /* Link+Values.swift in Sources */,
 				1E2F60A8273DD0C6004B512E /* PerformanceLog.swift in Sources */,
 				1EAF83B1273C53570010939D /* Date.swift in Sources */,
 				1EAF83C9273C53570010939D /* TestValidityCheck.swift in Sources */,
