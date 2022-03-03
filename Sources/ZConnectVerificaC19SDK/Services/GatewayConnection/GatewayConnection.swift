@@ -51,6 +51,8 @@ class GatewayConnection {
     
     static let shared = GatewayConnection()
     
+    let sdkUserAgent : HTTPHeader = .userAgent("\(SDKConfig.SDKName)-\(SDKConfig.SDKTechnology)/\(SDKConfig.SDKVersion)")
+    
     private init() {
         baseUrl = SDKConfig.baseUrl
         /*certificateFilename = SDKConfig.certificateFilename
@@ -65,7 +67,9 @@ class GatewayConnection {
         let evaluators = [certificateEvaluator: PinnedCertificatesTrustEvaluator(certificates: [certificate])]
 //        session = AF
          session = Session(serverTrustManager: ServerTrustManager(evaluators: evaluators))*/
-        session = Session()
+        let configuration = URLSessionConfiguration.af.default
+        configuration.headers.add(sdkUserAgent)
+        session = Session(configuration: configuration)
     }
 
     func initialize(completion: (()->())? = nil) {
