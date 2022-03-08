@@ -49,6 +49,7 @@
 		1E73F73927AB28190053AC0D /* UnknownValidators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E73F72327AB28190053AC0D /* UnknownValidators.swift */; };
 		1E73F73A27AB28190053AC0D /* DGCValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E73F72427AB28190053AC0D /* DGCValidator.swift */; };
 		1E73F73D27AB28770053AC0D /* ScanMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E73F73C27AB28770053AC0D /* ScanMode.swift */; };
+		1E76ACFF27D7849300078C8F /* TestOnlyValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E76ACFE27D7849300078C8F /* TestOnlyValidator.swift */; };
 		1E80D59A273C881400ED28B1 /* SDKConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E80D596273C881400ED28B1 /* SDKConfig.swift */; };
 		1E80D59B273C881400ED28B1 /* sdkConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1E80D598273C881400ED28B1 /* sdkConfig.plist */; };
 		1E80D59C273C881400ED28B1 /* get-dgc-gov-it.der in Resources */ = {isa = PBXBuildFile; fileRef = 1E80D599273C881400ED28B1 /* get-dgc-gov-it.der */; };
@@ -131,6 +132,7 @@
 		1E73F72327AB28190053AC0D /* UnknownValidators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnknownValidators.swift; sourceTree = "<group>"; };
 		1E73F72427AB28190053AC0D /* DGCValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DGCValidator.swift; sourceTree = "<group>"; };
 		1E73F73C27AB28770053AC0D /* ScanMode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanMode.swift; sourceTree = "<group>"; };
+		1E76ACFE27D7849300078C8F /* TestOnlyValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestOnlyValidator.swift; sourceTree = "<group>"; };
 		1E80D596273C881400ED28B1 /* SDKConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SDKConfig.swift; sourceTree = "<group>"; };
 		1E80D598273C881400ED28B1 /* sdkConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = sdkConfig.plist; sourceTree = "<group>"; };
 		1E80D599273C881400ED28B1 /* get-dgc-gov-it.der */ = {isa = PBXFileReference; lastKnownFileType = file; path = "get-dgc-gov-it.der"; sourceTree = "<group>"; };
@@ -262,6 +264,7 @@
 				1E73F71D27AB28190053AC0D /* HCertValidator.swift */,
 				1E73F71E27AB28190053AC0D /* RevocationValidator.swift */,
 				1E73F72027AB28190053AC0D /* DGCValidatorBuilder.swift */,
+				1E76ACFE27D7849300078C8F /* TestOnlyValidator.swift */,
 				1E73F72127AB28190053AC0D /* BlackListValidator.swift */,
 				1E73F72327AB28190053AC0D /* UnknownValidators.swift */,
 				1E73F72427AB28190053AC0D /* DGCValidator.swift */,
@@ -635,6 +638,7 @@
 				1E73F73227AB28190053AC0D /* ChainValidator.swift in Sources */,
 				1E73F73A27AB28190053AC0D /* DGCValidator.swift in Sources */,
 				1E2F60A4273DD0C6004B512E /* Double+Bytes.swift in Sources */,
+				1E76ACFF27D7849300078C8F /* TestOnlyValidator.swift in Sources */,
 				1E2F608D273DD08C004B512E /* CRL.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

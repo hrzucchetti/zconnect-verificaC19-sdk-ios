@@ -160,7 +160,7 @@ class CRLSynchronizationManager {
     }
     
     func handleRetry() {
-		self.crlFailCounter -= 1
+        self.crlFailCounter -= 1
         if self.crlFailCounter < 0 {
             log("failed too many times")
             if progress.remainingSize == "0.00" || progress.remainingSize == "" {
@@ -178,9 +178,9 @@ class CRLSynchronizationManager {
     }
     
     func handleStatusRetry(responseCode: Int?) {
-		if responseCode != 408 {
-			self.crlStatusFailCounter -= 1
-		}
+        if responseCode != 408 {
+            self.crlStatusFailCounter -= 1
+        }
         
         if self.crlStatusFailCounter < 0 || !Connectivity.isOnline || responseCode == 408 {
             self.delegate?.statusDidChange(with: .statusNetworkError)

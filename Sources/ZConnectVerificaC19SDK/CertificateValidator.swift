@@ -33,6 +33,8 @@ public enum ScanMode {
     case scanModeBooster
     case scanModeWork
     case scanModeItalyEntry
+    case scanModeReinforced
+    case scanModeBase
 }
 
 public class CertificateValidator {
@@ -41,7 +43,9 @@ public class CertificateValidator {
         .scanMode3G : .base,
         .scanModeBooster : .booster,
         .scanModeWork : .work,
-        .scanModeItalyEntry : .italyEntry
+        .scanModeItalyEntry : .italyEntry,
+        .scanModeBase : .base,
+        .scanModeReinforced : .reinforced
     ]
     
     private let certificate: Certificate?
