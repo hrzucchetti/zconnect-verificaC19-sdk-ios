@@ -73,13 +73,12 @@ Use CertificateValidator class to get a simplified status of given certificate. 
 
 Call validate method and give one of the following scan mode and success handler to get the certificate status
 
-- scanMode3G = Green Pass "base"
-- scanMode2G = Green Pass "rafforzato"
+- scanModeBase = Green Pass "base"
+- scanModeReinforced = Green Pass "rafforzato"
 - scanModeBooster = Green Pass "rafforzato" + test o dose booster
-- scanModeWork = Green Pass with work rules (Tests not valid for over 50)
 - scanModeItalyEntry = Green Pass with European rules for movement between EU members states
 ```swift
-    validator.validate(scanMode: .scanModeWork, onSuccessHandler: { status in
+    validator.validate(scanMode: .scanModeBase, onSuccessHandler: { status in
         switch status {
         case .valid:
             //certificate is valid
