@@ -10,6 +10,7 @@
 		1E0A4F2227720E2D000CD2EF /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 1E0A4F2127720E2D000CD2EF /* Realm */; };
 		1E0A4F2427720E2D000CD2EF /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 1E0A4F2327720E2D000CD2EF /* RealmSwift */; };
 		1E0DC1DD27455BCC002FC981 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E0DC1DC27455BCC002FC981 /* Constants.swift */; };
+		1E1C4C4F27EA36940038014E /* CustomHeaderInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E1C4C4E27EA36940038014E /* CustomHeaderInterceptor.swift */; };
 		1E22D38B274F988B007E4F3A /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E22D38A274F988B007E4F3A /* Store.swift */; };
 		1E2F6078273DD034004B512E /* GatewayConnection+Revocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2F6077273DD034004B512E /* GatewayConnection+Revocation.swift */; };
 		1E2F607A273DD058004B512E /* CRLDataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2F6079273DD058004B512E /* CRLDataStorage.swift */; };
@@ -86,6 +87,7 @@
 
 /* Begin PBXFileReference section */
 		1E0DC1DC27455BCC002FC981 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		1E1C4C4E27EA36940038014E /* CustomHeaderInterceptor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomHeaderInterceptor.swift; sourceTree = "<group>"; };
 		1E22D38A274F988B007E4F3A /* Store.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		1E2F6077273DD034004B512E /* GatewayConnection+Revocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "GatewayConnection+Revocation.swift"; sourceTree = "<group>"; };
 		1E2F6079273DD058004B512E /* CRLDataStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CRLDataStorage.swift; sourceTree = "<group>"; };
@@ -443,6 +445,7 @@
 		1EAF83A9273C53570010939D /* GatewayConnection */ = {
 			isa = PBXGroup;
 			children = (
+				1E1C4C4E27EA36940038014E /* CustomHeaderInterceptor.swift */,
 				1E2F6077273DD034004B512E /* GatewayConnection+Revocation.swift */,
 				1EAF83AA273C53570010939D /* GatewayConnection+Certificates.swift */,
 				1EAF83AB273C53570010939D /* GatewayConnection+Settings.swift */,
@@ -552,6 +555,7 @@
 				1E3DB5EE27AD6F7A00422FF3 /* VaccineValidators.swift in Sources */,
 				1E3DB5F027AD6F7A00422FF3 /* TestValidators.swift in Sources */,
 				1E2F607A273DD058004B512E /* CRLDataStorage.swift in Sources */,
+				1E1C4C4F27EA36940038014E /* CustomHeaderInterceptor.swift in Sources */,
 				1E5A722C27A92DD600CB8155 /* VaccineExemptionEntry.swift in Sources */,
 				1E2F60A2273DD0C6004B512E /* Int+Bytes.swift in Sources */,
 				1EAF83BB273C53570010939D /* String+Int.swift in Sources */,
