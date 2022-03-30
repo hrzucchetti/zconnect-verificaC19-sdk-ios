@@ -99,6 +99,6 @@ extension CertificateValidator {
     
     @available(*, deprecated, message: "Use setScanMode function instead")
     public static func setScanMode2GActive(_ scanMode2GActive: Bool) {
-        setScanMode(.scanMode2G)
+        setScanMode(.scanModeReinforced)
     }
 }

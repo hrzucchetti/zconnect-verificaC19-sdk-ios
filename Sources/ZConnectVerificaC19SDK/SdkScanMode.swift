@@ -8,8 +8,6 @@
 import Foundation
 
 public enum ScanMode {
-    case scanMode3G
-    case scanMode2G
     case scanModeBooster
     case scanModeItalyEntry
     case scanModeReinforced
@@ -18,8 +16,6 @@ public enum ScanMode {
 
 extension ScanMode {
     private static let scanModeMapping: [ScanMode: ScanModeInternal] = [
-        .scanMode2G : .reinforced,
-        .scanMode3G : .base,
         .scanModeBooster : .booster,
         .scanModeItalyEntry : .italyEntry,
         .scanModeBase : .base,
