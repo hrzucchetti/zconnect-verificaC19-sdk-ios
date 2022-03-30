@@ -11,7 +11,6 @@ public enum ScanMode {
     case scanMode3G
     case scanMode2G
     case scanModeBooster
-    case scanModeWork
     case scanModeItalyEntry
     case scanModeReinforced
     case scanModeBase
@@ -22,7 +21,6 @@ extension ScanMode {
         .scanMode2G : .reinforced,
         .scanMode3G : .base,
         .scanModeBooster : .booster,
-        .scanModeWork : .work,
         .scanModeItalyEntry : .italyEntry,
         .scanModeBase : .base,
         .scanModeReinforced : .reinforced

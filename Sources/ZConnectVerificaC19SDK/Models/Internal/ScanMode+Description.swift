@@ -18,10 +18,6 @@ extension ScanModeInternal {
             return SettingDataStorage.sharedInstance.getFirstSetting(withName: Constants.scanModeDescription2G)
         case .booster:
             return SettingDataStorage.sharedInstance.getFirstSetting(withName: Constants.scanModeDescriptionBooster)
-        case .work:
-            return ""
-        case .school:
-            return ""
         }
     }
 }
