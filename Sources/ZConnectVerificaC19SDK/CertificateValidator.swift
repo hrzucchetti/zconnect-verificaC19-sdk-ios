@@ -27,26 +27,7 @@ public struct InvalidScanModeError : Error {
     
 }
 
-public enum ScanMode {
-    case scanMode3G
-    case scanMode2G
-    case scanModeBooster
-    case scanModeWork
-    case scanModeItalyEntry
-    case scanModeReinforced
-    case scanModeBase
-}
-
 public class CertificateValidator {
-    private let scanModeMapping: [ScanMode: ScanModeInternal] = [
-        .scanMode2G : .reinforced,
-        .scanMode3G : .base,
-        .scanModeBooster : .booster,
-        .scanModeWork : .work,
-        .scanModeItalyEntry : .italyEntry,
-        .scanModeBase : .base,
-        .scanModeReinforced : .reinforced
-    ]
     
     private let certificate: Certificate?
     
@@ -67,7 +48,7 @@ public class CertificateValidator {
             onFailureHandler?(SdkOutdatedError())
             return
         }
-        guard let mode = self.scanModeMapping[scanMode] else {
+        guard let mode = scanMode.internalMode else {
             onFailureHandler?(InvalidScanModeError())
             return
         }

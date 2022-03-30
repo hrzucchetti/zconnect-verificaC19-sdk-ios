@@ -50,6 +50,8 @@
 		1E73F73A27AB28190053AC0D /* DGCValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E73F72427AB28190053AC0D /* DGCValidator.swift */; };
 		1E73F73D27AB28770053AC0D /* ScanMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E73F73C27AB28770053AC0D /* ScanMode.swift */; };
 		1E76ACFF27D7849300078C8F /* TestOnlyValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E76ACFE27D7849300078C8F /* TestOnlyValidator.swift */; };
+		1E76AD1827D794A600078C8F /* ScanMode+Description.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E76AD1727D794A600078C8F /* ScanMode+Description.swift */; };
+		1E76AD1A27D795BD00078C8F /* SdkScanMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E76AD1927D795BD00078C8F /* SdkScanMode.swift */; };
 		1E80D59A273C881400ED28B1 /* SDKConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E80D596273C881400ED28B1 /* SDKConfig.swift */; };
 		1E80D59B273C881400ED28B1 /* sdkConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1E80D598273C881400ED28B1 /* sdkConfig.plist */; };
 		1E80D59C273C881400ED28B1 /* get-dgc-gov-it.der in Resources */ = {isa = PBXBuildFile; fileRef = 1E80D599273C881400ED28B1 /* get-dgc-gov-it.der */; };
@@ -127,6 +129,8 @@
 		1E73F72427AB28190053AC0D /* DGCValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DGCValidator.swift; sourceTree = "<group>"; };
 		1E73F73C27AB28770053AC0D /* ScanMode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanMode.swift; sourceTree = "<group>"; };
 		1E76ACFE27D7849300078C8F /* TestOnlyValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestOnlyValidator.swift; sourceTree = "<group>"; };
+		1E76AD1727D794A600078C8F /* ScanMode+Description.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ScanMode+Description.swift"; sourceTree = "<group>"; };
+		1E76AD1927D795BD00078C8F /* SdkScanMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SdkScanMode.swift; sourceTree = "<group>"; };
 		1E80D596273C881400ED28B1 /* SDKConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SDKConfig.swift; sourceTree = "<group>"; };
 		1E80D598273C881400ED28B1 /* sdkConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = sdkConfig.plist; sourceTree = "<group>"; };
 		1E80D599273C881400ED28B1 /* get-dgc-gov-it.der */ = {isa = PBXFileReference; lastKnownFileType = file; path = "get-dgc-gov-it.der"; sourceTree = "<group>"; };
@@ -182,6 +186,7 @@
 				1E73F73C27AB28770053AC0D /* ScanMode.swift */,
 				1E2F607C273DD08C004B512E /* CRLProgress.swift */,
 				1E2F607E273DD08C004B512E /* Status.swift */,
+				1E76AD1727D794A600078C8F /* ScanMode+Description.swift */,
 			);
 			path = Internal;
 			sourceTree = "<group>";
@@ -307,6 +312,7 @@
 				1EAF83A5273C53570010939D /* CertificateValidator.swift */,
 				1EAF83A6273C53570010939D /* Protocols */,
 				1EAF83A8273C53570010939D /* Services */,
+				1E76AD1927D795BD00078C8F /* SdkScanMode.swift */,
 			);
 			path = ZConnectVerificaC19SDK;
 			sourceTree = "<group>";
@@ -559,6 +565,7 @@
 				1E5A722C27A92DD600CB8155 /* VaccineExemptionEntry.swift in Sources */,
 				1E2F60A2273DD0C6004B512E /* Int+Bytes.swift in Sources */,
 				1EAF83BB273C53570010939D /* String+Int.swift in Sources */,
+				1E76AD1A27D795BD00078C8F /* SdkScanMode.swift in Sources */,
 				1E2F6089273DD08C004B512E /* RevokedDCC.swift in Sources */,
 				1EAF83CE273C53570010939D /* DataSynchronizer.swift in Sources */,
 				1E73F73627AB28190053AC0D /* DGCValidatorBuilder.swift in Sources */,
@@ -583,6 +590,7 @@
 				1EAF7921278D80CC00941674 /* HCert+Certificate.swift in Sources */,
 				1EAF83B6273C53570010939D /* LocalData+Setting.swift in Sources */,
 				1EAF83D0273C53570010939D /* Validator.swift in Sources */,
+				1E76AD1827D794A600078C8F /* ScanMode+Description.swift in Sources */,
 				1EAF83C0273C53570010939D /* HCert+Recovery.swift in Sources */,
 				1E2F60A3273DD0C6004B512E /* Array+Utils.swift in Sources */,
 				1E2F60A9273DD0C6004B512E /* String+Bool.swift in Sources */,
