@@ -42,9 +42,9 @@ extension HCert {
     var standardizedFirstName: String { body["nam"]["gnt"].string ?? "" }
     
     var standardizedLastName: String { body["nam"]["fnt"].string ?? "" }
-	
-	/// Maps `HCert`'s `dob` field (yyyy-MM-dd format) to a dd/MM/yyyy format.
-    var birthDate: String {
+
+    var birthDateString: String {
+
         //  TODO: use date formats to be placed inside Constants
         let dob: String = body["dob"].string ?? ""
         
@@ -64,7 +64,7 @@ extension HCert {
     }
     
     var birthYear: Int? {
-        guard let birthYear = Int(birthDate[4]) else { return nil }
+        guard let birthYear = Int(birthDateString[4]) else { return nil }
         return birthYear
     }
     
@@ -75,16 +75,36 @@ extension HCert {
             dateFormatter.dateFormat = $0
             
             if $0 == "yyyy" {
-                return dateFormatter.date(from: birthDate)?.endOfYear()
+                return dateFormatter.date(from: birthDateString)?.endOfYear()
             }
             
             if $0 == "MM/yyyy" {
-                return dateFormatter.date(from: birthDate)?.endOfMonth()
+                return dateFormatter.date(from: birthDateString)?.endOfMonth()
             }
             
-            return dateFormatter.date(from: birthDate)
+            return dateFormatter.date(from: birthDateString)
         }
         guard let birthdayDate = dates.first else { return nil }
         return Calendar.current.dateComponents([.year, .month, .day], from: birthdayDate, to: Date()).year
+    }
+    
+    var birthDate: Date? {
+        let dateFormatter = DateFormatter.getDefault(utc: true)
+        let formats = ["yyyy", "MM/yyyy", "dd/MM/yyyy"]
+        let dates: [Date] = formats.compactMap {
+            dateFormatter.dateFormat = $0
+            
+            if $0 == "yyyy" {
+                return dateFormatter.date(from: birthDateString)?.endOfYear()
+            }
+            
+            if $0 == "MM/yyyy" {
+                return dateFormatter.date(from: birthDateString)?.endOfMonth()
+            }
+            
+            return dateFormatter.date(from: birthDateString)
+        }
+        guard let birthdayDate = dates.first else { return nil }
+        return birthdayDate
     }
 }
