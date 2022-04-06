@@ -42,7 +42,7 @@ extension HCert {
     var standardizedFirstName: String { body["nam"]["gnt"].string ?? "" }
     
     var standardizedLastName: String { body["nam"]["fnt"].string ?? "" }
-	
+
     var birthDateString: String {
         //  TODO: use date formats to be placed inside Constants
         let dob: String = body["dob"].string ?? ""
