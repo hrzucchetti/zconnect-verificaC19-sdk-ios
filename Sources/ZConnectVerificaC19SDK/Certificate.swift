@@ -41,11 +41,5 @@ public class Certificate {
     
     public var fullName2: String? { cert?.name }
     
-    public var dateOfBirth: Date? {
-        let dateFormatter = DateFormatter()
-        dateFormatter.locale = Locale.current
-        dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
-        dateFormatter.dateFormat = "dd/MM/yyyy"
-        return dateFormatter.date(from: cert?.birthDate ?? "")
-    }
+    public var dateOfBirth: Date? { cert?.birthDate }
 }
