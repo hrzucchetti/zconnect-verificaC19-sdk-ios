@@ -130,5 +130,3 @@ class TestReinforcedValidator: TestBaseValidator {
 }
 
 class TestBoosterValidator: TestReinforcedValidator {}
-
-class TestItalyEntryValidator: TestConcreteValidator {}
