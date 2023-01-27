@@ -22,5 +22,5 @@ struct SDKConfig {
     static let baseUrl = "https://get.dgc.gov.it/v1/dgc/"
     static let certificateFilename = "get-dgc-gov-it.der"
     static let certificateEvaluator = "get.dgc.gov.it"
-    static let SDKVersion = "1.1.13"
+    static let SDKVersion = "1.1.14"
 }
