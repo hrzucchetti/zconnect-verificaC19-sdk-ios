@@ -39,7 +39,7 @@ public class CertificateValidator {
         self.certificate = certificate
     }
     
-    public func validate(scanMode: ScanMode, onSuccessHandler: @escaping (Status) -> Void, onFailureHandler: ((Error) -> Void)? = nil) {
+    public func validate(scanMode: ScanMode = .scanModeBase, onSuccessHandler: @escaping (Status) -> Void, onFailureHandler: ((Error) -> Void)? = nil) {
         guard let certificate = certificate else {
             onFailureHandler?(InvalidCertificateError())
             return
