@@ -12,10 +12,6 @@ extension ScanModeInternal {
         switch self {
         case .base:
             return SettingDataStorage.sharedInstance.getFirstSetting(withName: Constants.scanModeDescription3G)
-        case .reinforced:
-            return SettingDataStorage.sharedInstance.getFirstSetting(withName: Constants.scanModeDescription2G)
-        case .booster:
-            return SettingDataStorage.sharedInstance.getFirstSetting(withName: Constants.scanModeDescriptionBooster)
         }
     }
 }

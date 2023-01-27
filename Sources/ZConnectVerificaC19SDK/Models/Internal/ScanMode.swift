@@ -28,6 +28,4 @@ import Foundation
 
 enum ScanModeInternal: String, CaseIterable {
     case base = "scanMode3G"
-    case reinforced = "scanMode2G"
-    case booster = "scanModeBooster"
 }
