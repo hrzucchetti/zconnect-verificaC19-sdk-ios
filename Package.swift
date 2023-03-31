@@ -45,8 +45,7 @@ let package = Package(
                 "SwiftDGC",
                 "Realm",
                 .product(name: "RealmSwift", package: "Realm")
-            ],
-            swiftSettings: [.unsafeFlags(["-Xfrontend", "-requirement-machine-inferred-signatures=off"])]
+            ]
         )
     ]
 )
